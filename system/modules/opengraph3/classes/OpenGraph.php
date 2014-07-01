@@ -20,61 +20,61 @@ class OpenGraph3 {
 	public function generateMetaTags()
 	{
 
-		if( Environment::get('isMobile') )
+		if( \Environment::get('isMobile') )
 			return false;
 
 		global $objPage;
 
-		$objPage = \PageModel::findById( $objPage->id );
+		$PageObj = \PageModel::findById( $objPage->id );
 		$objRoot = \PageModel::findById( $objPage->rootId );
 
 		// og:title
-		if( $objPage->og_title || $objRoot->og_title )
+		if( $PageObj->og_title || $objRoot->og_title )
 		{
-			$value = $objPage->og_title ? $objPage->og_title : $objRoot->og_title;
+			$value = $PageObj->og_title ? $PageObj->og_title : $objRoot->og_title;
 			$this->addTag( 'title', $value );
 		}
 
 		// og:type
-		if( $objPage->og_type || $objRoot->og_type )
+		if( $PageObj->og_type || $objRoot->og_type )
 		{
-			$value = $objPage->og_type ? $objPage->og_type : $objRoot->og_type;
+			$value = $PageObj->og_type ? $PageObj->og_type : $objRoot->og_type;
 			$this->addTag( 'type', $value );
 		}
 
 		// og:description
-		if( $objPage->og_description || $objRoot->og_description )
+		if( $PageObj->og_description || $objRoot->og_description )
 		{
-			$value = $objPage->og_description ? $objPage->og_description : $objRoot->og_description;
+			$value = $PageObj->og_description ? $PageObj->og_description : $objRoot->og_description;
 			$this->addTag( 'description', $value );
 		}
 
 		// og:site_name
-		if( $objPage->og_site_name || $objRoot->og_site_name )
+		if( $PageObj->og_site_name || $objRoot->og_site_name )
 		{
-			$value = $objPage->og_site_name ? $objPage->og_site_name : $objRoot->og_site_name;
+			$value = $PageObj->og_site_name ? $PageObj->og_site_name : $objRoot->og_site_name;
 			$this->addTag( 'site_name', $value );
 		}
 
 		// og:locality
-		if( $objPage->og_locality || $objRoot->og_locality )
+		if( $PageObj->og_locality || $objRoot->og_locality )
 		{
-			$value = $objPage->og_locality ? $objPage->og_locality : $objRoot->og_locality;
+			$value = $PageObj->og_locality ? $PageObj->og_locality : $objRoot->og_locality;
 			$this->addTag( 'locality', $value );
 		}
 
 		// og:country_name
-		if( $objPage->og_country_name || $objRoot->og_country_name )
+		if( $PageObj->og_country_name || $objRoot->og_country_name )
 		{
 			$arrCountries = System::getCountries();
-			$value = $objPage->og_country_name ? $objPage->og_country_name : $objRoot->og_country_name;
+			$value = $PageObj->og_country_name ? $PageObj->og_country_name : $objRoot->og_country_name;
 			$this->addTag( 'country_name', $arrCountries[ $value ] );
 		}
 
 		// og:image
-		if( $objPage->og_image || $objRoot->og_image )
+		if( $PageObj->og_image || $objRoot->og_image )
 		{
-			$file = $objPage->og_image ? $objPage->og_image : $objRoot->og_image;
+			$file = $PageObj->og_image ? $PageObj->og_image : $objRoot->og_image;
 
 			$objFile = FilesModel::findByUuid( $file );
 			$value = $objFile->path;
