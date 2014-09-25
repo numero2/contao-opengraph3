@@ -79,7 +79,7 @@ class OpenGraph3 {
 			$value = $objFile->path;
 
 			if( $objFile !== null )
-				$this->addTag( 'image', \Environment::get('uri').$value );
+				$this->addTag( 'image', \Environment::get('url').'/'.$value );
 		}
 	}
 
