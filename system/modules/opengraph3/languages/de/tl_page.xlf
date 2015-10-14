@@ -11,7 +11,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_title.1">
         <source>The title of your object as it should appear within the graph, e.g., "The Rock".</source>
-        <target>The title of your object as it should appear within the graph, e.g., "The Rock".</target>
+        <target>Der Titel des Objekts wie es auf Facebook erscheinen sollte.</target>
       </trans-unit>
       <trans-unit id="tl_page.og_type.0">
         <source>og:type</source>
@@ -19,7 +19,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_type.1">
         <source>The type of your object, e.g., "video.movie".</source>
-        <target>The type of your object, e.g., "video.movie".</target>
+        <target>Die Art des Objekts z.B. "video.movie".</target>
       </trans-unit>
       <trans-unit id="tl_page.og_description.0">
         <source>og:description</source>
@@ -27,7 +27,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_description.1">
         <source>A brief description of your object.</source>
-        <target>A brief description of your object.</target>
+        <target>Eine kurze Beschreibung des Objekts.</target>
       </trans-unit>
       <trans-unit id="tl_page.og_site_name.0">
         <source>og:site_name</source>
@@ -35,7 +35,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_site_name.1">
         <source>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</source>
-        <target>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</target>
+        <target>Falls das Objekt zu einer größeren Seite gehört, hier den Name der Seite angeben z.B. "Meine Homepage".</target>
       </trans-unit>
       <trans-unit id="tl_page.og_locality.0">
         <source>og:locality</source>
@@ -43,7 +43,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_locality.1">
         <source>The locality of your object e.g. "Los Angeles".</source>
-        <target>The locality of your object e.g. "Los Angeles".</target>
+        <target>Der Standort des Onjekts z.B. "Berlin".</target>
       </trans-unit>
       <trans-unit id="tl_page.og_country_name.0">
         <source>og:country_name</source>
@@ -51,7 +51,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_country_name.1">
         <source>The country of your object.</source>
-        <target>The country of your object.</target>
+        <target>Name des Landes des Objekts.</target>
       </trans-unit>
       <trans-unit id="tl_page.og_image.0">
         <source>og:image</source>
@@ -59,7 +59,7 @@
       </trans-unit>
       <trans-unit id="tl_page.og_image.1">
         <source>A preview image for your object.</source>
-        <target>A preview image for your object.</target>
+        <target>Vorschaubild des Objekts.</target>
       </trans-unit>
     </body>
   </file>
