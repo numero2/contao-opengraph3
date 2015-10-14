@@ -81,6 +81,9 @@ class OpenGraph3 extends \Frontend {
 			if( $objFile !== null )
 				$this->addTag( 'image', \Environment::get('url').'/'.$value );
 		}
+
+        // og:url added automatically
+        $this->addTag( 'url', \Environment::get('url') . \Environment::get('requestUri') );
 	}
 
 
