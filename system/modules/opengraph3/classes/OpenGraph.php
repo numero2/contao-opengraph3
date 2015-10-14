@@ -11,7 +11,7 @@
  * @copyright 2014 numero2 - Agentur für Internetdienstleistungen
  */
 
-class OpenGraph3 {
+class OpenGraph3 extends \Frontend {
 
 
 	/**
@@ -95,7 +95,7 @@ class OpenGraph3 {
 		$GLOBALS['TL_HEAD'][] = sprintf(
 			'<meta property="og:%s" content="%s" />',
 			$tagName,
-			$tagValue
+			$this->replaceInsertTags($tagValue)
 		);
 	}
 }
