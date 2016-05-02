@@ -8,21 +8,21 @@
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2014 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2016 numero2 - Agentur für Internetdienstleistungen
  */
- 
+
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace
 (
 	'{dns_legend',
-	'{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{dns_legend',
+	'{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_title,twitter_description,twitter_image;{dns_legend',
 	$GLOBALS['TL_DCA']['tl_page']['palettes']['root']
 );
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace
 (
 	'{protected_legend',
-	'{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{protected_legend',
+	'{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_title,twitter_description,twitter_image;{protected_legend',
 	$GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
 );
 
@@ -86,6 +86,53 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['og_country_name'] = array
 $GLOBALS['TL_DCA']['tl_page']['fields']['og_image'] = array
 (
 	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['og_image'],
+	'exclude'		=> true,
+	'inputType'		=> 'fileTree',
+	'eval'			=> array('extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr'),
+	'sql'			=> "binary(16) NULL"
+);
+
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_site'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_site'],
+	'exclude'		=> true,
+	'inputType'		=> 'text',
+	'eval'			=> array('tl_class'=>'w50', 'placeholder'=>'@page'),
+	'sql'			=> "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_creator'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_creator'],
+	'exclude'		=> true,
+	'inputType'		=> 'text',
+	'eval'			=> array('tl_class'=>'w50', 'placeholder'=>'@author'),
+	'sql'			=> "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_title'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_title'],
+	'exclude'		=> true,
+	'inputType'		=> 'text',
+	'eval'			=> array('tl_class'=>'clr long'),
+	'sql'			=> "varchar(255) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_description'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_description'],
+	'exclude'		=> true,
+	'inputType'     => 'textarea',
+	'search'        => true,
+	'eval'          => array('style'=>'height: 60px;', 'decodeEntities'=>true, 'tl_class'=>'clr'),
+	'sql'           => "text NULL"
+);
+
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_image'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_image'],
 	'exclude'		=> true,
 	'inputType'		=> 'fileTree',
 	'eval'			=> array('extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr'),

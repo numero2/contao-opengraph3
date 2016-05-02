@@ -61,6 +61,50 @@
         <source>A preview image for your object.</source>
         <target>Vorschaubild des Objekts.</target>
       </trans-unit>
+      <trans-unit id="tl_page.twitter_legend">
+        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
+        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_site.0">
+        <source>twitter:site</source>
+        <target>twitter:site</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_site.1">
+        <source>@username for the website used in the card footer.</source>
+        <target>@benutzername der Seite.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_creator.0">
+        <source>twitter:creator</source>
+        <target>twitter:creator</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_creator.1">
+        <source>@username for the content creator / author.</source>
+        <target>@benutzername des Autors der Seite.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_title.0">
+        <source>twitter:title</source>
+        <target>twitter:title</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_title.1">
+        <source>A concise title for the related content.</source>
+        <target>Ein passender Titel für den Inhalt der Seite.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_description.0">
+        <source>twitter:description</source>
+        <target>twitter:description</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_description.1">
+        <source>A description that concisely summarizes the content as appropriate for presentation within a Tweet. You should not re-use the title as the description or use this field to describe the general services provided by the website.</source>
+        <target>Eine kurze Beschreibung des Objekts.</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_image.0">
+        <source>twitter:image</source>
+        <target>twitter:image</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_image.1">
+        <source>A preview image for your object.</source>
+        <target>Vorschaubild des Objekts.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
