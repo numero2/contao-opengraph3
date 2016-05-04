@@ -15,14 +15,14 @@
 $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace
 (
 	'{dns_legend',
-	'{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_title,twitter_description,twitter_image;{dns_legend',
+	'{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{dns_legend',
 	$GLOBALS['TL_DCA']['tl_page']['palettes']['root']
 );
 
 $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace
 (
 	'{protected_legend',
-	'{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_title,twitter_description,twitter_image;{protected_legend',
+	'{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{protected_legend',
 	$GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
 );
 
@@ -111,6 +111,16 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_creator'] = array
 	'sql'			=> "varchar(255) NOT NULL default ''"
 );
 
+$GLOBALS['TL_DCA']['tl_page']['fields']['twitter_card'] = array
+(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_card'],
+	'exclude'		=> true,
+	'inputType'		=> 'select',
+	'options_callback'	=> array('tl_page_og3','getTwitterCards'),
+	'eval'			=> array('includeBlankOption'=>false, 'tl_class'=>'w50'),
+	'sql'			=> "varchar(255) NOT NULL default ''"
+);
+
 $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_title'] = array
 (
 	'label'			=> &$GLOBALS['TL_LANG']['tl_page']['twitter_title'],
@@ -159,6 +169,14 @@ class tl_page_og3
 			'video.episode' 		=> 'video.episode',
 			'video.tv_show' 		=> 'video.tv_show',
 			'video.other' 			=> 'video.other'
+		);
+	}
+
+	public function getTwitterCards()
+	{
+		return array(
+			'summary_large_image'	=> 'summary_large_image',
+			'summary' 				=> 'summary'
 		);
 	}
 }

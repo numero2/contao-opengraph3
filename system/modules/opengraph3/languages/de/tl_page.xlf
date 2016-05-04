@@ -81,6 +81,14 @@
         <source>@username for the content creator / author.</source>
         <target>@benutzername des Autors der Seite.</target>
       </trans-unit>
+      <trans-unit id="tl_page.twitter_card.0">
+        <source>twitter:card</source>
+        <target>twitter:card</target>
+      </trans-unit>
+      <trans-unit id="tl_page.twitter_card.1">
+        <source>Type of card, see https://dev.twitter.com/cards/overview for further information.</source>
+        <target>Art der Karte, weitere Informationen unter https://dev.twitter.com/cards/overview.</target>
+      </trans-unit>
       <trans-unit id="tl_page.twitter_title.0">
         <source>twitter:title</source>
         <target>twitter:title</target>

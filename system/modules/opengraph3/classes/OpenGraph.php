@@ -85,8 +85,12 @@ class OpenGraph3 extends \Frontend {
         // og:url added automatically
         $this->addTag( 'og:url', \Environment::get('url') . \Environment::get('requestUri') );
 
-		// twitter:card added automatically
-        $this->addTag( 'twitter:card', 'summary' );
+		// twitter:card
+		if( $objPage->twitter_card || $objRoot->twitter_card )
+		{
+			$value = $objPage->twitter_card ? $objPage->twitter_card : $objRoot->twitter_card;
+			$this->addTag( 'twitter:card', $value );
+		}
 
 		// twitter:site
 		if( $objPage->twitter_site || $objRoot->twitter_site )
