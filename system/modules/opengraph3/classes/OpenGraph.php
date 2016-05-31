@@ -85,7 +85,7 @@ class OpenGraph3 extends \Frontend {
 		{
 			$file = $objRef->og_image ? $objRef->og_image : $objRootPage->og_image;
 
-			$objFile = FilesModel::findByUuid( $file );
+			$objFile = \FilesModel::findByUuid( $file );
 			$value = $objFile->path;
 
 			if( $objFile !== null )
