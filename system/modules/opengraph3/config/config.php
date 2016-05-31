@@ -8,8 +8,17 @@
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2014 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2016 numero2 - Agentur für Internetdienstleistungen
  */
 
 
-$GLOBALS['TL_HOOKS']['generatePage'][] = array('OpenGraph3', 'generateMetaTags');
+/**
+ * Front end modules
+ */
+$GLOBALS['FE_MOD']['news']['newsreader'] = 'numero2\OpenGraph3\ModuleNewsReader';
+
+
+/**
+ * Hooks
+ */
+$GLOBALS['TL_HOOKS']['generatePage'][] = array('numero2\OpenGraph3\OpenGraph3', 'setPageOGTags');
