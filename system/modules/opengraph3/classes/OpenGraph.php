@@ -75,7 +75,7 @@ class OpenGraph3 extends \Frontend {
 		// og:country_name
 		if( $objRef->og_country_name || $objRootPage->og_country_name )
 		{
-			$arrCountries = System::getCountries();
+			$arrCountries = \System::getCountries();
 			$value = $objRef->og_country_name ? $objRef->og_country_name : $objRootPage->og_country_name;
 			self::addTag( 'og:country_name', $arrCountries[ $value ] );
 		}
