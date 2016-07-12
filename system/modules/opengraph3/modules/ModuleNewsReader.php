@@ -35,7 +35,8 @@ class ModuleNewsReader extends \Contao\ModuleNewsReader {
 
 		if( null !== $objArticle )
 		{
-			OpenGraph3::setPageOGTags( $objArticle );
+			$openGraph = new OpenGraph3();
+			$openGraph->setPageOGTags( $objArticle );
 		}
 	}
 }

@@ -26,7 +26,7 @@ class OpenGraph3 extends \Frontend {
 	 *
 	 * @param obj $ref
 	 */
-	public static function setPageOGTags( $ref=NULL )
+	public function setPageOGTags( $ref=NULL )
 	{
 
 		if( \Environment::get('isMobile') )
@@ -152,7 +152,7 @@ class OpenGraph3 extends \Frontend {
 	 * @param string $tagName
 	 * @param string $tagValue
 	 */
-	private static function addTag( $tagName=NULL, $tagValue=NULL )
+	private function addTag( $tagName=NULL, $tagValue=NULL )
 	{
 		if( empty($tagName) )
 			return false;
@@ -160,7 +160,7 @@ class OpenGraph3 extends \Frontend {
 		$GLOBALS['TL_HEAD'][] = sprintf(
 			'<meta property="%s" content="%s" />',
 			$tagName,
-			self::replaceInsertTags($tagValue)
+			$this->replaceInsertTags($tagValue)
 		);
 	}
 
@@ -171,7 +171,7 @@ class OpenGraph3 extends \Frontend {
 	 * @param string $tagName
 	 * @param string $tagValue
 	 */
-	private static function checkTag( $tagName=NULL )
+	private function checkTag( $tagName=NULL )
 	{
 		if( empty($tagName) )
 			return false;
