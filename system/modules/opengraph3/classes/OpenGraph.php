@@ -147,21 +147,42 @@ class OpenGraph3 extends \Frontend {
 
 
 	/**
-	 * Adds a specific opengraph tag to the head
-	 *
-	 * @param string $tagName
-	 * @param string $tagValue
-	 */
-	private function addTag( $tagName=NULL, $tagValue=NULL )
+	* Adds a specific opengraph tag to the head
+	*
+	* @param string $tagName
+	* @param string $tagValue
+	*/
+	private static function addTag( $tagName=NULL, $tagValue=NULL )
 	{
+
 		if( empty($tagName) )
 			return false;
 
-		$GLOBALS['TL_HEAD'][] = sprintf(
-			'<meta property="%s" content="%s" />',
-			$tagName,
-			$this->replaceInsertTags($tagValue)
-		);
+		$oReflection = NULL;
+		$oReflection = new \ReflectionMethod("\\numero2\OpenGraph3\OpenGraph3", "replaceInsertTags");
+
+		// compatibility hack
+		// in older Contao versions replaceInsertTags is a non-static method
+		// if so create an instance of ourself to call replaceInsertTags
+		if( !$oReflection->isStatic() ) {
+
+			$oProxy = NULL;
+			$oProxy = new OpenGraph3();
+
+			$GLOBALS['TL_HEAD'][] = sprintf(
+				'<meta property="%s" content="%s" />',
+				$tagName,
+				$oProxy->replaceInsertTags($tagValue)
+			);
+
+		} else {
+
+			$GLOBALS['TL_HEAD'][] = sprintf(
+				'<meta property="%s" content="%s" />',
+				$tagName,
+				self::replaceInsertTags($tagValue)
+			);
+		}
 	}
 
 
