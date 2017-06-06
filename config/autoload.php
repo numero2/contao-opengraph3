@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2016 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
  */
 
 

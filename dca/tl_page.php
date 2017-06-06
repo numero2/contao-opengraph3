@@ -3,27 +3,25 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2014 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2016 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
  */
 
 
-$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace
-(
-	'{dns_legend',
-	'{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{dns_legend',
-	$GLOBALS['TL_DCA']['tl_page']['palettes']['root']
+$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace(
+	'{dns_legend'
+,   '{opengraph_legend:hide},og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{dns_legend'
+,   $GLOBALS['TL_DCA']['tl_page']['palettes']['root']
 );
 
-$GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace
-(
-	'{protected_legend',
-	'{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{protected_legend',
-	$GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
+$GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
+	'{protected_legend'
+,   '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{protected_legend'
+,   $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
 );
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['og_title'] = array
@@ -150,30 +148,30 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_image'] = array
 );
 
 
-class tl_page_og3
-{
+class tl_page_og3 {
 
-	public function getTypes()
-	{
-		return array
-		(
-			'website' 				=> 'website',
-			'article' 				=> 'article',
-			'book' 					=> 'book',
-			'profile' 				=> 'profile',
-			'music.song' 			=> 'music.song',
-			'music.album' 			=> 'music.album',
-			'music.playlist' 		=> 'music.playlist',
-			'music.radio_station'	=> 'music.radio_station',
-			'video.movie' 			=> 'video.movie',
-			'video.episode' 		=> 'video.episode',
-			'video.tv_show' 		=> 'video.tv_show',
-			'video.other' 			=> 'video.other'
+
+	public function getTypes() {
+
+		return array (
+			'website' 				=> 'website'
+        ,   'article' 				=> 'article'
+        ,   'book' 					=> 'book'
+        ,   'profile' 				=> 'profile'
+        ,   'music.song' 			=> 'music.song'
+        ,   'music.album' 			=> 'music.album'
+        ,   'music.playlist' 		=> 'music.playlist'
+        ,   'music.radio_station'	=> 'music.radio_station'
+        ,   'video.movie' 			=> 'video.movie'
+        ,   'video.episode' 		=> 'video.episode'
+        ,   'video.tv_show' 		=> 'video.tv_show'
+        ,   'video.other' 			=> 'video.other'
 		);
 	}
 
-	public function getTwitterCards()
-	{
+
+	public function getTwitterCards() {
+
 		return array(
 			'summary_large_image'	=> 'summary_large_image',
 			'summary' 				=> 'summary'
