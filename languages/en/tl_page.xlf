@@ -2,8 +2,8 @@
 <file datatype="php" original="system/modules/opengraph3/languages/en/tl_page.php" source-language="en">
 <body>
     <trans-unit id="tl_page.opengraph_legend">
-        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
-        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
+        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
+        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
     </trans-unit>
     <trans-unit id="tl_page.og_title.0">
         <source>og:title</source>
@@ -62,8 +62,8 @@
         <target>A preview image for your object.</target>
     </trans-unit>
     <trans-unit id="tl_page.twitter_legend">
-        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
-        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.png" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
+        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
+        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
     </trans-unit>
     <trans-unit id="tl_page.twitter_site.0">
         <source>twitter:site</source>
