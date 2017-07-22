@@ -15,7 +15,9 @@
 /**
  * Front end modules
  */
-$GLOBALS['FE_MOD']['news']['newsreader'] = 'numero2\OpenGraph3\ModuleNewsReader';
+if( class_exists('\Contao\ModuleNewsReader') ) {
+    $GLOBALS['FE_MOD']['news']['newsreader'] = 'numero2\OpenGraph3\ModuleNewsReader';
+}
 
 
 /**
