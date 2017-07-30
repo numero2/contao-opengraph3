@@ -1,0 +1,14 @@
+<?xml version="1.0" ?><xliff version="1.1">
+<file datatype="php" original="system/modules/opengraph3/languages/en/tl_iso_product.php" source-language="en">
+<body>
+    <trans-unit id="tl_iso_product.opengraph_legend">
+        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
+        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
+    </trans-unit>
+    <trans-unit id="tl_iso_product.twitter_legend">
+        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
+        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
+    </trans-unit>
+</body>
+</file>
+</xliff>

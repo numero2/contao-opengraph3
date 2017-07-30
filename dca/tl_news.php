@@ -15,7 +15,7 @@
 \Controller::loadDataContainer('tl_page');
 
 $GLOBALS['TL_DCA']['tl_news']['palettes']['default'] = str_replace(
-	'{expert_legend'
+    '{expert_legend'
 ,   '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{expert_legend'
 ,   $GLOBALS['TL_DCA']['tl_news']['palettes']['default']
 );

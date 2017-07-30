@@ -21,171 +21,220 @@ namespace numero2\OpenGraph3;
 class OpenGraph3 extends \Frontend {
 
 
-	/**
-	 * Sets OpenGraph tags for the current page
-	 *
-	 * @param obj $ref
-	 */
-	public function setPageOGTags( $ref=NULL ) {
+    public function appendModuleOGTags( $objRow, $strBuffer, $objModule ) {
 
-		if( \Environment::get('isMobile') )
-			return false;
+        $moduleClass = get_class($objModule);
 
-		global $objPage;
+        // Isotope Product Reader
+        if( $moduleClass === "Contao\ModuleModel" && $objModule->type === "iso_productreader" || $moduleClass === "Isotope\Module\ProductReader" ) {
 
-		$objRef = !$ref ? $objPage : $ref;
-		$objRootPage = ($objRef instanceof \Contao\PageModel) ? \PageModel::findById( $objPage->rootId ) : NULL;
+            $objProduct = NULL;
+            $objProduct = \Isotope\Model\Product::findAvailableByIdOrAlias( \Input::get('auto_item') );
 
-		// og:title
-		if( ($objRef->og_title || $objRootPage->og_title) && !self::checkTag('og:title') ) {
+            if( null !== $objProduct ) {
+                $this->setPageOGTags( $objProduct );
+            }
 
-			$value = $objRef->og_title ? $objRef->og_title : $objRootPage->og_title;
-			self::addTag( 'og:title', $value );
-		}
+        // TODO: NEWSREADER
+        } else {
 
-		// og:type
-		if( ($objRef->og_type || $objRootPage->og_type) && !self::checkTag('og:type') ) {
+            /*
+            // Get the news item
+            $objArticle = \NewsModel::findPublishedByParentAndIdOrAlias(\Input::get('items'), $this->news_archives);
 
-			$value = $objRef->og_type ? $objRef->og_type : $objRootPage->og_type;
-			self::addTag( 'og:type', $value );
-		}
+            if( null !== $objArticle ) {
 
-		// og:description
-		if( ($objRef->og_description || $objRootPage->og_description) && !self::checkTag('og:description') ) {
+                $openGraph = new OpenGraph3();
+                $openGraph->setPageOGTags( $objArticle );
+            }
+             */
 
-			$value = $objRef->og_description ? $objRef->og_description : $objRootPage->og_description;
-			self::addTag( 'og:description', $value );
-		}
+            //dump( $moduleClass );
+        }
 
-		// og:site_name
-		if( ($objRef->og_site_name || $objRootPage->og_site_name) && !self::checkTag('og:site_name') ) {
+        return $strBuffer;
+    }
 
-			$value = $objRef->og_site_name ? $objRef->og_site_name : $objRootPage->og_site_name;
-			self::addTag( 'og:site_name', $value );
-		}
+    public function appendElementOGTags( $objRow, $strBuffer, $objElement ) {
 
-		// og:locality
-		if( ($objRef->og_locality || $objRootPage->og_locality) && !self::checkTag('og:locality') ) {
+        if( get_class($objElement) === "Contao\ContentModule" ) {
 
-			$value = $objRef->og_locality ? $objRef->og_locality : $objRootPage->og_locality;
-			self::addTag( 'og:locality', $value );
-		}
+            $objModule = NULL;
+            $objModule = \ModuleModel::findById( $objElement->module );
 
-		// og:country_name
-		if( ($objRef->og_country_name || $objRootPage->og_country_name) && !self::checkTag('og:country_name') ) {
+            $this->appendModuleOGTags( NULL, NULL, $objModule );
+        }
 
-			$arrCountries = \System::getCountries();
-			$value = $objRef->og_country_name ? $objRef->og_country_name : $objRootPage->og_country_name;
-			self::addTag( 'og:country_name', $arrCountries[ $value ] );
-		}
 
-		// og:image
-		if( ($objRef->og_image || $objRootPage->og_image) && !self::checkTag('og:image') ) {
+        return $strBuffer;
+    }
 
-			$file = $objRef->og_image ? $objRef->og_image : $objRootPage->og_image;
 
-			$objFile = \FilesModel::findByUuid( $file );
-			$value = $objFile->path;
+    /**
+     * Sets OpenGraph tags for the current page
+     *
+     * @param obj $ref
+     */
+    public function setPageOGTags( $ref=NULL ) {
 
-			if( $objFile !== null ) {
+        if( \Environment::get('isMobile') )
+            return false;
+
+        global $objPage;
+
+        $objRef = !$ref ? $objPage : $ref;
+        $objRootPage = ($objRef instanceof \Contao\PageModel) ? \PageModel::findById( $objPage->rootId ) : NULL;
+
+        // og:title
+        if( ($objRef->og_title || $objRootPage->og_title) && !self::checkTag('og:title') ) {
+
+            $value = $objRef->og_title ? $objRef->og_title : $objRootPage->og_title;
+            self::addTag( 'og:title', $value );
+        }
+
+        // og:type
+        if( ($objRef->og_type || $objRootPage->og_type) && !self::checkTag('og:type') ) {
+
+            $value = $objRef->og_type ? $objRef->og_type : $objRootPage->og_type;
+            self::addTag( 'og:type', $value );
+        }
+
+        // og:description
+        if( ($objRef->og_description || $objRootPage->og_description) && !self::checkTag('og:description') ) {
+
+            $value = $objRef->og_description ? $objRef->og_description : $objRootPage->og_description;
+            self::addTag( 'og:description', $value );
+        }
+
+        // og:site_name
+        if( ($objRef->og_site_name || $objRootPage->og_site_name) && !self::checkTag('og:site_name') ) {
+
+            $value = $objRef->og_site_name ? $objRef->og_site_name : $objRootPage->og_site_name;
+            self::addTag( 'og:site_name', $value );
+        }
+
+        // og:locality
+        if( ($objRef->og_locality || $objRootPage->og_locality) && !self::checkTag('og:locality') ) {
+
+            $value = $objRef->og_locality ? $objRef->og_locality : $objRootPage->og_locality;
+            self::addTag( 'og:locality', $value );
+        }
+
+        // og:country_name
+        if( ($objRef->og_country_name || $objRootPage->og_country_name) && !self::checkTag('og:country_name') ) {
+
+            $arrCountries = \System::getCountries();
+            $value = $objRef->og_country_name ? $objRef->og_country_name : $objRootPage->og_country_name;
+            self::addTag( 'og:country_name', $arrCountries[ $value ] );
+        }
+
+        // og:image
+        if( ($objRef->og_image || $objRootPage->og_image) && !self::checkTag('og:image') ) {
+
+            $file = $objRef->og_image ? $objRef->og_image : $objRootPage->og_image;
+
+            $objFile = \FilesModel::findByUuid( $file );
+            $value = $objFile->path;
+
+            if( $objFile !== null ) {
                 self::addTag( 'og:image', \Environment::get('base').$value );
             }
-		}
+        }
 
         // og:url added automatically
         if( !self::checkTag('og:url') ) {
-        	self::addTag( 'og:url', \Environment::get('url') . \Environment::get('requestUri') );
+            self::addTag( 'og:url', \Environment::get('url') . \Environment::get('requestUri') );
         }
 
-		// twitter:site
-		if( ($objRef->twitter_site || $objRootPage->twitter_site) && !self::checkTag('twitter:site') ) {
+        // twitter:site
+        if( ($objRef->twitter_site || $objRootPage->twitter_site) && !self::checkTag('twitter:site') ) {
 
-			$value = $objRef->twitter_site ? $objRef->twitter_site : $objRootPage->twitter_site;
-			self::addTag( 'twitter:site', $value );
-		}
+            $value = $objRef->twitter_site ? $objRef->twitter_site : $objRootPage->twitter_site;
+            self::addTag( 'twitter:site', $value );
+        }
 
-		// twitter:creator
-		if( ($objRef->twitter_creator || $objRootPage->twitter_creator) && !self::checkTag('twitter:creator') ) {
+        // twitter:creator
+        if( ($objRef->twitter_creator || $objRootPage->twitter_creator) && !self::checkTag('twitter:creator') ) {
 
-			$value = $objRef->twitter_creator ? $objRef->twitter_creator : $objRootPage->twitter_creator;
-			self::addTag( 'twitter:creator', $value );
-		}
+            $value = $objRef->twitter_creator ? $objRef->twitter_creator : $objRootPage->twitter_creator;
+            self::addTag( 'twitter:creator', $value );
+        }
 
-		// twitter:title
-		if( ($objRef->twitter_title || $objRootPage->twitter_title) && !self::checkTag('twitter:title') ) {
+        // twitter:title
+        if( ($objRef->twitter_title || $objRootPage->twitter_title) && !self::checkTag('twitter:title') ) {
 
-			$value = $objRef->twitter_title ? $objRef->twitter_title : $objRootPage->twitter_title;
-			self::addTag( 'twitter:title', $value );
+            $value = $objRef->twitter_title ? $objRef->twitter_title : $objRootPage->twitter_title;
+            self::addTag( 'twitter:title', $value );
 
-			// twitter:card
-			if( $objRef->twitter_card || $objRootPage->twitter_card ) {
+            // twitter:card
+            if( $objRef->twitter_card || $objRootPage->twitter_card ) {
 
-				$value = $objRef->twitter_card ? $objRef->twitter_card : $objRootPage->twitter_card;
-				self::addTag( 'twitter:card', $value );
-			}
-		}
+                $value = $objRef->twitter_card ? $objRef->twitter_card : $objRootPage->twitter_card;
+                self::addTag( 'twitter:card', $value );
+            }
+        }
 
-		// twitter:description
-		if( ($objRef->twitter_description || $objRootPage->twitter_description) && !self::checkTag('twitter:description') ) {
+        // twitter:description
+        if( ($objRef->twitter_description || $objRootPage->twitter_description) && !self::checkTag('twitter:description') ) {
 
-			$value = $objRef->twitter_description ? $objRef->twitter_description : $objRootPage->twitter_description;
-			self::addTag( 'twitter:description', $value );
-		}
+            $value = $objRef->twitter_description ? $objRef->twitter_description : $objRootPage->twitter_description;
+            self::addTag( 'twitter:description', $value );
+        }
 
-		// twitter:image
-		if( ($objRef->twitter_image || $objRootPage->twitter_image) && !self::checkTag('twitter:image') ) {
+        // twitter:image
+        if( ($objRef->twitter_image || $objRootPage->twitter_image) && !self::checkTag('twitter:image') ) {
 
-			$file = $objRef->twitter_image ? $objRef->twitter_image : $objRootPage->twitter_image;
+            $file = $objRef->twitter_image ? $objRef->twitter_image : $objRootPage->twitter_image;
 
-			$objFile = \FilesModel::findByUuid( $file );
-			$value = $objFile->path;
+            $objFile = \FilesModel::findByUuid( $file );
+            $value = $objFile->path;
 
-			if( $objFile !== null ) {
+            if( $objFile !== null ) {
                 self::addTag( 'twitter:image', \Environment::get('base').$value );
             }
-		}
-	}
+        }
+    }
 
 
-	/**
-	* Adds a specific opengraph tag to the head
-	*
-	* @param string $tagName
-	* @param string $tagValue
-	*/
-	private static function addTag( $tagName=NULL, $tagValue=NULL ) {
+    /**
+    * Adds a specific opengraph tag to the head
+    *
+    * @param string $tagName
+    * @param string $tagValue
+    */
+    private static function addTag( $tagName=NULL, $tagValue=NULL ) {
 
-		if( empty($tagName) )
-			return false;
+        if( empty($tagName) )
+            return false;
 
-		$GLOBALS['TL_HEAD'][] = sprintf(
-			'<meta property="%s" content="%s" />',
-			$tagName,
-			self::replaceInsertTags($tagValue)
-		);
-	}
+        $GLOBALS['TL_HEAD'][] = sprintf(
+            '<meta property="%s" content="%s" />',
+            $tagName,
+            self::replaceInsertTags($tagValue)
+        );
+    }
 
 
-	/**
-	 * Checks if a specific opengraph tag already exists
-	 *
-	 * @param string $tagName
-	 * @param string $tagValue
-	 */
-	private function checkTag( $tagName=NULL ) {
+    /**
+     * Checks if a specific opengraph tag already exists
+     *
+     * @param string $tagName
+     * @param string $tagValue
+     */
+    private function checkTag( $tagName=NULL ) {
 
-		if( empty($tagName) )
-			return false;
+        if( empty($tagName) )
+            return false;
 
-		if( $GLOBALS['TL_HEAD'] ) {
+        if( $GLOBALS['TL_HEAD'] ) {
 
-			foreach( $GLOBALS['TL_HEAD'] as $i => $v ) {
+            foreach( $GLOBALS['TL_HEAD'] as $i => $v ) {
 
-				if( strpos($v, $tagName) !== FALSE )
-					return true;
-			}
-		}
+                if( strpos($v, $tagName) !== FALSE )
+                    return true;
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

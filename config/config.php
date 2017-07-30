@@ -13,14 +13,8 @@
 
 
 /**
- * Front end modules
- */
-if( class_exists('\Contao\ModuleNewsReader') ) {
-    $GLOBALS['FE_MOD']['news']['newsreader'] = 'numero2\OpenGraph3\ModuleNewsReader';
-}
-
-
-/**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['generatePage'][] = array('numero2\OpenGraph3\OpenGraph3', 'setPageOGTags');
+$GLOBALS['TL_HOOKS']['getContentElement'][] = array('numero2\OpenGraph3\OpenGraph3', 'appendElementOGTags');
+$GLOBALS['TL_HOOKS']['getFrontendModule'][] = array('numero2\OpenGraph3\OpenGraph3', 'appendModuleOGTags');
+$GLOBALS['TL_HOOKS']['generatePage'][]      = array('numero2\OpenGraph3\OpenGraph3', 'setPageOGTags');
