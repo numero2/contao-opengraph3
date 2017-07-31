@@ -12,24 +12,35 @@
  */
 
 
-\Controller::loadDataContainer('tl_page');
+\System::loadLanguageFile('opengraph_fields');
+\Controller::loadDataContainer('opengraph_fields');
 
+
+/**
+ * Modify palettes
+ */
 $GLOBALS['TL_DCA']['tl_news']['palettes']['default'] = str_replace(
     '{expert_legend'
-,   '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;{expert_legend'
+,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{expert_legend'
 ,   $GLOBALS['TL_DCA']['tl_news']['palettes']['default']
 );
 
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_title'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_title'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_type'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_type'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_description'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_description'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_site_name'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_site_name'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_locality'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_locality'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_country_name'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_country_name'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['og_image'] = $GLOBALS['TL_DCA']['tl_page']['fields']['og_image'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_site'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_site'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_creator'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_creator'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_card'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_card'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_title'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_title'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_description'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_description'];
-$GLOBALS['TL_DCA']['tl_news']['fields']['twitter_image'] = $GLOBALS['TL_DCA']['tl_page']['fields']['twitter_image'];
+
+/**
+ * Modify fields
+ */
+$GLOBALS['TL_DCA']['tl_news']['fields'] = array_merge(
+    $GLOBALS['TL_DCA']['tl_news']['fields']
+,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
+);
+
+
+/**
+ * Add legends
+ */
+array_walk(
+    $GLOBALS['TL_LANG']['opengraph_fields']['legends']
+,   function( $translation, $key ) {
+        $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
+    }
+);

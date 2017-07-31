@@ -27,5 +27,8 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array(
 
     // Classes
-    'numero2\OpenGraph3\OpenGraph3' => 'system/modules/opengraph3/classes/OpenGraph.php',
+    'numero2\OpenGraph3\OpenGraph3'             => 'system/modules/opengraph3/classes/OpenGraph.php',
+    'numero2\OpenGraph3\OpenGraphIsotope'       => 'system/modules/opengraph3/classes/OpenGraphIsotope.php',
+    'numero2\OpenGraph3\OpenGraphNews'          => 'system/modules/opengraph3/classes/OpenGraphNews.php',
+    'numero2\OpenGraph3\OpenGraphStoreLocator'  => 'system/modules/opengraph3/classes/OpenGraphStoreLocator.php',
 ));

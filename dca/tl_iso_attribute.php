@@ -12,14 +12,20 @@
  */
 
 
-array_insert(
-    $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'],
-    array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1,
-    'opengraph_legend'
-);
+\System::loadLanguageFile('tl_opengraph_fields');
+\Controller::loadDataContainer('tl_opengraph_fields');
 
-array_insert(
-    $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'],
-    array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+2,
-    'twitter_legend'
+
+/**
+ * Add legends
+ */
+array_walk(
+    array_reverse($GLOBALS['TL_LANG']['opengraph_fields']['legends'])
+,   function( $translation, $key ) {
+        array_insert(
+            $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options']
+        ,   array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1
+        ,   $key
+        );
+    }
 );

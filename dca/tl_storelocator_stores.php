@@ -19,24 +19,18 @@
 /**
  * Modify palettes
  */
-$GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace(
-    '{dns_legend'
-,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{dns_legend'
-,   $GLOBALS['TL_DCA']['tl_page']['palettes']['root']
-);
-
-$GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
-    '{protected_legend'
-,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{protected_legend'
-,   $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
+$GLOBALS['TL_DCA']['tl_storelocator_stores']['palettes']['default'] = str_replace(
+    '{adress_legend'
+,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{adress_legend'
+,   $GLOBALS['TL_DCA']['tl_storelocator_stores']['palettes']['default']
 );
 
 
 /**
  * Modify fields
  */
-$GLOBALS['TL_DCA']['tl_page']['fields'] = array_merge(
-    $GLOBALS['TL_DCA']['tl_page']['fields']
+$GLOBALS['TL_DCA']['tl_storelocator_stores']['fields'] = array_merge(
+    $GLOBALS['TL_DCA']['tl_storelocator_stores']['fields']
 ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
 );
 

@@ -17,73 +17,84 @@
  */
 namespace numero2\OpenGraph3;
 
+use Contao\ModuleModel;
+use Contao\PageModel;
+use Contao\Environment;
+use Contao\FilesModel;
+use Contao\System;
+
 
 class OpenGraph3 extends \Frontend {
 
 
-    public function appendModuleOGTags( $objRow, $strBuffer, $objModule ) {
+    /**
+     * Appends OpenGraph data for the given module
+     *
+     * @param  Model    $objRow
+     * @param  String   $strBuffer
+     * @param  Module   $objModule
+     *
+     * @return String
+     */
+    public function appendTagsByModule( $objRow, $strBuffer, $objModule ) {
 
+        $moduleClass = NULL;
         $moduleClass = get_class($objModule);
 
-        // Isotope Product Reader
-        if( $moduleClass === "Contao\ModuleModel" && $objModule->type === "iso_productreader" || $moduleClass === "Isotope\Module\ProductReader" ) {
+        // find and import a matching module to parse the OpenGraph data from
+        foreach( $GLOBALS['TL_OG_MODULES'] as $module ) {
 
-            $objProduct = NULL;
-            $objProduct = \Isotope\Model\Product::findAvailableByIdOrAlias( \Input::get('auto_item') );
+            if( $moduleClass === "Contao\ModuleModel" && $objModule->type === $module[0] || $moduleClass === $module[1] ) {
 
-            if( null !== $objProduct ) {
-                $this->setPageOGTags( $objProduct );
+                $this->import($module[2]);
+                $this->{$module[2]}->addModuleData($objModule);
             }
-
-        // TODO: NEWSREADER
-        } else {
-
-            /*
-            // Get the news item
-            $objArticle = \NewsModel::findPublishedByParentAndIdOrAlias(\Input::get('items'), $this->news_archives);
-
-            if( null !== $objArticle ) {
-
-                $openGraph = new OpenGraph3();
-                $openGraph->setPageOGTags( $objArticle );
-            }
-             */
-
-            //dump( $moduleClass );
         }
-
-        return $strBuffer;
-    }
-
-    public function appendElementOGTags( $objRow, $strBuffer, $objElement ) {
-
-        if( get_class($objElement) === "Contao\ContentModule" ) {
-
-            $objModule = NULL;
-            $objModule = \ModuleModel::findById( $objElement->module );
-
-            $this->appendModuleOGTags( NULL, NULL, $objModule );
-        }
-
 
         return $strBuffer;
     }
 
 
     /**
-     * Sets OpenGraph tags for the current page
+     * Checks if Content Element is a module and tries to use it
+     * for OpenGraph data
+     *
+     * @param $objRow
+     * @param $strBuffer
+     * @param $objElement
+     *
+     * @return String
+     */
+    public function findCompatibleModules( $objRow, $strBuffer, $objElement ) {
+
+        if( get_class($objElement) === "Contao\ContentModule" ) {
+
+            $objModule = NULL;
+            $objModule = ModuleModel::findById( $objElement->module );
+
+            self::appendTagsByModule( NULL, NULL, $objModule );
+        }
+
+        return $strBuffer;
+    }
+
+
+    /**
+     * Add OpenGraph tags to the current page
      *
      * @param obj $ref
+     *
+     * @return none
      */
-    public function setPageOGTags( $ref=NULL ) {
+    public static function addTagsToPage( $ref=NULL ) {
 
-        if( \Environment::get('isMobile') )
+        if( Environment::get('isMobile') )
             return false;
 
         global $objPage;
 
         $objRef = !$ref ? $objPage : $ref;
-        $objRootPage = ($objRef instanceof \Contao\PageModel) ? \PageModel::findById( $objPage->rootId ) : NULL;
+        $objRootPage = ($objRef instanceof \Contao\PageModel) ? PageModel::findById( $objPage->rootId ) : NULL;
 
         // og:title
         if( ($objRef->og_title || $objRootPage->og_title) && !self::checkTag('og:title') ) {
@@ -123,7 +134,7 @@ class OpenGraph3 extends \Frontend {
         // og:country_name
         if( ($objRef->og_country_name || $objRootPage->og_country_name) && !self::checkTag('og:country_name') ) {
 
-            $arrCountries = \System::getCountries();
+            $arrCountries = System::getCountries();
             $value = $objRef->og_country_name ? $objRef->og_country_name : $objRootPage->og_country_name;
             self::addTag( 'og:country_name', $arrCountries[ $value ] );
         }
@@ -133,17 +144,17 @@ class OpenGraph3 extends \Frontend {
 
             $file = $objRef->og_image ? $objRef->og_image : $objRootPage->og_image;
 
-            $objFile = \FilesModel::findByUuid( $file );
+            $objFile = FilesModel::findByUuid( $file );
             $value = $objFile->path;
 
             if( $objFile !== null ) {
-                self::addTag( 'og:image', \Environment::get('base').$value );
+                self::addTag( 'og:image', Environment::get('base').$value );
             }
         }
 
         // og:url added automatically
         if( !self::checkTag('og:url') ) {
-            self::addTag( 'og:url', \Environment::get('url') . \Environment::get('requestUri') );
+            self::addTag( 'og:url', Environment::get('url') . Environment::get('requestUri') );
         }
 
         // twitter:site
@@ -186,11 +197,11 @@ class OpenGraph3 extends \Frontend {
 
             $file = $objRef->twitter_image ? $objRef->twitter_image : $objRootPage->twitter_image;
 
-            $objFile = \FilesModel::findByUuid( $file );
+            $objFile = FilesModel::findByUuid( $file );
             $value = $objFile->path;
 
             if( $objFile !== null ) {
-                self::addTag( 'twitter:image', \Environment::get('base').$value );
+                self::addTag( 'twitter:image', Environment::get('base').$value );
             }
         }
     }
@@ -199,8 +210,10 @@ class OpenGraph3 extends \Frontend {
     /**
     * Adds a specific opengraph tag to the head
     *
-    * @param string $tagName
-    * @param string $tagValue
+    * @param String $tagName
+    * @param String $tagValue
+    *
+    * @return bool
     */
     private static function addTag( $tagName=NULL, $tagValue=NULL ) {
 
@@ -208,18 +221,22 @@ class OpenGraph3 extends \Frontend {
             return false;
 
         $GLOBALS['TL_HEAD'][] = sprintf(
-            '<meta property="%s" content="%s" />',
-            $tagName,
-            self::replaceInsertTags($tagValue)
+            '<meta property="%s" content="%s" />'
+        ,   $tagName
+        ,   self::replaceInsertTags($tagValue)
         );
+
+        return true;
     }
 
 
     /**
      * Checks if a specific opengraph tag already exists
      *
-     * @param string $tagName
-     * @param string $tagValue
+     * @param String $tagName
+     * @param String $tagValue
+     *
+     * @return bool
      */
     private function checkTag( $tagName=NULL ) {
 
