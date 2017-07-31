@@ -12,6 +12,16 @@ System requirements
 
 * [Contao 4](https://github.com/contao/core-bundle)
 
+Compatible modules
+--
+
+By default the OpenGraph fields are attached to the site structure. Furthermore OpenGraph3 is compatible with the following Contao modules:
+
+
+* [news](https://github.com/contao/news-bundle)
+* [isotope](https://github.com/isotope/core)
+* [storelocator](https://github.com/numero2/contao-storelocator)
+
 
 Installation
 --

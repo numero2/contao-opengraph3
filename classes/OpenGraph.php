@@ -59,9 +59,9 @@ class OpenGraph3 extends \Frontend {
      * Checks if Content Element is a module and tries to use it
      * for OpenGraph data
      *
-     * @param $objRow
-     * @param $strBuffer
-     * @param $objElement
+     * @param Model             $objRow
+     * @param String            $strBuffer
+     * @param \ContentElement   $objElement
      *
      * @return String
      */
@@ -82,7 +82,7 @@ class OpenGraph3 extends \Frontend {
     /**
      * Add OpenGraph tags to the current page
      *
-     * @param obj $ref
+     * @param Model $ref
      *
      * @return none
      */

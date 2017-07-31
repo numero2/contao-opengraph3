@@ -11,6 +11,7 @@
  * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
  */
 
+
 $GLOBALS['TL_DCA']['opengraph_fields'] = array(
 
     'palettes' => array(

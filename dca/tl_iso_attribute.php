@@ -12,20 +12,23 @@
  */
 
 
-\System::loadLanguageFile('tl_opengraph_fields');
-\Controller::loadDataContainer('tl_opengraph_fields');
+if( !empty($GLOBALS['TL_DCA']['tl_iso_attribute']) ) {
+
+    \System::loadLanguageFile('tl_opengraph_fields');
+    \Controller::loadDataContainer('tl_opengraph_fields');
 
 
-/**
- * Add legends
- */
-array_walk(
-    array_reverse($GLOBALS['TL_LANG']['opengraph_fields']['legends'])
-,   function( $translation, $key ) {
-        array_insert(
-            $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options']
-        ,   array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1
-        ,   $key
-        );
-    }
-);
+    /**
+     * Add legends
+     */
+    array_walk(
+        array_reverse($GLOBALS['TL_LANG']['opengraph_fields']['legends'])
+    ,   function( $translation, $key ) {
+            array_insert(
+                $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options']
+            ,   array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1
+            ,   $key
+            );
+        }
+    );
+}
