@@ -18,8 +18,8 @@
         <target>og:type</target>
     </trans-unit>
     <trans-unit id="tl_opengraph_fields.og_type.1">
-        <source>The type of your object, e.g., "video.movie".</source>
-        <target>The type of your object, e.g., "video.movie".</target>
+        <source>The type of your object, e.g., "website".</source>
+        <target>The type of your object, e.g., "website".</target>
     </trans-unit>
     <trans-unit id="tl_opengraph_fields.og_description.0">
         <source>og:description</source>
@@ -36,6 +36,14 @@
     <trans-unit id="tl_opengraph_fields.og_site_name.1">
         <source>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</source>
         <target>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_locale.0">
+        <source>og:locale</source>
+        <target>og:locale</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_locale.1">
+        <source>The locale your object is written in.</source>
+        <target>Sprach und Länderkürzel des Objekts.</target>
     </trans-unit>
     <trans-unit id="tl_opengraph_fields.og_locality.0">
         <source>og:locality</source>

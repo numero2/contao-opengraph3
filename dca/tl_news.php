@@ -41,6 +41,6 @@ $GLOBALS['TL_DCA']['tl_news']['fields'] = array_merge(
 array_walk(
     $GLOBALS['TL_LANG']['opengraph_fields']['legends']
 ,   function( $translation, $key ) {
-        $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
+        $GLOBALS['TL_LANG']['tl_news'][$key] = $translation;
     }
 );

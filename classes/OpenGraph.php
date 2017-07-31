@@ -124,6 +124,27 @@ class OpenGraph3 extends \Frontend {
             self::addTag( 'og:site_name', $value );
         }
 
+        // og:locale
+        if( !self::checkTag('og:locale') ) {
+
+            $value = $objRef->og_locale ? $objRef->og_locale : $objRootPage->og_locale;
+
+            // set default locale based on the page´s language
+            if( !$value ) {
+
+                switch( $objPage->language ) {
+                    case 'en' :
+                        $value = 'en_US';
+                        break;
+                    default :
+                        $value = sprintf("%s_%s",$objPage->language,strtoupper($objPage->language));
+                        break;
+                }
+            }
+
+            self::addTag( 'og:locale', $value );
+        }
+
         // og:locality
         if( ($objRef->og_locality || $objRootPage->og_locality) && !self::checkTag('og:locality') ) {
 
