@@ -34,6 +34,17 @@ $GLOBALS['TL_OG_MODULES'] = array(
 );
 
 
+if( 'BE' === TL_MODE ) {
+    $GLOBALS['TL_CSS'][] = 'system/modules/opengraph3/assets/backend.css';
+}
+
+
+/**
+ * BACK END FORM FIELDS
+ */
+$GLOBALS['BE_FFL']['openGraphProperties'] = '\numero2\OpenGraph3\OpenGraphProperties';
+
+
 /**
  * Hooks
  */

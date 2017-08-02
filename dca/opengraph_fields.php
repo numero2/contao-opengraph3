@@ -15,7 +15,7 @@
 $GLOBALS['TL_DCA']['opengraph_fields'] = array(
 
     'palettes' => array(
-        'default' => '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locale,og_locality,og_country_name,og_image;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
+        'default' => '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locale,og_locality,og_country_name,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
     )
 
 ,   'fields' => array(
@@ -76,6 +76,13 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         ,   'eval'              => array( 'extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
         ,   'sql'               => "binary(16) NULL"
+        )
+    ,   'og_properties' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_properties']
+        ,   'inputType'         => 'openGraphProperties'
+        ,   'eval'              => array( 'tl_class'=>'clr' )
+        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
+        ,   'sql'               => "blob NULL"
         )
     ,   'twitter_site' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_site']

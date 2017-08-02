@@ -1,0 +1,28 @@
+.og_properties > table {
+	width: 100%;
+}
+.og_properties > table tr {
+	height: 1.5rem;
+}
+.og_properties > table tr:nth-child(1) {
+	height: 1rem;
+}
+.og_properties > table tr td.w40 {
+    width: 40%;
+    padding-left: 10px;
+}
+.og_properties > table tr td.w40 h3 {
+    display:none;
+}
+.og_properties > table tr td.w40 > * {
+    width: 300px;
+    max-width: 300px;
+}
+.og_properties > table tr td.w20 {
+    width: 20%;
+}
+.og_properties > table tr:nth-child(1) td.operations a[rel="up"],
+.og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {
+	cursor: default;
+	pointer-events: none;
+}
