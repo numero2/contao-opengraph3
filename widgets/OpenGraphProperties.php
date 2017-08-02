@@ -233,14 +233,12 @@ class OpenGraphProperties extends \Widget {
                     break;
                 }
             }
-
         }
 
         var select=document.querySelectorAll(".'.$this->strField.' td:nth-child(1) select");
         for (i = 0; i < select.length; i++) {
             select[i].addEventListener("change", changeHandler );
         }
-
         </script>';
 
         $html .= '</div>';
@@ -275,14 +273,16 @@ class OpenGraphProperties extends \Widget {
 
         if( $value && !empty($value) && !empty($value[0]) ){
 
+            dump($GLOBALS['TL_DCA']['opengraph_fields']['fields']);
             foreach( $value as $keyRow => $row) {
+                $key = empty($row[0])?$row['property']:$row[0];
                 $add = array(
                     $template['property'],
-                    $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
+                    $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$key]
                 );
 
+                dump($key);
                 $widgetDCA[] = $add;
-
             }
 
         } else {
