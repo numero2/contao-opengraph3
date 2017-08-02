@@ -15,11 +15,12 @@
     display:none;
 }
 .og_properties > table tr td.w40 > * {
-    width: 300px;
-    max-width: 300px;
+    width: calc(100% - 10px);
+    max-width: calc(100% - 10px);
 }
 .og_properties > table tr td.w20 {
     width: 20%;
+    padding-left: 10px;
 }
 .og_properties > table tr:nth-child(1) td.operations a[rel="up"],
 .og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {

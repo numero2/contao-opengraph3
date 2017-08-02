@@ -300,18 +300,6 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getErrorAsHTML($intIndex=0) {
-        return $this->hasErrors() ? sprintf('<p class="%s">%s</p>', ((TL_MODE == 'BE') ? 'tl_error tl_tip' : 'error'), "FEHLER") : '';
-    }
-
-
-    /**
-     * Return a particular error as HTML string
-     *
-     * @param integer $intIndex The message index
-     *
-     * @return string The HTML markup of the corresponding error message
-     */
     public function getProperties() {
 
         $fields = $GLOBALS['TL_LANG']['opengraph_fields'];
