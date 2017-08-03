@@ -70,36 +70,33 @@
         <target>Vorschaubild des Objekts.</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_properties.0">
-        <source>Optionale Eigenschaften</source>
+        <source>Optional properties</source>
         <target>Optionale Eigenschaften</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.property.0">
-        <source>OG Eigenschaft</source>
+        <source>OG property</source>
         <target>OG Eigenschaft</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.value.0">
-        <source>OG Wert</source>
+        <source>OG value</source>
         <target>OG Wert</target>
     </trans-unit>
-
-
     <trans-unit id="opengraph_fields.og_property.operations.copy">
-        <source>Die Reihe duplizieren</source>
+        <source>Duplicate the row</source>
         <target>Die Reihe duplizieren</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.operations.up">
-        <source>Die Reihe eine Position nach oben verschieben</source>
+        <source>Move the row up one position</source>
         <target>Die Reihe eine Position nach oben verschieben</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.operations.down">
-        <source>Die Reihe eine Position nach unten verschieben</source>
+        <source>Move the row down one position</source>
         <target>Die Reihe eine Position nach unten verschieben</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.operations.delete">
-        <source>Die Reihe löschen</source>
+        <source>Delete the row</source>
         <target>Die Reihe löschen</target>
     </trans-unit>
-
     <trans-unit id="opengraph_fields.legends.twitter_legend">
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
         <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>

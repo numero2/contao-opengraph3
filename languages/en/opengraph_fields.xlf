@@ -69,6 +69,34 @@
         <source>A preview image for your object.</source>
         <target>A preview image for your object.</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.og_properties.0">
+        <source>Optional properties</source>
+        <target>Optional properties</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.property.0">
+        <source>OG property</source>
+        <target>OG property</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.value.0">
+        <source>OG value</source>
+        <target>OG value</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.operations.copy">
+        <source>Duplicate the row</source>
+        <target>Duplicate the row</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.operations.up">
+        <source>Move the row up one position</source>
+        <target>Move the row up one position</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.operations.down">
+        <source>Move the row down one position</source>
+        <target>Move the row down one position</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.operations.delete">
+        <source>Delete the row</source>
+        <target>Delete the row</target>
+    </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
         <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>

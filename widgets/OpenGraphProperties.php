@@ -273,15 +273,14 @@ class OpenGraphProperties extends \Widget {
 
         if( $value && !empty($value) && !empty($value[0]) ){
 
-            dump($GLOBALS['TL_DCA']['opengraph_fields']['fields']);
             foreach( $value as $keyRow => $row) {
                 $key = empty($row[0])?$row['property']:$row[0];
+
                 $add = array(
                     $template['property'],
                     $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$key]
                 );
 
-                dump($key);
                 $widgetDCA[] = $add;
             }
 
