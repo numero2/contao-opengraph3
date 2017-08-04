@@ -158,7 +158,7 @@ class OpenGraphProperties extends \Widget {
                 ));
 
 
-                if( !empty($this->arrErrors[$i][$j]) ){
+                if( is_array($this->arrErrors[$i] ) && !empty($this->arrErrors[$i][$j]) ){
                     $cField->class = 'error';
                     $cField->blnHasError = true;
                     $cField->arrErrors = $this->arrErrors[$i][$j];
@@ -290,10 +290,17 @@ class OpenGraphProperties extends \Widget {
         $errorMsg = '';
 
         if( $this->hasErrors() ){
-            $errorMsg .= '<p class="tl_error tl_tip">';
-            $errorMsg .= sprintf($GLOBALS['TL_LANG']['opengraph_fields']['og_property']['error'], join(", ", array_keys($this->arrErrors)));
-            $errorMsg .= '</p>';
+
+            if( is_array(array_values($this->arrErrors)[0]) ){
+
+                $errorMsg .= '<p class="tl_error tl_tip">';
+                $errorMsg .= sprintf($GLOBALS['TL_LANG']['opengraph_fields']['og_property']['error'], join(", ", array_keys($this->arrErrors)));
+                $errorMsg .= '</p>';
+            } else {
+                $errorMsg = parent::getErrorAsHTML();
+            }
         }
+
 
         return $errorMsg;
     }
