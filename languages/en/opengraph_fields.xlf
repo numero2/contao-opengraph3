@@ -97,6 +97,10 @@
         <source>Delete the row</source>
         <target>Delete the row</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.og_property.error">
+        <source>See row(s) %s</source>
+        <target>See row(s) %s</target>
+    </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
         <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>

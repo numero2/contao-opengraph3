@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'og_site_name' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array( 'maxlength'=>255, 'tl_class'=>'w50' )
+        ,   'eval'              => array( 'maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=> 'digit' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
         ,   'sql'               => "varchar(255) NOT NULL default ''"
         )

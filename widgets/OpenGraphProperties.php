@@ -67,25 +67,27 @@ class OpenGraphProperties extends \Widget {
         $dcas = self::generateWidgetsDCA($varInput);
 
         if( $varInput && !empty($varInput) ){
-            foreach( $varInput as $row => $rValue ) {
-                foreach( $dcas as $key => $field ) {
-
-                    $field['value'] = $rValue[$key];
+            foreach( $dcas as $i => $row ) {
+                foreach( $row as $j => $field ) {
 
                     $strClass = $GLOBALS['BE_FFL'][$field['inputType']];
                     if( !class_exists($strClass) ) {
                         continue;
                     }
+
                     $cField = new $strClass($strClass::getAttributesFromDca(
                         $field,
-                        $this->arrConfiguration['strField'].'[0]['.$key.']',
-                        ( !empty($rValue[$key])?$rValue[$key]:null )
+                        $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                        (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
+                        $this->strField,
+                        $this->strTable,
+                        $this->objDca
                     ));
 
                     $cField->validate();
                     if( $cField->hasErrors() ){
                         $this->class = 'error';
-                        $this->arrErrors[$row][$key] = $cField->arrErrors;
+                        $this->arrErrors[$i][$j] = $cField->arrErrors;
                     }
                     $this->blnHasError = $this->blnHasError || $cField->hasErrors();
                 }
@@ -130,6 +132,7 @@ class OpenGraphProperties extends \Widget {
         $html .= '<table>';
         $html .= '<tr>';
         foreach( $dcas as $i => $row ) {
+            $j = 0;
             foreach( $row as $key => $field ) {
 
                 $strClass = $GLOBALS['BE_FFL'][$field['inputType']];
@@ -147,20 +150,24 @@ class OpenGraphProperties extends \Widget {
                 }
                 $cField = new $strClass($strClass::getAttributesFromDca(
                     $field,
-                    $this->arrConfiguration['strField'].'['.$i.']['.$key.']',
-                    (!empty($this->value[$i][$key])?$this->value[$i][$key]:null),
+                    $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                    (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
                     $this->strField,
                     $this->strTable,
                     $this->objDca
                 ));
 
-                if( !empty($this->arrErrors[$i][$key]) ){
-                    $cField->arrErrors = $this->arrErrors[$i][$key];
+
+                if( !empty($this->arrErrors[$i][$j]) ){
+                    $cField->class = 'error';
+                    $cField->blnHasError = true;
+                    $cField->arrErrors = $this->arrErrors[$i][$j];
                 }
 
-                $sField = $cField->generateWithError();
+                $sField = $cField->generateWithError(true);
 
-                $html .= '<td class="w40">'.$sField.'</td>';
+                $html .= '<td class="w40 '.$cField->class.'">'.$sField.'</td>';
+                $j += 1;
             }
 
             $html .= '<td class="operations w20">';
@@ -219,26 +226,6 @@ class OpenGraphProperties extends \Widget {
         for (i = 0; i < anchors.length; i++) {
             anchors[i].addEventListener("click", clickHandler );
         }
-
-
-        var changeHandler = function(e){
-
-            var tag=this;
-
-            while(tag.tagName !== "BODY"){
-                tag=tag.parentNode;
-
-                if( tag.tagName === "FORM" ){
-                    Backend.autoSubmit(tag);
-                    break;
-                }
-            }
-        }
-
-        var select=document.querySelectorAll(".'.$this->strField.' td:nth-child(1) select");
-        for (i = 0; i < select.length; i++) {
-            select[i].addEventListener("change", changeHandler );
-        }
         </script>';
 
         $html .= '</div>';
@@ -273,12 +260,11 @@ class OpenGraphProperties extends \Widget {
 
         if( $value && !empty($value) && !empty($value[0]) ){
 
-            foreach( $value as $keyRow => $row) {
-                $key = empty($row[0])?$row['property']:$row[0];
+            foreach( $value as $keyRow => $row ) {
 
                 $add = array(
                     $template['property'],
-                    $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$key]
+                    $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
                 );
 
                 $widgetDCA[] = $add;
@@ -289,6 +275,27 @@ class OpenGraphProperties extends \Widget {
         }
 
         return $widgetDCA;
+    }
+
+
+    /**
+     * Return a particular error as HTML string
+     *
+     * @param integer $intIndex The message index
+     *
+     * @return string The HTML markup of the corresponding error message
+     */
+    public function getErrorAsHTML($intIndex=0) {
+
+        $errorMsg = '';
+
+        if( $this->hasErrors() ){
+            $errorMsg .= '<p class="tl_error tl_tip">';
+            $errorMsg .= sprintf($GLOBALS['TL_LANG']['opengraph_fields']['og_property']['error'], join(", ", array_keys($this->arrErrors)));
+            $errorMsg .= '</p>';
+        }
+
+        return $errorMsg;
     }
 
 
