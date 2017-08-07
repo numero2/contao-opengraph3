@@ -18,7 +18,9 @@
 
                 > * {
                     width: calc(100% - 15px);
-                    resize: vertical;
+                    &textarea {
+                        resize: vertical;
+                    }
                 }
 
                 h3 { display:none; }

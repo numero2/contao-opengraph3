@@ -19,6 +19,9 @@
 
 .og_properties > table tr td.w50 > * {
     width: calc(100% - 15px);
+}
+
+.og_properties > table tr td.w50 > *textarea {
     resize: vertical;
 }
 

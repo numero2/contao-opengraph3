@@ -5,6 +5,7 @@
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
         <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
     </trans-unit>
+    <!-- __basic__ fields -->
     <trans-unit id="opengraph_fields.og_title.0">
         <source>og:title</source>
         <target>og:title</target>
@@ -21,46 +22,6 @@
         <source>The type of your object, e.g., "website".</source>
         <target>Die Art des Objekts z.B. "website".</target>
     </trans-unit>
-    <trans-unit id="opengraph_fields.og_description.0">
-        <source>og:description</source>
-        <target>og:description</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_description.1">
-        <source>A brief description of your object.</source>
-        <target>Eine kurze Beschreibung des Objekts.</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_site_name.0">
-        <source>og:site_name</source>
-        <target>og:site_name</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_site_name.1">
-        <source>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</source>
-        <target>Falls das Objekt zu einer größeren Website gehört, hier den Name der Seite angeben z.B. "Meine Homepage".</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_locale.0">
-        <source>og:locale</source>
-        <target>og:locale</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_locale.1">
-        <source>The locale your object is written in.</source>
-        <target>Sprach und Länderkürzel des Objekts.</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_locality.0">
-        <source>og:locality</source>
-        <target>og:locality</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_locality.1">
-        <source>The locality of your object e.g. "Los Angeles".</source>
-        <target>Der Standort des Objekts z.B. "Berlin".</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_country_name.0">
-        <source>og:country_name</source>
-        <target>og:country_name</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_country_name.1">
-        <source>The country of your object.</source>
-        <target>Name des Landes des Objekts.</target>
-    </trans-unit>
     <trans-unit id="opengraph_fields.og_image.0">
         <source>og:image</source>
         <target>og:image</target>
@@ -69,149 +30,10 @@
         <source>A preview image for your object.</source>
         <target>Vorschaubild des Objekts.</target>
     </trans-unit>
-
-
-    <trans-unit id="opengraph_fields.article_author.0">
-        <source>article:author</source>
-        <target>article:author</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.article_expiration_time.0">
-        <source>article:expiration_time</source>
-        <target>article:expiration_time</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.article_modified_time.0">
-        <source>article:modified_time</source>
-        <target>article:modified_time</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.article_published_time.0">
-        <source>article:published_time</source>
-        <target>article:published_time</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.article_section.0">
-        <source>article:section</source>
-        <target>article:section</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.article_tag.0">
-        <source>article:tag</source>
-        <target>article:tag</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.book_author.0">
-        <source>book:author</source>
-        <target>book:author</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.book_isbn.0">
-        <source>book:isbn</source>
-        <target>book:isbn</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.book_release_date.0">
-        <source>book:release_date</source>
-        <target>book:release_date</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.book_tag.0">
-        <source>book:tag</source>
-        <target>book:tag</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_album.0">
-        <source>music:album</source>
-        <target>music:album</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_album_disc.0">
-        <source>music:album:disc</source>
-        <target>music:album:disc</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_album_track.0">
-        <source>music:album:track</source>
-        <target>music:album:track</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_creator.0">
-        <source>music:creator</source>
-        <target>music:creator</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_duration.0">
-        <source>music:duration</source>
-        <target>music:duration</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_musician.0">
-        <source>music:musician</source>
-        <target>music:musician</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_release_date.0">
-        <source>music:release_date</source>
-        <target>music:release_date</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_song.0">
-        <source>music:song</source>
-        <target>music:song</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_song_disc.0">
-        <source>music:song:disc</source>
-        <target>music:song:disc</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.music_song_track.0">
-        <source>music:song:track</source>
-        <target>music:song:track</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.profile_first_name.0">
-        <source>profile:first_name</source>
-        <target>profile:first_name</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.profile_gender.0">
-        <source>profile:gender</source>
-        <target>profile:gender</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.profile_last_name.0">
-        <source>profile:last_name</source>
-        <target>profile:last_name</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.profile_username.0">
-        <source>profile:username</source>
-        <target>profile:username</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_actor.0">
-        <source>video:actor</source>
-        <target>video:actor</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_actor_role.0">
-        <source>video:actor:role</source>
-        <target>video:actor:role</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_director.0">
-        <source>video:director</source>
-        <target>video:director</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_duration.0">
-        <source>video:duration</source>
-        <target>video:duration</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_release_date.0">
-        <source>video:release_date</source>
-        <target>video:release_date</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_series.0">
-        <source>video:series</source>
-        <target>video:series</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_tag.0">
-        <source>video:tag</source>
-        <target>video:tag</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.video_writer.0">
-        <source>video:writer</source>
-        <target>video:writer</target>
-    </trans-unit>
-
-
+    <!-- all optional properties -->
     <trans-unit id="opengraph_fields.og_properties.0">
         <source>Optional properties</source>
         <target>Optionale Eigenschaften</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_property.property.0">
-        <source>OG property</source>
-        <target>OG Eigenschaft</target>
-    </trans-unit>
-    <trans-unit id="opengraph_fields.og_property.value.0">
-        <source>OG value</source>
-        <target>OG Wert</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.og_property.operations.copy">
         <source>Duplicate the row</source>
@@ -232,6 +54,396 @@
     <trans-unit id="opengraph_fields.og_property.error">
         <source>See row(s) %s</source>
         <target>Siehe Zeile(n) %s</target>
+    </trans-unit>
+    <!-- __all__ fields -->
+    <trans-unit id="opengraph_fields.og_description.0">
+        <source>og:description</source>
+        <target>og:description</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_description.1">
+        <source>A brief description of your object.</source>
+        <target>Eine kurze Beschreibung des Objekts.</target>
+    </trans-unit>
+    <!-- website fields -->
+    <trans-unit id="opengraph_fields.og_locale.0">
+        <source>og:locale</source>
+        <target>og:locale</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_locale.1">
+        <source>The locale your object is written in.</source>
+        <target>Sprach und Länderkürzel des Objekts.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_site_name.0">
+        <source>og:site_name</source>
+        <target>og:site_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_site_name.1">
+        <source>If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb".</source>
+        <target>Falls das Objekt zu einer größeren Website gehört, hier den Name der Seite angeben z.B. "Meine Homepage".</target>
+    </trans-unit>
+    <!-- article fields  -->
+    <trans-unit id="opengraph_fields.article_author.0">
+        <source>article:author</source>
+        <target>article:author</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_author.1">
+        <source>An array of Facebook profile URLs or IDs of the authors for this article.</source>
+        <target>Eine Liste von Facebook Profil URLs or IDs der Autoren von diesem Artikel.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_section.0">
+        <source>article:section</source>
+        <target>article:section</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_section.1">
+        <source>The section of your website to which the article belongs, such as 'Lifestyle' or 'Sports'.</source>
+        <target>Der Bereich der Webseite zu welchem dieser Artikel gehört, z.B 'Lifestyle' oder 'Sport'.</target>
+    </trans-unit>
+    <!-- book fields  -->
+    <trans-unit id="opengraph_fields.book_author.0">
+        <source>book:author</source>
+        <target>book:author</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_author.1">
+        <source>An array of the Facebook IDs of the users that authored the book.</source>
+        <target>Eine Liste von Facebook IDs der Nutzer, die dieses Buch verfasst haben.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_isbn.0">
+        <source>book:isbn</source>
+        <target>book:isbn</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_isbn.1">
+        <source>The International Standard Book Number (ISBN) for the book.</source>
+        <target>Die Internationale Standardbuchnummer (ISBN) für dieses Buch.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_release_date.0">
+        <source>book:release_date</source>
+        <target>book:release_date</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_release_date.1">
+        <source>The time when the book was released.</source>
+        <target>Die Zeit, wann das Buch veröffentlicht wurde.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_tag.0">
+        <source>book:tag</source>
+        <target>book:tag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_tag.1">
+        <source>An array of keywords relevant to the book.</source>
+        <target>Eine Reihe von Schlüsselwörtern, die für das Buch relevant sind.</target>
+    </trans-unit>
+    <!-- business.business fields  -->
+    <trans-unit id="opengraph_fields.business_contact_data_street_address.0">
+        <source>business:contact_data:street_address</source>
+        <target>business:contact_data:street_address</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_street_address.1">
+        <source>The number and street of the postal address for this business.</source>
+        <target>Die Nummer und die Straße der Postanschrift dieses Geschäfts.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_locality.0">
+        <source>business:contact_data:locality</source>
+        <target>business:contact_data:locality</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_locality.1">
+        <source>The city (or locality) line of the postal address for this business.</source>
+        <target>Die Stadt (oder Ort) Zeile der Postanschrift dieses Geschäfts.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_postal_code.0">
+        <source>business:contact_data:postal_code</source>
+        <target>business:contact_data:postal_code</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_postal_code.1">
+        <source>The postcode (or ZIP code) of the postal address for this business.</source>
+        <target>Die Postleitzahl der Postanschrift dieses Geschäfts.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_country_name.0">
+        <source>business:contact_data:country_name</source>
+        <target>business:contact_data:country_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.business_contact_data_country_name.1">
+        <source>The country of the postal address for this business.</source>
+        <target>Das Land der Postanschrift dieses Geschäfts.</target>
+    </trans-unit>
+    <!-- music.album fields  -->
+    <trans-unit id="opengraph_fields.music_musician.0">
+        <source>music:musician</source>
+        <target>music:musician</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_musician.1">
+        <source>An array of the Facebook IDs (or references to the profiles) of the artists responsible for the album.</source>
+        <target>Ein Liste der Facebook-IDs (oder Verweise auf die Profile) der für das Album verantwortlichen Künstler.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_date.0">
+        <source>music:release_date</source>
+        <target>music:release_date</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_date.1">
+        <source>A time representing when the album was released.</source>
+        <target>Die Zeit, wann das Album veröffentlicht wurde.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_type.0">
+        <source>music:release_type</source>
+        <target>music:release_type</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_type.1">
+        <source>The type of the album's release; one of 'original_release', 're_release', or 'anthology'.</source>
+        <target>Die Art der Albumveröffentlichung, entweder 'original_release', 're_release', oder 'anthology'.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_types.original_release">
+        <source>original_release</source>
+        <target>original_release</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_types.re_release">
+        <source>re_release</source>
+        <target>re_release</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_types.anthology">
+        <source>anthology</source>
+        <target>anthology</target>
+    </trans-unit>
+    <!-- music.song fields  -->
+    <trans-unit id="opengraph_fields.music_album_url.0">
+        <source>music:album:url</source>
+        <target>music:album:url</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_url.1">
+        <source>A reference to the object representing the album that contains the song.</source>
+        <target>Ein Verweis auf das Objekt, das das Album darstellt, das den Song enthält.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_disc.0">
+        <source>music:album:disc</source>
+        <target>music:album:disc</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_disc.1">
+        <source>An integer representing the disc (within the album) that the song is on, defaulting to '1'.</source>
+        <target>Eine Zahl, die die Disc (innerhalb des Albums) repräsentiert, auf welcher der Song ist, standardmäßig auf '1' gesetzt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_track.0">
+        <source>music:album:track</source>
+        <target>music:album:track</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_track.1">
+        <source>An array of integers representing the position (within the given disc) of the song.</source>
+        <target>Ein Liste von Zahlen, die die Position (innerhalb der gegebenen Disc) des Liedes darstellen.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_duration.0">
+        <source>music:duration</source>
+        <target>music:duration</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_duration.1">
+        <source>An integer representing the length of the song in seconds.</source>
+        <target>Eine Zahl, die die Länge des Liedes in Sekunden angibt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_preview_url_url.0">
+        <source>music:preview_url:url</source>
+        <target>music:preview_url:url</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_preview_url_url.1">
+        <source>The preview url for this song.</source>
+        <target>Die Vorschau-URL für dieses Lied.</target>
+    </trans-unit>
+    <!-- place fields  -->
+    <trans-unit id="opengraph_fields.place_location_latitude.0">
+        <source>place:location:latitude</source>
+        <target>place:location:latitude</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.place_location_latitude.1">
+        <source>The latitude of the place.</source>
+        <target>Der Breitengrad des Ortes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.place_location_longitude.0">
+        <source>place:location:longitude</source>
+        <target>place:location:longitude</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.place_location_longitude.1">
+        <source>The longitude of the place.</source>
+        <target>Der Längegrad des Ortes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.place_location_altitude.0">
+        <source>place:location:altitude</source>
+        <target>place:location:altitude</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.place_location_altitude.1">
+        <source>The altitude of the place, in meters above sea level.</source>
+        <target>Die Höhe des Ortes, in Metern über dem Meeresspiegel.</target>
+    </trans-unit>
+    <!-- product fields  -->
+    <trans-unit id="opengraph_fields.product_age_group.0">
+        <source>product:age_group</source>
+        <target>product:age_group</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_age_group.1">
+        <source>The target age group of the product, one of 'kids' or 'adult'.</source>
+        <target>Die Zielgruppe des Produkts, entweder "kids" oder "adult".</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_availability.0">
+        <source>product:availability</source>
+        <target>product:availability</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_availability.1">
+        <source>The availability of the product, one of 'instock', 'oos', or 'pending'.</source>
+        <target>Die Verfügbarkeit des Produkts, entweder 'instock', 'oos' oder 'pending'.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_brand.0">
+        <source>product:brand</source>
+        <target>product:brand</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_brand.1">
+        <source>The brand of the product or its original manufacturer.</source>
+        <target>Die Marke des Produkts oder der ursprünglichen Herstellers.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_category.0">
+        <source>product:category</source>
+        <target>product:category</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_category.1">
+        <source>A category for the product.</source>
+        <target>Eine Kategorie für das Produkt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_color.0">
+        <source>product:color</source>
+        <target>product:color</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_color.1">
+        <source>A color describing the product.</source>
+        <target>Eine Farbe, die das Produkt beschreibt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_condition.0">
+        <source>product:condition</source>
+        <target>product:condition</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_condition.1">
+        <source>The condition of the item, one of 'new', 'refurbished', or 'used'.</source>
+        <target>Der Zustand des Gegenstandes, entweder 'new', 'refurbished' oder 'used'.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_ean.0">
+        <source>product:ean</source>
+        <target>product:ean</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_ean.1">
+        <source>An International Article Number, or European Article Number (EAN), for the product.</source>
+        <target>Eine internationale Artikelnummer oder eine Europäische Artikelnummer (EAN) für das Produkt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_isbn.0">
+        <source>product:isbn</source>
+        <target>product:isbn</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_isbn.1">
+        <source>A International Standard Book Number (ISBN) for the product, intended for when it is a book.</source>
+        <target>Eine internationale Standardbuchnummer (ISBN) für das Produkt, die für ein Buch gedacht ist.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_material.0">
+        <source>product:material</source>
+        <target>product:material</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_material.1">
+        <source>A description of the material used to make the product.</source>
+        <target>Eine Beschreibung des Materials, das verwendet wird, um das Produkt herzustellen.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_mfr_part_no.0">
+        <source>product:mfr_part_no</source>
+        <target>product:mfr_part_no</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_mfr_part_no.1">
+        <source>A manufacturer's part number for the product.</source>
+        <target>Die Herstellernummer des Herstellers.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_pattern.0">
+        <source>product:pattern</source>
+        <target>product:pattern</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_pattern.1">
+        <source>A description of the pattern used on the product.</source>
+        <target>Eine Beschreibung des Musters, das auf dem Produkt verwendet wird.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_plural_title.0">
+        <source>product:plural_title</source>
+        <target>product:plural_title</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_plural_title.1">
+        <source>A title to be used to describe multiple items of this product.</source>
+        <target>Ein Titel, der verwendet wird, um mehrere Artikel dieses Produkts zu beschreiben.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_price_amount.0">
+        <source>product:price:amount</source>
+        <target>product:price:amount</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_price_amount.1">
+        <source>An array of the values of the prices of the product.</source>
+        <target>Ein Array der Werte der Preise des Produktes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_price_currency.0">
+        <source>product:price:currency</source>
+        <target>product:price:currency</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_price_currency.1">
+        <source>An array of the currencies of the prices of the product.</source>
+        <target>Ein Array der Währungen der Preise des Produktes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_size.0">
+        <source>product:size</source>
+        <target>product:size</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_size.1">
+        <source>A size describing the product (such as 'S', 'M', 'L').</source>
+        <target>Eine Größe, die das Produkt beschreibt (wie "S", "M", "L").</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_target_gender.0">
+        <source>product:target_gender</source>
+        <target>product:target_gender</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_target_gender.1">
+        <source>The target gender of the product, one of 'female', 'male', or 'unisex'.</source>
+        <target>Das Zielgeschlecht des Produkts, eines der "weiblichen", "männlichen" oder "unisex".</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_upc.0">
+        <source>product:upc</source>
+        <target>product:upc</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_upc.1">
+        <source>A Universal Product Code (UPC) for the product.</source>
+        <target>Ein Universal Product Code (UPC) für das Produkt.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight.0">
+        <source>product:weight</source>
+        <target>product:weight</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight.1">
+        <source>The weight of the product.</source>
+        <target>Das Gewicht des Produktes.</target>
+    </trans-unit>
+    <!-- profile fields  -->
+    <trans-unit id="opengraph_fields.profile_first_name.0">
+        <source>profile:first_name</source>
+        <target>profile:first_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_first_name.1">
+        <source>The first name of the person that this profile represents.</source>
+        <target>Der Vorname der Person, die dieses Profil repräsentiert.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_last_name.0">
+        <source>profile:last_name</source>
+        <target>profile:last_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_last_name.1">
+        <source>The gender ('female' or 'male') of the person that this profile represents.</source>
+        <target>Das Geschlecht ("female" oder "male") der Person, die dieses Profil repräsentiert.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_username.0">
+        <source>profile:username</source>
+        <target>profile:username</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_username.1">
+        <source>The last name of the person that this profile represents.</source>
+        <target>Der Nachname der Person, die dieses Profil repräsentiert.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_gender.0">
+        <source>profile:gender</source>
+        <target>profile:gender</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_gender.1">
+        <source>A username for the person that this profile represents.</source>
+        <target>Ein Benutzername für die Person, die dieses Profil repräsentiert.</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
