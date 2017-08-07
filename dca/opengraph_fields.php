@@ -15,11 +15,11 @@
 $GLOBALS['TL_DCA']['opengraph_fields'] = array(
 
     'palettes' => array(
-        'default' => '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locale,og_locality,og_country_name,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
+        'default' => '{opengraph_legend:hide},og_title,og_type,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
     )
 ,   'og_subpalettes' => array(
         '__basic__' => 'og:title,og:type,og:image,og:url'
-    ,   '__all__' => 'og_image'
+    ,   '__all__' => 'og_description,og_image,og_locale,og_site_name'
     ,   'website' => ''
     ,   'article' => 'article:published_time,article:modified_time,article:expiration_time,article:author,article:section,article:tag'
     ,   'book' => 'book:author,book:isbn,book:release_date,book:tag'
