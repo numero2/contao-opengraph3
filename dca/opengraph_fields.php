@@ -19,19 +19,15 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     )
 ,   'og_subpalettes' => array(
         '__basic__' => 'og_title,og_type,og_image'
-    ,   '__all__' => 'og_description,og_locale,og_site_name'
-    ,   'website' => ''
-    ,   'article' => 'article_published_time,article_modified_time,article_expiration_time,article_author,article_section,article_tag'
+    ,   '__all__' => 'og_description'
+    ,   'website' => 'og_locale,og_site_name'
+    ,   'article' => 'article_author,article_section' // article_published_time,article_modified_time
     ,   'book' => 'book_author,book_isbn,book_release_date,book_tag'
-    ,   'music.album' => 'music_song,music_song_disc,music_song_track,music_musician,music_release_date'
-    ,   'music.playlist' => 'music_song,music_song_disc,music_song_track,music_creator'
-    ,   'music.radio_station' => 'music_creator'
-    ,   'music.song' => 'music_duration,music_album,music_album_disc,music_album_track,music_musician'
+    ,   'music.album' => 'music_musician,music_release_date,music_release_type'
+    ,   'music.song' => 'music_album_url,music_album_disc,music_album_track,music_duration,music_musician,music_preview_url,music_release_date,music_release_type'
+    ,   'place' => 'place_location_latitude,place_location_longitude,place_location_altitude'
+    ,   'product' => 'product:age_group,product:availability,product:brand,product:category,product:color,product:condition,product:ean,product:isbn,product:material,product:mfr_part_no,product:pattern,product:plural_title,product:price:amount,product:price:currency,product:size,product:target_gender,product:upc,product:weight' // product:product_link
     ,   'profile' => 'profile_first_name,profile_last_name,profile_username,profile_gender'
-    ,   'video.episode' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag,video_series'
-    ,   'video.movie' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
-    ,   'video.other' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
-    ,   'video.tv_show' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
     )
 
 ,   'fields' => array(

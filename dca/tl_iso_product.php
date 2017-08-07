@@ -36,4 +36,9 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
             $GLOBALS['TL_LANG']['tl_iso_product'][$key] = $translation;
         }
     );
+
+    /**
+     * Restrict available types
+     */
+    $GLOBALS['TL_DCA']['tl_iso_product']['config']['allowedOpenGraphTypes'] = array('product');
 }

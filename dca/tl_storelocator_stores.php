@@ -46,4 +46,10 @@ if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
             $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
         }
     );
+
+
+    /**
+     * Restrict available types
+     */
+    $GLOBALS['TL_DCA']['tl_storelocator_stores']['config']['allowedOpenGraphTypes'] = array('business.business','place');
 }

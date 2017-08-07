@@ -46,4 +46,10 @@ if( !empty($GLOBALS['TL_DCA']['tl_news']) ) {
             $GLOBALS['TL_LANG']['tl_news'][$key] = $translation;
         }
     );
+
+
+    /**
+     * Restrict available types
+     */
+    $GLOBALS['TL_DCA']['tl_news']['config']['allowedOpenGraphTypes'] = array('article');
 }
