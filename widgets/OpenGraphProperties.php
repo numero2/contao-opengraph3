@@ -84,12 +84,15 @@ class OpenGraphProperties extends \Widget {
                         $this->objDca
                     ));
 
-                    $cField->validate();
-                    if( $cField->hasErrors() ){
-                        $this->class = 'error';
-                        $this->arrErrors[$i][$j] = $cField->arrErrors;
+                    // do not validate when submitOnchange was triggered
+                    if( \Input::post('SUBMIT_TYPE')!=='auto' ){
+                        $cField->validate();
+                        if( $cField->hasErrors() ){
+                            $this->class = 'error';
+                            $this->arrErrors[$i][$j] = $cField->arrErrors;
+                        }
+                        $this->blnHasError = $this->blnHasError || $cField->hasErrors();
                     }
-                    $this->blnHasError = $this->blnHasError || $cField->hasErrors();
                 }
             }
         }
@@ -251,12 +254,12 @@ class OpenGraphProperties extends \Widget {
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'             => 'select'
                 ,   'options_callback'      => array( 'OpenGraphProperties', 'getProperties' )
-                ,   'eval'                  => array( 'mandatory'=>true, 'maxlength'=>255, 'chosen'=>true, 'submitOnChange'=>true )
+                ,   'eval'                  => array( 'mandatory'=>true, 'maxlength'=>255, 'includeBlankOption'=>true,/* 'chosen'=>true,*/ 'submitOnChange'=>true )
             )
         ,   'value' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
                 ,   'inputType'             => 'text'
-                ,   'eval'                  => array( 'mandatory'=>false, 'maxlength'=>5 )
+                ,   'eval'                  => array( 'mandatory'=>false )
             )
         );
 
@@ -266,7 +269,7 @@ class OpenGraphProperties extends \Widget {
 
                 $add = array(
                     $template['property'],
-                    $GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
+                    $row[0]===""?$template['value']:$GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
                 );
 
                 $widgetDCA[] = $add;
@@ -315,21 +318,28 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getProperties() {
+    public function getProperties($dcTable) {
+
+        $type = $dcTable->activeRecord->og_type;
+        $subpalettes = $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'];
 
         $fields = $GLOBALS['TL_LANG']['opengraph_fields'];
 
+        $palette = $subpalettes['__all__'];
+        if( !empty($type) && array_key_exists($type, $subpalettes) && !empty($subpalettes[$type]) ){
+            $palette = $subpalettes[$type].','.$palette;
+        }
+
+        $palette = explode(',', $palette);
+
         $options = array();
-        foreach( $fields as $key => $value ) {
+        foreach( $palette as $value) {
 
-            if( substr($key, 0, 2) !== 'og' ){
-                continue;
-            }
-            if( in_array($key, array('og_title', 'og_type', 'og_image', 'og_properties', 'og_property')) ){
-                continue;
-            }
+            $options[$value] = $value;
 
-            $options[$key] = $value[0];
+            if( !empty($fields[$value][0]) ){
+                $options[$value] = $fields[$value][0];
+            }
         }
 
         return $options;

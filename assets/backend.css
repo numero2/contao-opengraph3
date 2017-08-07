@@ -14,6 +14,7 @@
 .og_properties > table tr td.w50 {
     width: 50%;
     float: none;
+    position: relative;
 }
 
 .og_properties > table tr td.w50 > * {

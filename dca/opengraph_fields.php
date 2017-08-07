@@ -17,6 +17,22 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     'palettes' => array(
         'default' => '{opengraph_legend:hide},og_title,og_type,og_description,og_site_name,og_locale,og_locality,og_country_name,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
     )
+,   'og_subpalettes' => array(
+        '__basic__' => 'og:title,og:type,og:image,og:url'
+    ,   '__all__' => 'og_image'
+    ,   'website' => ''
+    ,   'article' => 'article:published_time,article:modified_time,article:expiration_time,article:author,article:section,article:tag'
+    ,   'book' => 'book:author,book:isbn,book:release_date,book:tag'
+    ,   'music.album' => 'music:song,music:song:disc,music:song:track,music:musician,music:release_date'
+    ,   'music.playlist' => 'music:song,music:song:disc,music:song:track,music:creator'
+    ,   'music.radio_station' => 'music:creator'
+    ,   'music.song' => 'music:duration,music:album,music:album:disc,music:album:track,music:musician'
+    ,   'profile' => 'profile:first_name,profile:last_name,profile:username,profile:gender'
+    ,   'video.episode' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag,video:series'
+    ,   'video.movie' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
+    ,   'video.other' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
+    ,   'video.tv_show' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
+    )
 
 ,   'fields' => array(
         'og_title' => array(
@@ -30,7 +46,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
         ,   'inputType'         => 'select'
         ,   'options_callback'  => array( 'opengraph_fields','getTypes' )
-        ,   'eval'              => array( 'chosen'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50' )
+        ,   'eval'              => array( 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
         ,   'sql'               => "varchar(255) NOT NULL default ''"
         )
@@ -135,7 +151,20 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
 class opengraph_fields {
 
 
-    public function getTypes() {
+    public function getTypes($dcTable) {
+
+        $options = array();
+
+        foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value) {
+            if( $key === "__basic__" || $key === "__all__" ){
+                continue;
+            }
+
+            $options[$key] = $key;
+        }
+        return $options;
+die();
+        // og_subpalettes
 
         return array (
             'website'               => 'website'
