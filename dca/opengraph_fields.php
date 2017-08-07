@@ -23,6 +23,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'website' => 'og_locale,og_site_name'
     ,   'article' => 'article_author,article_section' // article_published_time,article_modified_time
     ,   'book' => 'book_author,book_isbn,book_release_date,book_tag'
+    ,   'business.business' => 'business:contact_data:street_address,business:contact_data:locality,business:contact_data:postal_code,business:contact_data:country_name,place:location:latitude,place:location:longitude'
     ,   'music.album' => 'music_musician,music_release_date,music_release_type'
     ,   'music.song' => 'music_album_url,music_album_disc,music_album_track,music_duration,music_musician,music_preview_url,music_release_date,music_release_type'
     ,   'place' => 'place_location_latitude,place_location_longitude,place_location_altitude'
@@ -117,7 +118,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'twitter_card' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_card']
         ,   'inputType'         => 'select'
-        ,   'options_callback'  => array( 'opengraph_fields','getTwitterCards' )
+        ,   'options'           => array( 'summary_large_image', 'summary' )
         ,   'eval'              => array( 'includeBlankOption'=>false, 'tl_class'=>'w50' )
         ,   'attributes'        => array( 'legend'=>'twitter_legend' )
         ,   'sql'               => "varchar(255) NOT NULL default ''"
@@ -151,28 +152,38 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
 class opengraph_fields {
 
 
-    public function getTypes($dcTable) {
+    /**
+     * Generate options for og:type
+     *
+     * @param  DC_Table $dcTable
+     *
+     * @return array
+     */
+    public function getTypes( \DC_Table $dcTable) {
 
         $options = array();
 
-        // og_subpalettes
+        // add options based on og_subpalettes
         foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value) {
-            if( $key === "__basic__" || $key === "__all__" ){
+
+            if( $key === "__basic__" || $key === "__all__" ) {
                 continue;
             }
 
             $options[$key] = $key;
         }
 
+        // check if we need to filter some types
+        if( !empty($GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) && !empty($options) ) {
+
+            foreach( $options as $option ) {
+
+                if( !in_array($option, $GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) ) {
+                    unset($options[$option]);
+                }
+            }
+        }
+
         return $options;
-    }
-
-
-    public function getTwitterCards() {
-
-        return array(
-            'summary_large_image'   => 'summary_large_image',
-            'summary'               => 'summary'
-        );
     }
 }
