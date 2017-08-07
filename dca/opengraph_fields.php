@@ -18,23 +18,24 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         'default' => '{opengraph_legend:hide},og_title,og_type,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
     )
 ,   'og_subpalettes' => array(
-        '__basic__' => 'og:title,og:type,og:image,og:url'
-    ,   '__all__' => 'og_description,og_image,og_locale,og_site_name'
+        '__basic__' => 'og_title,og_type,og_image'
+    ,   '__all__' => 'og_description,og_locale,og_site_name'
     ,   'website' => ''
-    ,   'article' => 'article:published_time,article:modified_time,article:expiration_time,article:author,article:section,article:tag'
-    ,   'book' => 'book:author,book:isbn,book:release_date,book:tag'
-    ,   'music.album' => 'music:song,music:song:disc,music:song:track,music:musician,music:release_date'
-    ,   'music.playlist' => 'music:song,music:song:disc,music:song:track,music:creator'
-    ,   'music.radio_station' => 'music:creator'
-    ,   'music.song' => 'music:duration,music:album,music:album:disc,music:album:track,music:musician'
-    ,   'profile' => 'profile:first_name,profile:last_name,profile:username,profile:gender'
-    ,   'video.episode' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag,video:series'
-    ,   'video.movie' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
-    ,   'video.other' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
-    ,   'video.tv_show' => 'video:actor,video:actor:role,video:director,video:writer,video:duration,video:release_date,video:tag'
+    ,   'article' => 'article_published_time,article_modified_time,article_expiration_time,article_author,article_section,article_tag'
+    ,   'book' => 'book_author,book_isbn,book_release_date,book_tag'
+    ,   'music.album' => 'music_song,music_song_disc,music_song_track,music_musician,music_release_date'
+    ,   'music.playlist' => 'music_song,music_song_disc,music_song_track,music_creator'
+    ,   'music.radio_station' => 'music_creator'
+    ,   'music.song' => 'music_duration,music_album,music_album_disc,music_album_track,music_musician'
+    ,   'profile' => 'profile_first_name,profile_last_name,profile_username,profile_gender'
+    ,   'video.episode' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag,video_series'
+    ,   'video.movie' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
+    ,   'video.other' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
+    ,   'video.tv_show' => 'video_actor,video_actor_role,video_director,video_writer,video_duration,video_release_date,video_tag'
     )
 
 ,   'fields' => array(
+    // __basic__ fields
         'og_title' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_title']
         ,   'inputType'         => 'text'
@@ -48,21 +49,30 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         ,   'options_callback'  => array( 'opengraph_fields','getTypes' )
         ,   'eval'              => array( 'chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
-        ,   'sql'               => "varchar(255) NOT NULL default ''"
+        ,   'sql'               => "varchar(32) NOT NULL default ''"
         )
+    ,   'og_image' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_image']
+        ,   'inputType'         => 'fileTree'
+        ,   'eval'              => array( 'extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr' )
+        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
+        ,   'sql'               => "binary(16) NULL"
+        )
+    // all optional properties
+    ,   'og_properties' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_properties']
+        ,   'inputType'         => 'openGraphProperties'
+        ,   'eval'              => array( 'tl_class'=>'clr' )
+        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
+        ,   'sql'               => "blob NULL"
+        )
+    // __all__ fields
     ,   'og_description' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_description']
         ,   'inputType'         => 'textarea'
         ,   'eval'              => array( 'style'=>'height: 60px;', 'decodeEntities'=>true, 'tl_class'=>'clr' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
-        ,   'sql'               => "text NULL"
-        )
-    ,   'og_site_name' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
-        ,   'inputType'         => 'text'
-        ,   'eval'              => array( 'maxlength'=>255, 'tl_class'=>'w50' )
-        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
-        ,   'sql'               => "varchar(255) NOT NULL default ''"
+        // ,   'sql'               => "text NULL"
         )
     ,   'og_locale' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_locale']
@@ -71,6 +81,14 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
         ,   'sql'               => "varchar(5) NOT NULL default ''"
         )
+    ,   'og_site_name' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'maxlength'=>255, 'tl_class'=>'w50' )
+        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
+        ,   'sql'               => "varchar(255) NOT NULL default ''"
+        )
+    // locale fields
     ,   'og_locality' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_locality']
         ,   'inputType'         => 'text'
@@ -85,20 +103,6 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         ,   'eval'              => array( 'chosen'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50' )
         ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
         ,   'sql'               => "varchar(2) NOT NULL default ''"
-        )
-    ,   'og_image' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_image']
-        ,   'inputType'         => 'fileTree'
-        ,   'eval'              => array( 'extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr' )
-        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
-        ,   'sql'               => "binary(16) NULL"
-        )
-    ,   'og_properties' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_properties']
-        ,   'inputType'         => 'openGraphProperties'
-        ,   'eval'              => array( 'tl_class'=>'clr' )
-        ,   'attributes'        => array( 'legend'=>'opengraph_legend' )
-        ,   'sql'               => "blob NULL"
         )
     ,   'twitter_site' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_site']
@@ -155,6 +159,7 @@ class opengraph_fields {
 
         $options = array();
 
+        // og_subpalettes
         foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value) {
             if( $key === "__basic__" || $key === "__all__" ){
                 continue;
@@ -162,24 +167,8 @@ class opengraph_fields {
 
             $options[$key] = $key;
         }
-        return $options;
-die();
-        // og_subpalettes
 
-        return array (
-            'website'               => 'website'
-        ,   'article'               => 'article'
-        ,   'book'                  => 'book'
-        ,   'profile'               => 'profile'
-        ,   'music.song'            => 'music.song'
-        ,   'music.album'           => 'music.album'
-        ,   'music.playlist'        => 'music.playlist'
-        ,   'music.radio_station'   => 'music.radio_station'
-        ,   'video.movie'           => 'video.movie'
-        ,   'video.episode'         => 'video.episode'
-        ,   'video.tv_show'         => 'video.tv_show'
-        ,   'video.other'           => 'video.other'
-        );
+        return $options;
     }
 
 

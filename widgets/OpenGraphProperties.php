@@ -254,7 +254,7 @@ class OpenGraphProperties extends \Widget {
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'             => 'select'
                 ,   'options_callback'      => array( 'OpenGraphProperties', 'getProperties' )
-                ,   'eval'                  => array( 'mandatory'=>true, 'maxlength'=>255, 'includeBlankOption'=>true,/* 'chosen'=>true,*/ 'submitOnChange'=>true )
+                ,   'eval'                  => array( 'mandatory'=>true, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
             )
         ,   'value' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
@@ -276,7 +276,10 @@ class OpenGraphProperties extends \Widget {
             }
 
         } else {
-            $widgetDCA[] = $template;
+            $widgetDCA[] = array(
+                $template['property'],
+                $template['value']
+            );
         }
 
         return $widgetDCA;

@@ -69,6 +69,138 @@
         <source>A preview image for your object.</source>
         <target>Vorschaubild des Objekts.</target>
     </trans-unit>
+
+
+    <trans-unit id="opengraph_fields.article_author.0">
+        <source>article:author</source>
+        <target>article:author</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_expiration_time.0">
+        <source>article:expiration_time</source>
+        <target>article:expiration_time</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_modified_time.0">
+        <source>article:modified_time</source>
+        <target>article:modified_time</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_published_time.0">
+        <source>article:published_time</source>
+        <target>article:published_time</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_section.0">
+        <source>article:section</source>
+        <target>article:section</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.article_tag.0">
+        <source>article:tag</source>
+        <target>article:tag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_author.0">
+        <source>book:author</source>
+        <target>book:author</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_isbn.0">
+        <source>book:isbn</source>
+        <target>book:isbn</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_release_date.0">
+        <source>book:release_date</source>
+        <target>book:release_date</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.book_tag.0">
+        <source>book:tag</source>
+        <target>book:tag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album.0">
+        <source>music:album</source>
+        <target>music:album</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_disc.0">
+        <source>music:album:disc</source>
+        <target>music:album:disc</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_album_track.0">
+        <source>music:album:track</source>
+        <target>music:album:track</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_creator.0">
+        <source>music:creator</source>
+        <target>music:creator</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_duration.0">
+        <source>music:duration</source>
+        <target>music:duration</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_musician.0">
+        <source>music:musician</source>
+        <target>music:musician</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_release_date.0">
+        <source>music:release_date</source>
+        <target>music:release_date</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_song.0">
+        <source>music:song</source>
+        <target>music:song</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_song_disc.0">
+        <source>music:song:disc</source>
+        <target>music:song:disc</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.music_song_track.0">
+        <source>music:song:track</source>
+        <target>music:song:track</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_first_name.0">
+        <source>profile:first_name</source>
+        <target>profile:first_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_gender.0">
+        <source>profile:gender</source>
+        <target>profile:gender</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_last_name.0">
+        <source>profile:last_name</source>
+        <target>profile:last_name</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_username.0">
+        <source>profile:username</source>
+        <target>profile:username</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_actor.0">
+        <source>video:actor</source>
+        <target>video:actor</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_actor_role.0">
+        <source>video:actor:role</source>
+        <target>video:actor:role</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_director.0">
+        <source>video:director</source>
+        <target>video:director</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_duration.0">
+        <source>video:duration</source>
+        <target>video:duration</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_release_date.0">
+        <source>video:release_date</source>
+        <target>video:release_date</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_series.0">
+        <source>video:series</source>
+        <target>video:series</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_tag.0">
+        <source>video:tag</source>
+        <target>video:tag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.video_writer.0">
+        <source>video:writer</source>
+        <target>video:writer</target>
+    </trans-unit>
+
+
     <trans-unit id="opengraph_fields.og_properties.0">
         <source>Optional properties</source>
         <target>Optionale Eigenschaften</target>
