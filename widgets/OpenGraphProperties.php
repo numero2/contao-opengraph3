@@ -119,9 +119,11 @@ class OpenGraphProperties extends \Widget {
         $theme = \Backend::getTheme();
         $path = 'icons';
         $iconExt = 'svg';
-        if( version_compare(VERSION,'4.3','<') ){
+        $classVersion = 'cto4';
+        if( version_compare(VERSION,'4.0','<') ){
             $path = 'images';
             $iconExt = 'gif';
+            $classVersion = 'cto3';
         }
 
         $dcas = array();
@@ -129,7 +131,7 @@ class OpenGraphProperties extends \Widget {
         $numFields = 2;
 
         $html = '<div class="'.$this->strField.'">';
-        $html .= '<table>';
+        $html .= '<table class="'.$classVersion.'">';
         $html .= '<tr>';
         foreach( $dcas as $i => $row ) {
             $j = 0;
@@ -166,11 +168,11 @@ class OpenGraphProperties extends \Widget {
 
                 $sField = $cField->generateWithError(true);
 
-                $html .= '<td class="w40 '.$cField->class.'">'.$sField.'</td>';
+                $html .= '<td class="w50 '.$cField->class.'">'.$sField.'</td>';
                 $j += 1;
             }
 
-            $html .= '<td class="operations w20">';
+            $html .= '<td class="operations">';
             $html .=    '<a rel="copy" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'">
                             <img src="system/themes/'.$theme.'/'.$path.'/copy.'.$iconExt.'" width="14" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'" class="tl_listwizard_img">
                         </a>';

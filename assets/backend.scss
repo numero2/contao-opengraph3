@@ -1,0 +1,51 @@
+.og_properties > table {
+
+    width: 100%;
+
+    tr {
+
+        height: 1.5rem;
+
+        td {
+            vertical-align: top;
+            height: auto;
+
+            &.w50 {
+
+                width: 50%;
+                float: none;
+
+                > * { width: calc(100% - 15px); }
+
+                h3 { display:none; }
+
+                + .w50 {
+                    padding-left: 15px;
+                    width: calc(50% - 70px);
+                }
+            }
+
+
+            &.operations {
+                width: 70px;
+                text-align: right;
+
+                a img[src$=".svg"]{ padding-top: 9px; }
+            }
+        }
+
+        &:nth-child(1) td.operations a[rel="up"],
+        &:nth-last-child(1) td.operations a[rel="down"] {
+            cursor: default;
+            pointer-events: none;
+        }
+    }
+
+    &.cto3 {
+
+        tr td.w50 {
+            > * { width: calc(100% - 30px); }
+            + .w50 { padding-left: 1px; }
+        }
+    }
+}

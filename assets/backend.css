@@ -1,31 +1,53 @@
 .og_properties > table {
     width: 100%;
 }
+
 .og_properties > table tr {
     height: 1.5rem;
 }
+
 .og_properties > table tr td {
     vertical-align: top;
-    padding-left: 10px;
+    height: auto;
 }
-.og_properties > table tr td.w40 {
-    width: 40%;
+
+.og_properties > table tr td.w50 {
+    width: 50%;
+    float: none;
 }
-.og_properties > table tr td.w40 h3 {
-    display:none;
+
+.og_properties > table tr td.w50 > * {
+    width: calc(100% - 15px);
 }
-.og_properties > table tr td.w40 > * {
-    width: calc(100% - 10px);
-    max-width: calc(100% - 10px);
+
+.og_properties > table tr td.w50 h3 {
+    display: none;
 }
-.og_properties > table tr td.w20 {
-    width: 20%;
+
+.og_properties > table tr td.w50 + .w50 {
+    padding-left: 15px;
+    width: calc(50% - 70px);
 }
-.og_properties > table tr td.operations a img[src$=".svg"]{
+
+.og_properties > table tr td.operations {
+    width: 70px;
+    text-align: right;
+}
+
+.og_properties > table tr td.operations a img[src$=".svg"] {
     padding-top: 9px;
 }
+
 .og_properties > table tr:nth-child(1) td.operations a[rel="up"],
 .og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {
     cursor: default;
     pointer-events: none;
+}
+
+.og_properties > table.cto3 tr td.w50 > * {
+    width: calc(100% - 30px);
+}
+
+.og_properties > table.cto3 tr td.w50 + .w50 {
+    padding-left: 1px;
 }
