@@ -45,6 +45,12 @@
     pointer-events: none;
 }
 
+.og_properties > table tr:nth-child(1):nth-last-child(1) td.operations a[rel="delete"] {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
 .og_properties > table.cto3 tr td.w50 > * {
     width: calc(100% - 30px);
 }

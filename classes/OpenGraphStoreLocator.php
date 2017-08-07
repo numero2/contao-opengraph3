@@ -24,7 +24,7 @@ class OpenGraphStoreLocator {
 
 
     /**
-     * Appends OpenGraph data from news articles
+     * Appends OpenGraph data from stores
      *
      * @param $objModule
      */

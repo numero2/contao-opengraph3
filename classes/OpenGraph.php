@@ -28,6 +28,116 @@ class OpenGraph3 extends \Frontend {
 
 
     /**
+     * Add OpenGraph tags to the current page
+     *
+     * @param Model $ref
+     *
+     * @return none
+     */
+    public static function addTagsToPage( $ref=NULL ) {
+
+        if( Environment::get('isMobile') )
+            return false;
+
+        \Controller::loadDataContainer('opengraph_fields');
+        \Controller::loadDataContainer('opengraph_fields');
+
+        global $objPage;
+
+        $objRef = !$ref ? $objPage : $ref;
+        $objRootPage = ($objRef instanceof \Contao\PageModel) ? PageModel::findById( $objPage->rootId ) : NULL;
+
+        self::parseAdditionalProperties( $objRef );
+        self::parseAdditionalProperties( $objRootPage );
+
+        // add og tags
+        if( !empty($GLOBALS['TL_DCA']['opengraph_fields']['fields']) ) {
+
+            foreach( $GLOBALS['TL_DCA']['opengraph_fields']['fields'] as $fieldName => $field ) {
+
+                // add tag if missing
+                if( ($objRef->{$fieldName} || $objRootPage->{$fieldName}) && !self::checkTag($field['label'][0]) ) {
+
+                    $value = NULL;
+                    $value = $objRef->{$fieldName} ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
+
+                    // get value based on inputType
+                    switch( $field['inputType'] ) {
+
+                        case 'textarea':
+                        case 'select':
+                        case 'text':
+
+                            switch( $fieldName ) {
+
+                                case 'og_country_name':
+
+                                    $arrCountries = array();
+                                    $arrCountries = System::getCountries();
+
+                                    $value = $arrCountries[$value];
+
+                                break;
+                            }
+
+                        break;
+
+                        case 'fileTree':
+
+                            $objFile = NULL;
+                            $objFile = FilesModel::findByUuid( $value );
+
+                            if( $objFile ) {
+                                $value = $objFile->path;
+                            } else {
+                                continue 2;
+                            }
+
+                        break;
+
+                        case 'openGraphProperties':
+                            continue 2;
+                        break;
+
+                        default:
+                            throw new Exception("Unhandled field type ".$field['inputType']);
+                        break;
+                    }
+
+                    self::addTag( $field['label'][0], $value );
+                }
+            }
+
+            // og:locale
+            if( !self::checkTag('og:locale') ) {
+
+                $value = $objRef->og_locale ? $objRef->og_locale : $objRootPage->og_locale;
+
+                // set default locale based on the page´s language
+                if( !$value ) {
+
+                    switch( $objPage->language ) {
+                        case 'en' :
+                            $value = 'en_US';
+                            break;
+                        default :
+                            $value = sprintf("%s_%s",$objPage->language,strtoupper($objPage->language));
+                            break;
+                    }
+                }
+
+                self::addTag( 'og:locale', $value );
+            }
+
+            // og:url added automatically
+            if( !self::checkTag('og:url') ) {
+                self::addTag( 'og:url', Environment::get('url') . Environment::get('requestUri') );
+            }
+        }
+    }
+
+
+    /**
      * Appends OpenGraph data for the given module
      *
      * @param  Model    $objRow
@@ -80,149 +190,24 @@ class OpenGraph3 extends \Frontend {
 
 
     /**
-     * Add OpenGraph tags to the current page
-     *
-     * @param Model $ref
-     *
-     * @return none
-     */
-    public static function addTagsToPage( $ref=NULL ) {
+    * Adds the additional og_properties as individual attributes
+    *
+    * @param Model $ref
+    *
+    * @return none
+    */
+    private static function parseAdditionalProperties( $ref ) {
 
-        if( Environment::get('isMobile') )
-            return false;
+        if( !empty($ref->og_properties) ) {
 
-        global $objPage;
+            $props = NULL;
+            $props = deserialize($ref->og_properties);
 
-        $objRef = !$ref ? $objPage : $ref;
-        $objRootPage = ($objRef instanceof \Contao\PageModel) ? PageModel::findById( $objPage->rootId ) : NULL;
+            if( !empty($props) ) {
 
-        // og:title
-        if( ($objRef->og_title || $objRootPage->og_title) && !self::checkTag('og:title') ) {
-
-            $value = $objRef->og_title ? $objRef->og_title : $objRootPage->og_title;
-            self::addTag( 'og:title', $value );
-        }
-
-        // og:type
-        if( ($objRef->og_type || $objRootPage->og_type) && !self::checkTag('og:type') ) {
-
-            $value = $objRef->og_type ? $objRef->og_type : $objRootPage->og_type;
-            self::addTag( 'og:type', $value );
-        }
-
-        // og:description
-        if( ($objRef->og_description || $objRootPage->og_description) && !self::checkTag('og:description') ) {
-
-            $value = $objRef->og_description ? $objRef->og_description : $objRootPage->og_description;
-            self::addTag( 'og:description', $value );
-        }
-
-        // og:site_name
-        if( ($objRef->og_site_name || $objRootPage->og_site_name) && !self::checkTag('og:site_name') ) {
-
-            $value = $objRef->og_site_name ? $objRef->og_site_name : $objRootPage->og_site_name;
-            self::addTag( 'og:site_name', $value );
-        }
-
-        // og:locale
-        if( !self::checkTag('og:locale') ) {
-
-            $value = $objRef->og_locale ? $objRef->og_locale : $objRootPage->og_locale;
-
-            // set default locale based on the page´s language
-            if( !$value ) {
-
-                switch( $objPage->language ) {
-                    case 'en' :
-                        $value = 'en_US';
-                        break;
-                    default :
-                        $value = sprintf("%s_%s",$objPage->language,strtoupper($objPage->language));
-                        break;
+                foreach( $props as $p ) {
+                    $ref->{$p[0]} = $p[1];
                 }
-            }
-
-            self::addTag( 'og:locale', $value );
-        }
-
-        // og:locality
-        if( ($objRef->og_locality || $objRootPage->og_locality) && !self::checkTag('og:locality') ) {
-
-            $value = $objRef->og_locality ? $objRef->og_locality : $objRootPage->og_locality;
-            self::addTag( 'og:locality', $value );
-        }
-
-        // og:country_name
-        if( ($objRef->og_country_name || $objRootPage->og_country_name) && !self::checkTag('og:country_name') ) {
-
-            $arrCountries = System::getCountries();
-            $value = $objRef->og_country_name ? $objRef->og_country_name : $objRootPage->og_country_name;
-            self::addTag( 'og:country_name', $arrCountries[ $value ] );
-        }
-
-        // og:image
-        if( ($objRef->og_image || $objRootPage->og_image) && !self::checkTag('og:image') ) {
-
-            $file = $objRef->og_image ? $objRef->og_image : $objRootPage->og_image;
-
-            $objFile = FilesModel::findByUuid( $file );
-            $value = $objFile->path;
-
-            if( $objFile !== null ) {
-                self::addTag( 'og:image', Environment::get('base').$value );
-            }
-        }
-
-        // og:url added automatically
-        if( !self::checkTag('og:url') ) {
-            self::addTag( 'og:url', Environment::get('url') . Environment::get('requestUri') );
-        }
-
-        // twitter:site
-        if( ($objRef->twitter_site || $objRootPage->twitter_site) && !self::checkTag('twitter:site') ) {
-
-            $value = $objRef->twitter_site ? $objRef->twitter_site : $objRootPage->twitter_site;
-            self::addTag( 'twitter:site', $value );
-        }
-
-        // twitter:creator
-        if( ($objRef->twitter_creator || $objRootPage->twitter_creator) && !self::checkTag('twitter:creator') ) {
-
-            $value = $objRef->twitter_creator ? $objRef->twitter_creator : $objRootPage->twitter_creator;
-            self::addTag( 'twitter:creator', $value );
-        }
-
-        // twitter:title
-        if( ($objRef->twitter_title || $objRootPage->twitter_title) && !self::checkTag('twitter:title') ) {
-
-            $value = $objRef->twitter_title ? $objRef->twitter_title : $objRootPage->twitter_title;
-            self::addTag( 'twitter:title', $value );
-
-            // twitter:card
-            if( $objRef->twitter_card || $objRootPage->twitter_card ) {
-
-                $value = $objRef->twitter_card ? $objRef->twitter_card : $objRootPage->twitter_card;
-                self::addTag( 'twitter:card', $value );
-            }
-        }
-
-        // twitter:description
-        if( ($objRef->twitter_description || $objRootPage->twitter_description) && !self::checkTag('twitter:description') ) {
-
-            $value = $objRef->twitter_description ? $objRef->twitter_description : $objRootPage->twitter_description;
-            self::addTag( 'twitter:description', $value );
-        }
-
-        // twitter:image
-        if( ($objRef->twitter_image || $objRootPage->twitter_image) && !self::checkTag('twitter:image') ) {
-
-            $file = $objRef->twitter_image ? $objRef->twitter_image : $objRootPage->twitter_image;
-
-            $objFile = FilesModel::findByUuid( $file );
-            $value = $objFile->path;
-
-            if( $objFile !== null ) {
-                self::addTag( 'twitter:image', Environment::get('base').$value );
             }
         }
     }
