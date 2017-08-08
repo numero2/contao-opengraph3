@@ -148,7 +148,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_release_type']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('music_release_types')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // music.song fields
     ,   'music_album_url' => array(
@@ -197,13 +197,13 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_age_group']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_age_groups')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
     ,   'product_availability' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_availability']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_availabilities')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
     ,   'product_brand' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_brand']
@@ -224,7 +224,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_condition']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_conditions')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
     ,   'product_ean' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_ean']
@@ -275,7 +275,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_target_gender']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_target_genders')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
     ,   'product_upc' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_upc']
@@ -284,15 +284,14 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         )
     ,   'product_weight_value' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_weight_value']
-        ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_target_genders')
+        ,   'inputType'         => 'text'
         ,   'eval'              => array()
         )
     ,   'product_weight_unit' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_weight_unit']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_weight_units')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // profile fields
     ,   'profile_first_name' => array(
@@ -314,7 +313,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['profile_gender']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('profile_genders')
-        ,   'eval'              => array()
+        ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // twitter
     ,   'twitter_site' => array(

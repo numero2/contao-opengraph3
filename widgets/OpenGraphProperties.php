@@ -293,42 +293,50 @@ class OpenGraphProperties extends \Widget {
         $html .= '</table>';
         $html .= '
         <script>
-        var clickHandler = function(e){
-            e.preventDefault();
+            var clickHandler = function(e){
+                e.preventDefault();
 
-            var row = this.parentElement.parentElement;
-            var table = row.parentElement;
-            if( this.rel == "copy" ){
-                var clone = row.cloneNode(true);
-                table.insertBefore(clone, row);
-                var as=clone.querySelectorAll("a");
-                for (i = 0; i < as.length; i++) {
-                    as[i].addEventListener("click", clickHandler);
+                var row = this.parentElement.parentElement;
+                var table = row.parentElement;
+                if( this.rel == "copy" ){
+                    var clone = row.cloneNode(true);
+                    table.insertBefore(clone, row);
+                    var as=clone.querySelectorAll("a");
+                    for (i = 0; i < as.length; i++) {
+                        as[i].addEventListener("click", clickHandler);
+                    }
+                    var chosen=clone.querySelectorAll("div.tl_chosen");
+                    for (i = 0; i < chosen.length; i++) {
+                        chosen[i].parentNode.removeChild(chosen[i]);
+                    }
+                    var chosen=clone.querySelectorAll("select.tl_chosen");
+                    for (i = 0; i < chosen.length; i++) {
+                        new Chosen($(chosen[i]));
+                    }
+                    if( window.Stylect ) {
+                        Stylect.convertSelects();
+                    }
+                } else if( this.rel == "up" ){
+                    if( row.previousSibling == null ) return;
+                    table.insertBefore(row, row.previousSibling)
+                } else if( this.rel == "down" ){
+                    if( row.nextSibling == null ) return;
+                    table.insertBefore(row.nextSibling, row)
+                } else if( this.rel == "delete" ){
+                    table.removeChild(row)
                 }
-                if( window.Stylect ) {
-                    Stylect.convertSelects();
+                var inputs = table.querySelectorAll("td > input, td > select, td > textarea");
+                for (i = 0; i < inputs.length; i++) {
+                    var iRow = Math.floor(i/'.$numFields.');
+                    inputs[i].id = inputs[i].id.replace(/\[\d\]/, "["+iRow+"]");
+                    inputs[i].name = inputs[i].name.replace(/\[\d\]/, "["+iRow+"]");
                 }
-            } else if( this.rel == "up" ){
-                if( row.previousSibling == null ) return;
-                table.insertBefore(row, row.previousSibling)
-            } else if( this.rel == "down" ){
-                if( row.nextSibling == null ) return;
-                table.insertBefore(row.nextSibling, row)
-            } else if( this.rel == "delete" ){
-                table.removeChild(row)
             }
-            var inputs = table.querySelectorAll("td > input, td > select, td > textarea");
-            for (i = 0; i < inputs.length; i++) {
-                var iRow = Math.floor(i/'.$numFields.');
-                inputs[i].id = inputs[i].id.replace(/\[\d\]/, "["+iRow+"]");
-                inputs[i].name = inputs[i].name.replace(/\[\d\]/, "["+iRow+"]");
-            }
-        }
 
-        var anchors=document.querySelectorAll(".'.$this->strField.' td.operations > a");
-        for (i = 0; i < anchors.length; i++) {
-            anchors[i].addEventListener("click", clickHandler );
-        }
+            var anchors=document.querySelectorAll(".'.$this->strField.' td.operations > a");
+            for (i = 0; i < anchors.length; i++) {
+                anchors[i].addEventListener("click", clickHandler );
+            }
         </script>';
 
         $html .= '</div>';
