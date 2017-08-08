@@ -17,8 +17,13 @@
  */
 namespace numero2\OpenGraph3;
 
-use \Isotope\Model\Product;
+use Contao\Environment;
 use Contao\Input;
+use Haste\Units\Mass\Scale;
+use Haste\Units\Mass\Unit;
+use Haste\Units\Mass\Weight;
+use Isotope\Isotope;
+use Isotope\Model\Product;
 
 
 class OpenGraphIsotope {
@@ -35,6 +40,46 @@ class OpenGraphIsotope {
         $objProduct = Product::findAvailableByIdOrAlias( Input::get('auto_item') );
 
         if( null !== $objProduct ) {
+
+            OpenGraph3::addProperty('og_type','product',$objProduct);
+
+            // add price
+            $config = Isotope::getConfig();
+            $price = number_format($objProduct->getPrice()->getAmount(1), 2, '.', '');
+
+            OpenGraph3::addProperty('og_product_price_amount',$price,$objProduct);
+            OpenGraph3::addProperty('og_product_price_currency',$config->currency,$objProduct);
+
+            // add shipping weight
+            if( isset($objProduct->shipping_weight) ) {
+
+                $weightProduct = Weight::createFromTimePeriod($objProduct->shipping_weight);
+                $weightMin = new Weight(1000,'g');
+
+                $objScale = new Scale();
+                $objScale->add($weightProduct);
+
+                // convert small weights to gram (g)
+                if( $objScale->isLessThan($weightMin) ) {
+
+                    $convertedUnit = 'g';
+                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'g');
+
+                // convert larger weights to kilogram (kg)
+                } else {
+
+                    $convertedUnit = 'kg';
+                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'kg');
+                }
+
+                $convertedWeight = number_format($convertedWeight, 2, '.', '');
+
+                OpenGraph3::addProperty('og_product_shipping_weight_value',$convertedWeight,$objProduct);
+                OpenGraph3::addProperty('og_product_shipping_weight_unit',$convertedUnit,$objProduct);
+            }
+
+            OpenGraph3::addProperty('og_product_product_link',Environment::get('url') . Environment::get('requestUri'),$objProduct);
+
             OpenGraph3::addTagsToPage( $objProduct );
         }
     }
