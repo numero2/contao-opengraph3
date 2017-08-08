@@ -576,11 +576,11 @@
         <source>lb</source>
         <target>lb</target>
     </trans-unit>
-    <trans-unit id="opengraph_fields.og_product_product_link.">
+    <trans-unit id="opengraph_fields.og_product_product_link.0">
         <source>product:product_link</source>
         <target>product:product_link</target>
     </trans-unit>
-    <trans-unit id="opengraph_fields.og_product_product_link.">
+    <trans-unit id="opengraph_fields.og_product_product_link.1">
         <source>A link to find out more about the product.</source>
         <target>Ein Link, um mehr über das Produkt zu erfahren.</target>
     </trans-unit>
