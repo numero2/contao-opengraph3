@@ -381,9 +381,18 @@ class OpenGraphProperties extends \Widget {
             )
         );
 
+        $options = OpenGraphProperties::getProperties($this->objDca);
+
+        $removedValues = false;
         if( $value && !empty($value) && !empty($value[0]) ) {
 
             foreach( $value as $keyRow => $row ) {
+
+                if( !array_key_exists($row[0], $options) ){
+                    unset($this->varValue[$keyRow]);
+                    $removedValues = true;
+                    continue;
+                }
 
                 $add = array(
                     $template['property']
@@ -393,7 +402,12 @@ class OpenGraphProperties extends \Widget {
                 $widgetDCA[] = $add;
             }
 
-        } else {
+            if( $removedValues ){
+                $this->varValue = array_values($this->varValue);
+            }
+        }
+
+        if( count($widgetDCA) === 0 ) {
 
             $widgetDCA[] = array(
                 $template['property']
