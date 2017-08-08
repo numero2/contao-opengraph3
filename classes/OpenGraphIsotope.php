@@ -18,6 +18,7 @@
 namespace numero2\OpenGraph3;
 
 use \Isotope\Model\Product;
+use Contao\Input;
 
 
 class OpenGraphIsotope {
@@ -31,7 +32,7 @@ class OpenGraphIsotope {
     public static function addModuleData( $objModule ) {
 
         $objProduct = NULL;
-        $objProduct = Product::findAvailableByIdOrAlias( \Input::get('auto_item') );
+        $objProduct = Product::findAvailableByIdOrAlias( Input::get('auto_item') );
 
         if( null !== $objProduct ) {
             OpenGraph3::addTagsToPage( $objProduct );

@@ -249,7 +249,7 @@ class OpenGraphProperties extends \Widget {
                         $icon =  'assets/mootools/datepicker/' . $GLOBALS['TL_ASSETS']['DATEPICKER'] . '/icon.gif';
                     }
 
-                    $wizard .= ' ' . Image::getHtml($icon, '', 'title="'.specialchars($GLOBALS['TL_LANG']['MSC']['datepicker']).'" id="toggle_' . $cField->id . '" style="vertical-align:-6px;cursor:pointer"') . '
+                    $wizard = ' ' . Image::getHtml($icon, '', 'title="'.specialchars($GLOBALS['TL_LANG']['MSC']['datepicker']).'" id="toggle_' . $cField->id . '" style="vertical-align:-6px;cursor:pointer"') . '
                         <script>
                             window.addEvent("domready", function() {
                                 new Picker.Date($("ctrl_' . $cField->id . '"), {

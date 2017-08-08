@@ -72,6 +72,7 @@ class OpenGraph3 extends \Frontend {
                             switch( $fieldName ) {
 
                                 case 'og_country_name':
+                                case 'og_business_contact_data_country_name':
 
                                     $arrCountries = array();
                                     $arrCountries = System::getCountries();
@@ -87,15 +88,11 @@ class OpenGraph3 extends \Frontend {
 
                                     case 'datim':
 
-                                    $date = NULL;
-                                    $date = \DateTime::createFromFormat( Config::get('datimFormat'), $value );
+                                        $date = NULL;
+                                        $date = \DateTime::createFromFormat( Config::get('datimFormat'), $value );
 
-                                    $value = $date->format('Y-m-d\TH:i:s');
+                                        $value = $date->format('Y-m-d\TH:i:s');
 
-                                    break;
-
-                                    default:
-                                        throw new \Exception("Unhandled rgxp type ".$field['eval']['rgxp']);
                                     break;
                                 }
                             }
@@ -154,6 +151,24 @@ class OpenGraph3 extends \Frontend {
                 self::addTag( 'og:url', Environment::get('url') . Environment::get('requestUri') );
             }
         }
+    }
+
+
+    /**
+     * Appends a property to the given object
+     *
+     * @param  string   $prop
+     * @param  string   $value
+     * @param  Model    $objRef
+     */
+    public static function addProperty( $prop, $value, $objRef ) {
+
+        $aProperties = array();
+        $aProperties = $objRef->og_properties ? deserialize($objRef->og_properties) : array();
+
+        $aProperties[] = array($prop,$value);
+
+        $objRef->og_properties = serialize($aProperties);
     }
 
 
@@ -226,7 +241,9 @@ class OpenGraph3 extends \Frontend {
             if( !empty($props) ) {
 
                 foreach( $props as $p ) {
-                    $ref->{$p[0]} = $p[1];
+                    if( !isset($ref->{$p[0]}) || empty($ref->{$p[0]}) ) {
+                        $ref->{$p[0]} = $p[1];
+                    }
                 }
             }
         }
@@ -249,7 +266,7 @@ class OpenGraph3 extends \Frontend {
         $GLOBALS['TL_HEAD'][] = sprintf(
             '<meta property="%s" content="%s" />'
         ,   $tagName
-        ,   self::replaceInsertTags($tagValue)
+        ,   htmlspecialchars( self::replaceInsertTags($tagValue) )
         );
 
         return true;

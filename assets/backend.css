@@ -63,6 +63,10 @@
     width: calc(100% - 30px);
 }
 
+.og_properties > table.cto3 tr td.w50 > .styled_select, .og_properties > table.cto3 tr td.w50 > select {
+    width: calc(100% - 23px);
+}
+
 .og_properties > table.cto3 tr td.w50 + .w50 {
     padding-left: 1px;
 }
