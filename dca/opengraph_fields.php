@@ -27,7 +27,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'music.album' => 'og_music_musician,og_music_release_date,og_music_release_type'
     ,   'music.song' => 'og_music_album_url,og_music_album_disc,og_music_album_track,og_music_duration,og_music_musician,og_music_preview_url_url,og_music_release_date,og_music_release_type'
     ,   'place' => 'og_place_location_latitude,og_place_location_longitude,og_place_location_altitude'
-    ,   'product' => 'og_product_age_group,og_product_availability,og_product_brand,og_product_category,og_product_color,og_product_condition,og_product_ean,og_product_isbn,og_product_material,og_product_mfr_part_no,og_product_pattern,og_product_plural_title,og_product_price_amount,og_product_price_currency,og_product_shipping_weight_value,og_product_shipping_weight_units,og_product_size,og_product_target_gender,og_product_upc,og_product_weight_value,og_product_weight_unit'
+    ,   'product' => 'og_product_age_group,og_product_availability,og_product_brand,og_product_category,og_product_color,og_product_condition,og_product_ean,og_product_isbn,og_product_material,og_product_mfr_part_no,og_product_pattern,og_product_plural_title,og_product_price_amount,og_product_price_currency,og_product_shipping_weight_value,og_product_shipping_weight_unit,og_product_size,og_product_target_gender,og_product_upc,og_product_weight_value,og_product_weight_unit'
     ,   'profile' => 'og_profile_first_name,og_profile_last_name,og_profile_username,og_profile_gender'
     )
 
@@ -266,8 +266,8 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'digit' )
         )
-    ,   'og_product_shipping_weight_units' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_units']
+    ,   'og_product_shipping_weight_unit' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_unit']
         ,   'inputType'         => 'select'
         ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => array( 'includeBlankOption'=>true )

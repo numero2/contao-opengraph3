@@ -436,11 +436,11 @@
         <source>A value representing the shipping weight of the product.</source>
         <target>A value representing the shipping weight of the product.</target>
     </trans-unit>
-    <trans-unit id="opengraph_fields.og_product_shipping_weight_units.0">
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_unit.0">
         <source>product:shipping_weight:units</source>
         <target>product:shipping_weight:units</target>
     </trans-unit>
-    <trans-unit id="opengraph_fields.og_product_shipping_weight_units.1">
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_unit.1">
         <source>The units of the shipping weight of the product.</source>
         <target>The units of the shipping weight of the product.</target>
     </trans-unit>
