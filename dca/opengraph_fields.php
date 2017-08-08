@@ -21,14 +21,14 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
         '__basic__' => 'og_title,og_type,og_image'
     ,   '__all__' => 'og_description'
     ,   'website' => 'og_locale,og_site_name'
-    ,   'article' => 'article_author,article_section' // article_published_time,article_modified_time
-    ,   'book' => 'book_author,book_isbn,book_release_date,book_tag'
-    ,   'business.business' => 'business_contact_data_street_address,business_contact_data_locality,business_contact_data_postal_code,business_contact_data_country_name,place_location_latitude,place_location_longitude'
-    ,   'music.album' => 'music_musician,music_release_date,music_release_type'
-    ,   'music.song' => 'music_album_url,music_album_disc,music_album_track,music_duration,music_musician,music_preview_url_url,music_release_date,music_release_type'
-    ,   'place' => 'place_location_latitude,place_location_longitude,place_location_altitude'
-    ,   'product' => 'product_age_group,product_availability,product_brand,product_category,product_color,product_condition,product_ean,product_isbn,product_material,product_mfr_part_no,product_pattern,product_plural_title,product_price_amount,product_price_currency,product_size,product_target_gender,product_upc,product_weight_value,product_weight_unit' // product:product_link
-    ,   'profile' => 'profile_first_name,profile_last_name,profile_username,profile_gender'
+    ,   'article' => 'og_article_author,og_article_section' // article_published_time,article_modified_time
+    ,   'book' => 'og_book_author,og_book_isbn,og_book_release_date,og_book_tag'
+    ,   'business.business' => 'og_business_contact_data_street_address,og_business_contact_data_locality,og_business_contact_data_postal_code,og_business_contact_data_country_name,og_place_location_latitude,og_place_location_longitude'
+    ,   'music.album' => 'og_music_musician,og_music_release_date,og_music_release_type'
+    ,   'music.song' => 'og_music_album_url,og_music_album_disc,og_music_album_track,og_music_duration,og_music_musician,og_music_preview_url_url,og_music_release_date,og_music_release_type'
+    ,   'place' => 'og_place_location_latitude,og_place_location_longitude,og_place_location_altitude'
+    ,   'product' => 'og_product_age_group,og_product_availability,og_product_brand,og_product_category,og_product_color,og_product_condition,og_product_ean,og_product_isbn,og_product_material,og_product_mfr_part_no,og_product_pattern,og_product_plural_title,og_product_price_amount,og_product_price_currency,og_product_size,og_product_target_gender,og_product_upc,og_product_weight_value,og_product_weight_unit' // product:product_link
+    ,   'profile' => 'og_profile_first_name,og_profile_last_name,og_profile_username,og_profile_gender'
     )
 
 ,   'fields' => array(
@@ -67,7 +67,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'og_description' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_description']
         ,   'inputType'         => 'textarea'
-        ,   'eval'              => array( 'style'=>'height: 60px;', 'decodeEntities'=>true, 'tl_class'=>'clr' )
+        ,   'eval'              => array( 'style'=>'height: 60px;', 'decodeEntities'=>true )
         )
         // website field
     ,   'og_locale' => array(
@@ -78,241 +78,220 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = array(
     ,   'og_site_name' => array(
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
         // article fields
-    ,   'article_author' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['article_author']
+    ,   'og_article_author' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_article_author']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
-    ,   'article_section' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['article_section']
+    ,   'og_article_section' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_article_section']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
         // book fields
-    ,   'book_author' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['book_author']
+    ,   'og_book_author' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_author']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
-    ,   'book_isbn' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['book_isbn']
+    ,   'og_book_isbn' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_isbn']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'book_release_date' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['book_release_date']
+    ,   'og_book_release_date' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_release_date']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'wizard' )
+        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true )
         )
-    ,   'book_tag' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['book_tag']
+    ,   'og_book_tag' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_tag']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
         // business.business fields
-    ,   'business_contact_data_street_address' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['business_contact_data_street_address']
+    ,   'og_business_contact_data_street_address' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_street_address']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'business_contact_data_locality' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['business_contact_data_locality']
+    ,   'og_business_contact_data_locality' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_locality']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'business_contact_data_postal_code' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['business_contact_data_postal_code']
+    ,   'og_business_contact_data_postal_code' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_postal_code']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'business_contact_data_country_name' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['business_contact_data_country_name']
-        ,   'inputType'         => 'text'
-        ,   'eval'              => array()
+    ,   'og_business_contact_data_country_name' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_country_name']
+        ,   'inputType'         => 'select'
+        ,   'options'           => System::getCountries()
         )
         // music.album fields
-    ,   'music_musician' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_musician']
+    ,   'og_music_musician' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_musician']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
-    ,   'music_release_date' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_release_date']
+    ,   'og_music_release_date' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_date']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'wizard' )
+        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true )
         )
-    ,   'music_release_type' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_release_type']
+    ,   'og_music_release_type' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_type']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('music_release_types')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_music_release_types')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // music.song fields
-    ,   'music_album_url' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_album_url']
+    ,   'og_music_album_url' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_url']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true, 'rgxp'=>'url' )
         )
-    ,   'music_album_disc' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_album_disc']
+    ,   'og_music_album_disc' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_disc']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'natural' )
         )
-    ,   'music_album_track' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_album_track']
+    ,   'og_music_album_track' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_track']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'natural' )
         )
-    ,   'music_duration' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_duration']
+    ,   'og_music_duration' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_duration']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'natural' )
         )
-    ,   'music_preview_url_url' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['music_preview_url_url']
+    ,   'og_music_preview_url_url' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_preview_url_url']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'url' )
         )
         // place fields
-    ,   'place_location_latitude' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['place_location_latitude']
+    ,   'og_place_location_latitude' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_latitude']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'digit' )
         )
-    ,   'place_location_longitude' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['place_location_longitude']
+    ,   'og_place_location_longitude' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_longitude']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'digit' )
         )
-    ,   'place_location_altitude' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['place_location_altitude']
+    ,   'og_place_location_altitude' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_altitude']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'rgxp'=>'digit' )
         )
         // product fields
-    ,   'product_age_group' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_age_group']
+    ,   'og_product_age_group' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_age_group']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_age_groups')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_age_groups')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
-    ,   'product_availability' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_availability']
+    ,   'og_product_availability' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_availability']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_availabilities')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_availabilities')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
-    ,   'product_brand' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_brand']
+    ,   'og_product_brand' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_brand']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_category' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_category']
+    ,   'og_product_category' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_category']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_color' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_color']
+    ,   'og_product_color' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_color']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_condition' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_condition']
+    ,   'og_product_condition' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_condition']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_conditions')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_conditions')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
-    ,   'product_ean' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_ean']
+    ,   'og_product_ean' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_ean']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_isbn' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_isbn']
+    ,   'og_product_isbn' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_isbn']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_material' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_material']
+    ,   'og_product_material' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_material']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_mfr_part_no' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_mfr_part_no']
+    ,   'og_product_mfr_part_no' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_mfr_part_no']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_pattern' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_pattern']
+    ,   'og_product_pattern' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_pattern']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_plural_title' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_plural_title']
+    ,   'og_product_plural_title' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_plural_title']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_price_amount' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_price_amount']
+    ,   'og_product_price_amount' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_price_amount']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
-    ,   'product_price_currency' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_price_currency']
+    ,   'og_product_price_currency' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_price_currency']
         ,   'inputType'         => 'text'
         ,   'eval'              => array( 'og_multiple'=>true )
         )
-    ,   'product_size' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_size']
+    ,   'og_product_size' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_size']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_target_gender' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_target_gender']
+    ,   'og_product_target_gender' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_target_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_target_genders')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_target_genders')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
-    ,   'product_upc' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_upc']
+    ,   'og_product_upc' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_upc']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_weight_value' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_weight_value']
+    ,   'og_product_weight_value' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_value']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'product_weight_unit' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['product_weight_unit']
+    ,   'og_product_weight_unit' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_unit']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('product_weight_units')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // profile fields
-    ,   'profile_first_name' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['profile_first_name']
+    ,   'og_profile_first_name' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_first_name']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'profile_last_name' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['profile_last_name']
+    ,   'og_profile_last_name' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_last_name']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'profile_username' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['profile_username']
+    ,   'og_profile_username' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_username']
         ,   'inputType'         => 'text'
-        ,   'eval'              => array()
         )
-    ,   'profile_gender' => array(
-            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['profile_gender']
+    ,   'og_profile_gender' => array(
+            'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('profile_genders')
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_profile_genders')
         ,   'eval'              => array( 'includeBlankOption'=>true )
         )
         // twitter
