@@ -98,6 +98,22 @@
         <source>The section of your website to which the article belongs, such as 'Lifestyle' or 'Sports'.</source>
         <target>Der Bereich der Webseite zu welchem dieser Artikel gehört, z.B 'Lifestyle' oder 'Sport'.</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.og_article_published_time.0">
+        <source>article:modified_time</source>
+        <target>article:modified_time</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_article_published_time.1">
+        <source>A time representing when the article was last modified.</source>
+        <target>Die Zeit, wann der Artikel zuletzt geändert wurde.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_article_modified_time.0">
+        <source>article:published_time</source>
+        <target>article:published_time</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_article_modified_time.1">
+        <source>A time representing when the article was published.</source>
+        <target>Die Zeit, wann der Artikel veröffentlicht wurde.</target>
+    </trans-unit>
     <!-- book fields  -->
     <trans-unit id="opengraph_fields.og_book_author.0">
         <source>book:author</source>
@@ -559,6 +575,14 @@
     <trans-unit id="opengraph_fields.og_product_weight_units.lb">
         <source>lb</source>
         <target>lb</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_product_link.">
+        <source>product:product_link</source>
+        <target>product:product_link</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_product_link.">
+        <source>A link to find out more about the product.</source>
+        <target>Ein Link, um mehr über das Produkt zu erfahren.</target>
     </trans-unit>
     <!-- profile fields  -->
     <trans-unit id="opengraph_fields.og_profile_first_name.0">
