@@ -276,6 +276,14 @@
         <source>The target age group of the product, one of 'kids' or 'adult'.</source>
         <target>Die Zielgruppe des Produkts, entweder "kids" oder "adult".</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.product_age_groups.kids">
+        <source>kids</source>
+        <target>kids</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_age_groups.adult">
+        <source>adult</source>
+        <target>adult</target>
+    </trans-unit>
     <trans-unit id="opengraph_fields.product_availability.0">
         <source>product:availability</source>
         <target>product:availability</target>
@@ -283,6 +291,18 @@
     <trans-unit id="opengraph_fields.product_availability.1">
         <source>The availability of the product, one of 'instock', 'oos', or 'pending'.</source>
         <target>Die Verfügbarkeit des Produkts, entweder 'instock', 'oos' oder 'pending'.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_availabilities.instock">
+        <source>instock</source>
+        <target>instock</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_availabilities.oos">
+        <source>oos</source>
+        <target>oos</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_availabilities.pending">
+        <source>pending</source>
+        <target>pending</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.product_brand.0">
         <source>product:brand</source>
@@ -315,6 +335,18 @@
     <trans-unit id="opengraph_fields.product_condition.1">
         <source>The condition of the item, one of 'new', 'refurbished', or 'used'.</source>
         <target>Der Zustand des Gegenstandes, entweder 'new', 'refurbished' oder 'used'.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_conditions.new">
+        <source>new</source>
+        <target>new</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_conditions.refurbished">
+        <source>refurbished</source>
+        <target>refurbished</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_conditions.used">
+        <source>used</source>
+        <target>used</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.product_ean.0">
         <source>product:ean</source>
@@ -396,6 +428,18 @@
         <source>The target gender of the product, one of 'female', 'male', or 'unisex'.</source>
         <target>Das Zielgeschlecht des Produkts, eines der "weiblichen", "männlichen" oder "unisex".</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.product_target_genders.female">
+        <source>female</source>
+        <target>weiblichen</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_target_genders.male">
+        <source>male</source>
+        <target>männlichen</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_target_genders.unisex">
+        <source>unisex</source>
+        <target>unisex</target>
+    </trans-unit>
     <trans-unit id="opengraph_fields.product_upc.0">
         <source>product:upc</source>
         <target>product:upc</target>
@@ -411,6 +455,110 @@
     <trans-unit id="opengraph_fields.product_weight.1">
         <source>The weight of the product.</source>
         <target>Das Gewicht des Produktes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_value.0">
+        <source>product:weight:value</source>
+        <target>product:weight:value</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_value.1">
+        <source>A value representing the weight of the product</source>
+        <target>A value representing the weight of the product</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_unit.0">
+        <source>product:weight:units</source>
+        <target>product:weight:units</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_unit.1">
+        <source>The units of the weight of the product</source>
+        <target>The units of the weight of the product</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Yg">
+        <source>Yg</source>
+        <target>Yg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Zg">
+        <source>Zg</source>
+        <target>Zg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Eg">
+        <source>Eg</source>
+        <target>Eg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Pg">
+        <source>Pg</source>
+        <target>Pg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Tg">
+        <source>Tg</source>
+        <target>Tg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Gg">
+        <source>Gg</source>
+        <target>Gg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.Mg">
+        <source>Mg</source>
+        <target>Mg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.kg">
+        <source>kg</source>
+        <target>kg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.hg">
+        <source>hg</source>
+        <target>hg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.dag">
+        <source>dag</source>
+        <target>dag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.g">
+        <source>g</source>
+        <target>g</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.dg">
+        <source>dg</source>
+        <target>dg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.cg">
+        <source>cg</source>
+        <target>cg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.mg">
+        <source>mg</source>
+        <target>mg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.μg">
+        <source>μg</source>
+        <target>μg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.ng">
+        <source>ng</source>
+        <target>ng</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.pg">
+        <source>pg</source>
+        <target>pg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.fg">
+        <source>fg</source>
+        <target>fg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.ag">
+        <source>ag</source>
+        <target>ag</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.zg">
+        <source>zg</source>
+        <target>zg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.yg">
+        <source>yg</source>
+        <target>yg</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.product_weight_units.lb">
+        <source>lb</source>
+        <target>lb</target>
     </trans-unit>
     <!-- profile fields  -->
     <trans-unit id="opengraph_fields.profile_first_name.0">
@@ -444,6 +592,14 @@
     <trans-unit id="opengraph_fields.profile_gender.1">
         <source>A username for the person that this profile represents.</source>
         <target>Ein Benutzername für die Person, die dieses Profil repräsentiert.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_genders.female">
+        <source>female</source>
+        <target>weiblich</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.profile_genders.male">
+        <source>male</source>
+        <target>männlich</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
         <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
