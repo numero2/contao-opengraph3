@@ -17,10 +17,12 @@
  */
 namespace numero2\OpenGraph3;
 
-use Contao\ModuleModel;
-use Contao\PageModel;
+use Contao\Config;
+use Contao\Controller;
 use Contao\Environment;
 use Contao\FilesModel;
+use Contao\ModuleModel;
+use Contao\PageModel;
 use Contao\System;
 
 
@@ -39,8 +41,7 @@ class OpenGraph3 extends \Frontend {
         if( Environment::get('isMobile') )
             return false;
 
-        \Controller::loadDataContainer('opengraph_fields');
-        \Controller::loadDataContainer('opengraph_fields');
+        Controller::loadDataContainer('opengraph_fields');
 
         global $objPage;
 
@@ -80,6 +81,25 @@ class OpenGraph3 extends \Frontend {
                                 break;
                             }
 
+                            if( !empty($field['eval']['rgxp']) ) {
+
+                                switch( $field['eval']['rgxp'] ) {
+
+                                    case 'datim':
+
+                                    $date = NULL;
+                                    $date = \DateTime::createFromFormat( Config::get('datimFormat'), $value );
+
+                                    $value = $date->format('Y-m-d\TH:i:s');
+
+                                    break;
+
+                                    default:
+                                        throw new \Exception("Unhandled rgxp type ".$field['eval']['rgxp']);
+                                    break;
+                                }
+                            }
+
                         break;
 
                         case 'fileTree':
@@ -88,7 +108,7 @@ class OpenGraph3 extends \Frontend {
                             $objFile = FilesModel::findByUuid( $value );
 
                             if( $objFile ) {
-                                $value = $objFile->path;
+                                $value = Environment::get('base') . $objFile->path;
                             } else {
                                 continue 2;
                             }
@@ -100,7 +120,7 @@ class OpenGraph3 extends \Frontend {
                         break;
 
                         default:
-                            throw new Exception("Unhandled field type ".$field['inputType']);
+                            throw new \Exception("Unhandled field type ".$field['inputType']);
                         break;
                     }
 

@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2016 Leo Feyer
+ * Copyright (c) 2005-2017 Leo Feyer
  *
- * @package   StoreLocator
+ * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2016 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
  */
 
 
@@ -17,6 +17,14 @@
  * Namespace
  */
 namespace numero2\OpenGraph3;
+
+use Contao\Backend;
+use Contao\Config;
+use Contao\Controller;
+use Contao\Date;
+use Contao\Image;
+use Contao\Input;
+use Contao\System;
 
 
 class OpenGraphProperties extends \Widget {
@@ -46,11 +54,12 @@ class OpenGraphProperties extends \Widget {
      *
      * @param array $arrAttributes
      */
-    public function __construct($arrAttributes=null) {
+    public function __construct( $arrAttributes=null ) {
+
         parent::__construct($arrAttributes);
 
-        \System::loadLanguageFile('tl_opengraph_fields');
-        \Controller::loadDataContainer('tl_opengraph_fields');
+        System::loadLanguageFile('tl_opengraph_fields');
+        Controller::loadDataContainer('tl_opengraph_fields');
     }
 
 
@@ -61,36 +70,56 @@ class OpenGraphProperties extends \Widget {
      *
      * @return mixed
      */
-    protected function validator($varInput) {
+    protected function validator( $varInput ) {
 
         $dcas = array();
         $dcas = self::generateWidgetsDCA($varInput);
 
-        if( $varInput && !empty($varInput) ){
+        if( $varInput && !empty($varInput) ) {
+
             foreach( $dcas as $i => $row ) {
+
                 foreach( $row as $j => $field ) {
 
                     $strClass = $GLOBALS['BE_FFL'][$field['inputType']];
+
                     if( !class_exists($strClass) ) {
                         continue;
                     }
 
-                    $cField = new $strClass($strClass::getAttributesFromDca(
-                        $field,
-                        $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
-                        (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
-                        $this->strField,
-                        $this->strTable,
-                        $this->objDca
-                    ));
+                    try {
+
+                        $cField = new $strClass($strClass::getAttributesFromDca(
+                            $field,
+                            $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                            (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
+                            $this->strField,
+                            $this->strTable,
+                            $this->objDca
+                        ));
+
+                    } catch( \Exception $e ) {
+
+                        $cField = new $strClass($strClass::getAttributesFromDca(
+                            $field,
+                            $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                            null,
+                            $this->strField,
+                            $this->strTable,
+                            $this->objDca
+                        ));
+                    }
 
                     // do not validate when submitOnchange was triggered
-                    if( \Input::post('SUBMIT_TYPE')!=='auto' ){
+                    if( Input::post('SUBMIT_TYPE')!=='auto' ) {
+
                         $cField->validate();
-                        if( $cField->hasErrors() ){
+
+                        if( $cField->hasErrors() ) {
                             $this->class = 'error';
                             $this->arrErrors[$i][$j] = $cField->arrErrors;
                         }
+
                         $this->blnHasError = $this->blnHasError || $cField->hasErrors();
                     }
                 }
@@ -108,27 +137,30 @@ class OpenGraphProperties extends \Widget {
      */
     public function generate() {
 
-        if( empty($GLOBALS['TL_CSS']) || array_search('system/modules/storelocator/assets/backend.css', $GLOBALS['TL_CSS']) === FALSE ) {
-            $GLOBALS['TL_CSS'][] = 'system/modules/storelocator/assets/backend.css';
-        }
-
-        if( count($this->value) == 0 ){
+        if( count($this->value) == 0 ) {
             $this->value = array(array());
         }
-        if( is_string($this->value) ){
+
+        if( is_string($this->value) ) {
             $this->value = deserialize($this->value);
         }
 
-        $theme = \Backend::getTheme();
+        // set icons and classes based on Contao version
+        $theme = Backend::getTheme();
         $path = 'icons';
         $iconExt = 'svg';
         $classVersion = 'cto4';
-        if( version_compare(VERSION,'4.0','<') ){
+        $isCTO4 = true;
+
+        if( version_compare(VERSION,'4.0','<') ) {
+
             $path = 'images';
             $iconExt = 'gif';
             $classVersion = 'cto3';
+            $isCTO4 = false;
         }
 
+        // generate table
         $dcas = array();
         $dcas = self::generateWidgetsDCA($this->value);
         $numFields = 2;
@@ -136,40 +168,106 @@ class OpenGraphProperties extends \Widget {
         $html = '<div class="'.$this->strField.'">';
         $html .= '<table class="'.$classVersion.'">';
         $html .= '<tr>';
+
         foreach( $dcas as $i => $row ) {
+
             $j = 0;
+
             foreach( $row as $key => $field ) {
 
                 $strClass = $GLOBALS['BE_FFL'][$field['inputType']];
+
                 if( !class_exists($strClass) ) {
                     continue;
                 }
 
-                if( is_array($field['label']) && !empty($field['label'][1]) ){
-                    if( empty($field['eval']) ){
+                if( is_array($field['label']) && !empty($field['label'][1]) ) {
+
+                    if( empty($field['eval']) ) {
                         $field['eval'] = array();
                     }
-                    if( empty($field['eval']['placeholder']) ){
+
+                    if( empty($field['eval']['placeholder']) ) {
                         $field['eval']['placeholder'] = $field['label'][1];
                     }
                 }
-                $cField = new $strClass($strClass::getAttributesFromDca(
-                    $field,
-                    $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
-                    (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
-                    $this->strField,
-                    $this->strTable,
-                    $this->objDca
-                ));
 
+                try {
 
-                if( is_array($this->arrErrors[$i] ) && !empty($this->arrErrors[$i][$j]) ){
+                    $cField = new $strClass($strClass::getAttributesFromDca(
+                        $field,
+                        $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                        (!empty($this->value[$i][$j])?$this->value[$i][$j]:null),
+                        $this->strField,
+                        $this->strTable,
+                        $this->objDca
+                    ));
+
+                } catch( \Exception $e ) {
+
+                    $cField = new $strClass($strClass::getAttributesFromDca(
+                        $field,
+                        $this->arrConfiguration['strField'].'['.$i.']['.$j.']',
+                        null,
+                        $this->strField,
+                        $this->strTable,
+                        $this->objDca
+                    ));
+                }
+
+                if( is_array($this->arrErrors[$i] ) && !empty($this->arrErrors[$i][$j]) ) {
                     $cField->class = 'error';
                     $cField->blnHasError = true;
                     $cField->arrErrors = $this->arrErrors[$i][$j];
                 }
 
                 $sField = $cField->generateWithError(true);
+
+                // add datepicker
+                if( $field['eval']['datepicker'] ) {
+
+                    $rgxp = $field['eval']['rgxp'];
+                    $format = Date::formatToJs(Config::get($rgxp.'Format'));
+
+                    switch( $rgxp ) {
+
+                        case 'datim':   $time = ", timePicker: true";   break;
+                        case 'time':    $time = ", pickOnly: \"time\""; break;
+                        default:        $time = ''; break;
+                    }
+
+                    $strOnSelect = '';
+
+                    // Trigger the auto-submit function (see #8603)
+                    if( $field['eval']['submitOnChange'] ) {
+                        $strOnSelect = ", onSelect: function() { Backend.autoSubmit(\"" . $this->strTable . "\"); }";
+                    }
+
+                    $icon = 'assets/datepicker/images/icon.svg';
+
+                    if( !$isCTO4 ) {
+                        $icon =  'assets/mootools/datepicker/' . $GLOBALS['TL_ASSETS']['DATEPICKER'] . '/icon.gif';
+                    }
+
+                    $wizard .= ' ' . Image::getHtml($icon, '', 'title="'.specialchars($GLOBALS['TL_LANG']['MSC']['datepicker']).'" id="toggle_' . $cField->id . '" style="vertical-align:-6px;cursor:pointer"') . '
+                        <script>
+                            window.addEvent("domready", function() {
+                                new Picker.Date($("ctrl_' . $cField->id . '"), {
+                                    draggable: false,
+                                    toggle: $("toggle_' . $cField->id . '"),
+                                    format: "' . $format . '",
+                                    positionOffset: {x:-211,y:-209}' . $time . ',
+                                    pickerClass: "datepicker_bootstrap",
+                                    useFadeInOut: !Browser.ie' . $strOnSelect . ',
+                                    startDay: ' . $GLOBALS['TL_LANG']['MSC']['weekOffset'] . ',
+                                    titleFormat: "' . $GLOBALS['TL_LANG']['MSC']['titleFormat'] . '"
+                                });
+                            });
+                        </script>';
+
+                    $sField .= $wizard;
+                    $cField->class = $cField->class.' wizard';
+                }
 
                 $html .= '<td class="w50 '.$cField->class.'">'.$sField.'</td>';
                 $j += 1;
@@ -240,45 +338,48 @@ class OpenGraphProperties extends \Widget {
 
 
     /**
-     * Generates all necessary checkboxes and input fields
+     * Generates all necessary input fields
      * based on their original dca`s
+     *
+     * @param string $value
      *
      * @return array
      */
-    protected function generateWidgetsDCA($value=null) {
+    protected function generateWidgetsDCA( $value=null ) {
 
         $widgetDCA = array();
 
         $template = array(
             'property' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
-                ,   'inputType'             => 'select'
-                ,   'options_callback'      => array( 'OpenGraphProperties', 'getProperties' )
-                ,   'eval'                  => array( 'mandatory'=>true, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
+                ,   'inputType'         => 'select'
+                ,   'options_callback'  => array( 'OpenGraphProperties', 'getProperties' )
+                ,   'eval'              => array( 'mandatory'=>true, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
             )
         ,   'value' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
-                ,   'inputType'             => 'text'
-                ,   'eval'                  => array( 'mandatory'=>false )
+                ,   'inputType'         => 'text'
+                ,   'eval'              => array( 'mandatory'=>false )
             )
         );
 
-        if( $value && !empty($value) && !empty($value[0]) ){
+        if( $value && !empty($value) && !empty($value[0]) ) {
 
             foreach( $value as $keyRow => $row ) {
 
                 $add = array(
-                    $template['property'],
-                    $row[0]===""?$template['value']:$GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
+                    $template['property']
+                ,   $row[0]===""?$template['value']:$GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
                 );
 
                 $widgetDCA[] = $add;
             }
 
         } else {
+
             $widgetDCA[] = array(
-                $template['property'],
-                $template['value']
+                $template['property']
+            ,   $template['value']
             );
         }
 
@@ -293,22 +394,22 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getErrorAsHTML($intIndex=0) {
+    public function getErrorAsHTML( $intIndex=0 ) {
 
         $errorMsg = '';
 
-        if( $this->hasErrors() ){
+        if( $this->hasErrors() ) {
 
-            if( is_array(array_values($this->arrErrors)[0]) ){
+            if( is_array(array_values($this->arrErrors)[0]) ) {
 
                 $errorMsg .= '<p class="tl_error tl_tip">';
                 $errorMsg .= sprintf($GLOBALS['TL_LANG']['opengraph_fields']['og_property']['error'], join(", ", array_keys($this->arrErrors)));
                 $errorMsg .= '</p>';
+
             } else {
                 $errorMsg = parent::getErrorAsHTML();
             }
         }
-
 
         return $errorMsg;
     }
@@ -321,7 +422,7 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getProperties($dcTable) {
+    public function getProperties( $dcTable ) {
 
         $type = $dcTable->activeRecord->og_type;
         $subpalettes = $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'];
@@ -329,18 +430,20 @@ class OpenGraphProperties extends \Widget {
         $fields = $GLOBALS['TL_LANG']['opengraph_fields'];
 
         $palette = $subpalettes['__all__'];
-        if( !empty($type) && array_key_exists($type, $subpalettes) && !empty($subpalettes[$type]) ){
+
+        if( !empty($type) && array_key_exists($type, $subpalettes) && !empty($subpalettes[$type]) ) {
             $palette = $subpalettes[$type].','.$palette;
         }
 
         $palette = explode(',', $palette);
 
         $options = array();
+
         foreach( $palette as $value) {
 
             $options[$value] = $value;
 
-            if( !empty($fields[$value][0]) ){
+            if( !empty($fields[$value][0]) ) {
                 $options[$value] = $fields[$value][0];
             }
         }

@@ -16,12 +16,12 @@
                 float: none;
                 position: relative;
 
-                > * {
+                > *:nth-child(1) {
                     width: calc(100% - 15px);
-                    &textarea {
-                        resize: vertical;
-                    }
+                    &textarea { resize: vertical; }
                 }
+
+                &.wizard > *:nth-child(1) { width: calc(100% - 42px); }
 
                 h3 { display:none; }
 
@@ -29,6 +29,7 @@
                     padding-left: 15px;
                     width: calc(50% - 70px);
                 }
+
             }
 
 
@@ -56,8 +57,10 @@
     &.cto3 {
 
         tr td.w50 {
-            > * { width: calc(100% - 30px); }
+            > *:nth-child(1) { width: calc(100% - 30px); }
             + .w50 { padding-left: 1px; }
+
+            &.wizard > *:nth-child(1) { width: calc(100% - 51px); }
         }
     }
 }
