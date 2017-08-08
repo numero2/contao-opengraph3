@@ -428,6 +428,22 @@
         <source>An array of the currencies of the prices of the product.</source>
         <target>Ein Array der Währungen der Preise des Produktes.</target>
     </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_value.0">
+        <source>product:shipping_weight:value</source>
+        <target>product:shipping_weight:value</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_value.1">
+        <source>A value representing the shipping weight of the product.</source>
+        <target>Das Versandgewichts des Produktes.</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_units.0">
+        <source>product:shipping_weight:units</source>
+        <target>product:shipping_weight:units</target>
+    </trans-unit>
+    <trans-unit id="opengraph_fields.og_product_shipping_weight_units.1">
+        <source>The units of the shipping weight of the product.</source>
+        <target>Die Einheiten des Versandgewichts des Produktes.</target>
+    </trans-unit>
     <trans-unit id="opengraph_fields.og_product_size.0">
         <source>product:size</source>
         <target>product:size</target>
