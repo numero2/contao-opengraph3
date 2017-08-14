@@ -37,6 +37,7 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
         }
     );
 
+
     /**
      * Restrict available types
      */

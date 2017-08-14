@@ -416,7 +416,7 @@ class opengraph_fields {
      *
      * @return array
      */
-    public function getEnumsFromLanguage( $types) {
+    public static function getEnumsFromLanguage( $types) {
 
         return $GLOBALS['TL_LANG']['opengraph_fields'][$types];
     }
