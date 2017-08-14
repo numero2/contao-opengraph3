@@ -402,7 +402,7 @@ class OpenGraphProperties extends \Widget {
                 $widgetDCA[] = $add;
             }
 
-            if( $removedValues ){
+            if( $removedValues && is_array($this->varValue) ) {
                 $this->varValue = array_values($this->varValue);
             }
         }
