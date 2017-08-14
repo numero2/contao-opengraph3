@@ -14,8 +14,8 @@
 
 if( !empty($GLOBALS['TL_DCA']['tl_iso_attribute']) ) {
 
-    \System::loadLanguageFile('tl_opengraph_fields');
-    \Controller::loadDataContainer('tl_opengraph_fields');
+    \System::loadLanguageFile('opengraph_fields');
+    \Controller::loadDataContainer('opengraph_fields');
 
 
     /**
