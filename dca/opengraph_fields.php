@@ -410,13 +410,13 @@ class opengraph_fields {
 
 
     /**
-     * Generate options for og:type
+     * Generate options for given type
      *
-     * @param  DC_Table $dcTable
+     * @param  String type
      *
      * @return array
      */
-    public static function getEnumsFromLanguage( $types) {
+    public static function getEnumsFromLanguage($types) {
 
         return $GLOBALS['TL_LANG']['opengraph_fields'][$types];
     }

@@ -58,8 +58,8 @@ class OpenGraphProperties extends \Widget {
 
         parent::__construct($arrAttributes);
 
-        System::loadLanguageFile('tl_opengraph_fields');
-        Controller::loadDataContainer('tl_opengraph_fields');
+        System::loadLanguageFile('opengraph_fields');
+        Controller::loadDataContainer('opengraph_fields');
     }
 
 
