@@ -42,6 +42,7 @@ class OpenGraph3 extends \Frontend {
             return false;
 
         Controller::loadDataContainer('opengraph_fields');
+        System::loadLanguageFile('opengraph_fields');
 
         global $objPage;
 
