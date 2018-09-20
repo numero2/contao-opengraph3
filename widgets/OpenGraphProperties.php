@@ -137,7 +137,7 @@ class OpenGraphProperties extends \Widget {
      */
     public function generate() {
 
-        if( count($this->value) == 0 ) {
+        if( !is_array($this->value) || count($this->value) == 0 ) {
             $this->value = array(array());
         }
 
