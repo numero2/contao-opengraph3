@@ -29,6 +29,7 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_attribute']) ) {
             ,   array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1
             ,   $key
             );
+            $GLOBALS['TL_LANG']['tl_iso_product'][$key] = $translation;
         }
     );
 }
