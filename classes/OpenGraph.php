@@ -38,8 +38,9 @@ class OpenGraph3 extends \Frontend {
      */
     public static function addTagsToPage( $ref=NULL ) {
 
-        if( Environment::get('isMobile') )
+        if( Environment::get('isMobile') ) {
             return false;
+        }
 
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
@@ -120,6 +121,39 @@ class OpenGraph3 extends \Frontend {
                         default:
                             throw new \Exception("Unhandled field type ".$field['inputType']);
                         break;
+                    }
+
+                    // skip twitter_card tag if no twitter properties present (see #9)
+                    if( $fieldName == 'twitter_card' ) {
+
+                        // get list of fields referring twitter
+                        $twitterFields = [];
+                        $twitterFields = preg_grep( '/^twitter_/i', array_keys($GLOBALS['TL_DCA']['opengraph_fields']['fields']) );
+
+                        if( !empty($twitterFields) ) {
+
+                            $hasTwitterValues = false;
+
+                            // check if any twitter field is set
+                            foreach( $twitterFields as $twFieldName ) {
+
+                                if( $twFieldName == 'twitter_card' ) {
+                                    continue;
+                                }
+
+                                $value = NULL;
+                                $value = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
+
+                                if( $value ) {
+                                    $hasTwitterValues = true;
+                                    break;
+                                }
+                            }
+
+                            if( !$hasTwitterValues ) {
+                                continue;
+                            }
+                        }
                     }
 
                     self::addTag( $field['label'][0], $value );
@@ -284,15 +318,17 @@ class OpenGraph3 extends \Frontend {
      */
     private function checkTag( $tagName=NULL ) {
 
-        if( empty($tagName) )
+        if( empty($tagName) ) {
             return false;
+        }
 
         if( $GLOBALS['TL_HEAD'] ) {
 
             foreach( $GLOBALS['TL_HEAD'] as $i => $v ) {
 
-                if( strpos($v, $tagName) !== FALSE )
+                if( strpos($v, $tagName) !== FALSE ) {
                     return true;
+                }
             }
         }
 
