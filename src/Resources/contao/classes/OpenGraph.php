@@ -165,10 +165,10 @@ class OpenGraph3 extends Frontend {
                                     continue;
                                 }
 
-                                $value = NULL;
-                                $value = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
+                                $twValue = NULL;
+                                $twValue = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
 
-                                if( $value ) {
+                                if( $twValue ) {
                                     $hasTwitterValues = true;
                                     break;
                                 }
