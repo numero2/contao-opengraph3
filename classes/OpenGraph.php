@@ -3,12 +3,12 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * Copyright (c) 2005-2019 Leo Feyer
  *
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2019 numero2 - Agentur für Internetdienstleistungen
  */
 
 
@@ -141,10 +141,10 @@ class OpenGraph3 extends \Frontend {
                                     continue;
                                 }
 
-                                $value = NULL;
-                                $value = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
+                                $twValue = NULL;
+                                $twValue = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
 
-                                if( $value ) {
+                                if( $twValue ) {
                                     $hasTwitterValues = true;
                                     break;
                                 }
