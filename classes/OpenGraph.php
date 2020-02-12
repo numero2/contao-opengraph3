@@ -107,7 +107,7 @@ class OpenGraph3 extends \Frontend {
                             $objFile = FilesModel::findByUuid( $value );
 
                             if( $objFile ) {
-                                $value = Environment::get('base') . $objFile->path;
+                                $value = Environment::get('base') . System::urlEncode($objFile->path);
                             } else {
                                 continue 2;
                             }
