@@ -9,7 +9,7 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2017 numero2 - Agentur für digitales Marketing
  */
 
 

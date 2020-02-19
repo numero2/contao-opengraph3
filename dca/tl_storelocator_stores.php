@@ -8,13 +8,12 @@
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2017 numero2 - Agentur für digitales Marketing
  */
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
 
-    \System::loadLanguageFile('opengraph_fields');
     \Controller::loadDataContainer('opengraph_fields');
 
 
@@ -40,12 +39,15 @@ if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
     /**
      * Add legends
      */
-    array_walk(
-        $GLOBALS['TL_LANG']['opengraph_fields']['legends']
-    ,   function( $translation, $key ) {
-            $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
-        }
-    );
+    if( !empty($GLOBALS['TL_LANG']['opengraph_fields']['legends']) ) {
+
+        array_walk(
+            $GLOBALS['TL_LANG']['opengraph_fields']['legends']
+            ,   function( $translation, $key ) {
+                $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
+            }
+        );
+    }
 
 
     /**

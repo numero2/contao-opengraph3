@@ -8,7 +8,7 @@
  * @package   OpenGraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @license   LGPL
- * @copyright 2019 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2019 numero2 - Agentur für digitales Marketing
  */
 
 
