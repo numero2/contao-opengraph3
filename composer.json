@@ -3,7 +3,8 @@
     "type": "contao-bundle",
     "description": "Implementation of OpenGraph tags and Twitter Cards for Contao",
     "license": "LGPL-3.0+",
-    "authors": [{
+    "authors": [
+        {
             "name": "numero2 - Agentur für digitales Marketing GbR",
             "homepage": "https://www.numero2.de"
         }

@@ -15,26 +15,31 @@
 
 if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
 
-    \System::loadLanguageFile('opengraph_fields');
     \Controller::loadDataContainer('opengraph_fields');
 
     /**
      * Modify fields
      */
-    $GLOBALS['TL_DCA']['tl_iso_product']['fields'] = array_merge(
-        $GLOBALS['TL_DCA']['tl_iso_product']['fields']
-    ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
-    );
+    if( !empty($GLOBALS['TL_DCA']['tl_iso_product']['fields']) ) {
+
+        $GLOBALS['TL_DCA']['tl_iso_product']['fields'] = array_merge(
+            $GLOBALS['TL_DCA']['tl_iso_product']['fields']
+            ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
+        );
+    }
 
     /**
      * Add legends
      */
-    array_walk(
-        $GLOBALS['TL_LANG']['opengraph_fields']['legends']
-    ,   function( $translation, $key ) {
-            $GLOBALS['TL_LANG']['tl_iso_product'][$key] = $translation;
-        }
-    );
+    if( !empty($GLOBALS['TL_LANG']['opengraph_fields']['legends']) ) {
+
+        array_walk(
+            $GLOBALS['TL_LANG']['opengraph_fields']['legends']
+            ,   function( $translation, $key ) {
+                $GLOBALS['TL_LANG']['tl_iso_product'][$key] = $translation;
+            }
+        );
+    }
 
     /**
      * Restrict available types
