@@ -52,15 +52,4 @@
             opacity: 0.5;
         }
     }
-
-    &.cto3 {
-
-        tr td.w50 {
-            > *:nth-child(1) { width: calc(100% - 30px); }
-            > .styled_select, > select { width: calc(100% - 23px); }
-            + .w50 { padding-left: 1px; }
-
-            &.wizard > *:nth-child(1) { width: calc(100% - 51px); }
-        }
-    }
 }

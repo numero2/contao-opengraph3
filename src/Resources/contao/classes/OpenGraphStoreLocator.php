@@ -3,18 +3,16 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * Copyright (c) 2005-2020 Leo Feyer
  *
- * @package   OpenGraph3
+ * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
+ * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
  */
 
 
-/**
- * Namespace
- */
 namespace numero2\OpenGraph3;
 
 use Contao\Input;
@@ -32,7 +30,7 @@ class OpenGraphStoreLocator {
     public static function addModuleData( $objModule ) {
 
         $alias = NULL;
-		$alias = Input::get('auto_item') ? Input::get('auto_item') : Input::get('store');
+        $alias = Input::get('auto_item') ? Input::get('auto_item') : Input::get('store');
 
         $objStore = NULL;
         $objStore = StoresModel::findByIdOrAlias( $alias );

@@ -1,9 +1,10 @@
-<?xml version="1.0" ?><xliff version="1.1">
-<file datatype="php" original="system/modules/opengraph3/languages/en/opengraph_fields.php" source-language="en" target-language="de">
+<?xml version="1.0"?>
+<xliff version="1.1">
+<file datatype="php" original="src/Resources/contao/languages/en/opengraph_fields.php" source-language="en" target-language="de">
 <body>
     <trans-unit id="opengraph_fields.legends.opengraph_legend">
-        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
-        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
+        <source><![CDATA[<img src="bundles/opengraph3/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></source>
+        <target><![CDATA[<img src="bundles/opengraph3/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
     </trans-unit>
     <!-- __basic__ fields -->
     <trans-unit id="opengraph_fields.og_title.0">
@@ -642,8 +643,8 @@
         <target>männlich</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
-        <source><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
-        <target><![CDATA[<img src="system/modules/opengraph3/assets/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
+        <source><![CDATA[<img src="bundles/opengraph3/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></source>
+        <target><![CDATA[<img src="bundles/opengraph3/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
     </trans-unit>
     <trans-unit id="opengraph_fields.twitter_site.0">
         <source>twitter:site</source>

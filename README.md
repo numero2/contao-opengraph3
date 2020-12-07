@@ -26,11 +26,5 @@ By default the OpenGraph fields are attached to the site structure. Furthermore 
 Installation
 --
 
-* Create a folder named `opengraph3` in `system/modules`
-* Clone this repository into the new folder
-* Open `app/AppKernel.php` and add the following line to the $bundles array
-  ```php
-  new Contao\CoreBundle\HttpKernel\Bundle\ContaoModuleBundle('opengraph3', $this->getRootDir())
-  ```
+* Install via Contao Manager or Composer (`composer require numero2/contao-opengraph3`)
 * Run a database update via the Installtool
-

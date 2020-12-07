@@ -58,19 +58,3 @@
     pointer-events: none;
     opacity: 0.5;
 }
-
-.og_properties > table.cto3 tr td.w50 > *:nth-child(1) {
-    width: calc(100% - 30px);
-}
-
-.og_properties > table.cto3 tr td.w50 > .styled_select, .og_properties > table.cto3 tr td.w50 > select {
-    width: calc(100% - 23px);
-}
-
-.og_properties > table.cto3 tr td.w50 + .w50 {
-    padding-left: 1px;
-}
-
-.og_properties > table.cto3 tr td.w50.wizard > *:nth-child(1) {
-    width: calc(100% - 51px);
-}

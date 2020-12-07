@@ -3,19 +3,16 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * Copyright (c) 2005-2020 Leo Feyer
  *
- * @package   OpenGraph3
+ * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2017 numero2 - Agentur für Internetdienstleistungen
+ * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
  */
 
 
-/**
- * Namespace
- */
 namespace numero2\OpenGraph3;
 
 use Contao\Backend;
@@ -149,16 +146,6 @@ class OpenGraphProperties extends \Widget {
         $theme = Backend::getTheme();
         $path = 'icons';
         $iconExt = 'svg';
-        $classVersion = 'cto4';
-        $isCTO4 = true;
-
-        if( version_compare(VERSION,'4.0','<') ) {
-
-            $path = 'images';
-            $iconExt = 'gif';
-            $classVersion = 'cto3';
-            $isCTO4 = false;
-        }
 
         // generate table
         $dcas = array();
@@ -166,7 +153,7 @@ class OpenGraphProperties extends \Widget {
         $numFields = 2;
 
         $html = '<div class="'.$this->strField.'">';
-        $html .= '<table class="'.$classVersion.'">';
+        $html .= '<table>';
         $html .= '<tr>';
 
         foreach( $dcas as $i => $row ) {
@@ -244,10 +231,6 @@ class OpenGraphProperties extends \Widget {
                     }
 
                     $icon = 'assets/datepicker/images/icon.svg';
-
-                    if( !$isCTO4 ) {
-                        $icon =  'assets/mootools/datepicker/' . $GLOBALS['TL_ASSETS']['DATEPICKER'] . '/icon.gif';
-                    }
 
                     $wizard = ' ' . Image::getHtml($icon, '', 'title="'.specialchars($GLOBALS['TL_LANG']['MSC']['datepicker']).'" id="toggle_' . $cField->id . '" style="vertical-align:-6px;cursor:pointer"') . '
                         <script>
@@ -332,8 +315,8 @@ class OpenGraphProperties extends \Widget {
                 var inputs = table.querySelectorAll("td > input, td > select, td > textarea");
                 for( var i=0; i < inputs.length; i++ ) {
                     var iRow = Math.floor(i/'.$numFields.');
-                    inputs[i].id = inputs[i].id.replace(/\[\d\]/, "["+iRow+"]");
-                    inputs[i].name = inputs[i].name.replace(/\[\d\]/, "["+iRow+"]");
+                    inputs[i].id = inputs[i].id.replace(/\[\d+\]/, "["+iRow+"]");
+                    inputs[i].name = inputs[i].name.replace(/\[\d+\]/, "["+iRow+"]");
                 }
 
                 var chosen = table.querySelectorAll("select.tl_chosen:last-child");
@@ -371,7 +354,7 @@ class OpenGraphProperties extends \Widget {
             'property' => array(
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'         => 'select'
-                ,   'options_callback'  => array( 'OpenGraphProperties', 'getProperties' )
+                ,   'options_callback'  => array( '\numero2\OpenGraph3\OpenGraphProperties', 'getProperties' )
                 ,   'eval'              => array( 'mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
             )
         ,   'value' => array(
