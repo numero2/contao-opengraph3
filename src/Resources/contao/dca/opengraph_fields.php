@@ -383,7 +383,7 @@ class opengraph_fields {
      */
     public function getTypes( \DC_Table $dcTable) {
 
-        $options = array();
+        $options = [];
 
         // add options based on og_subpalettes
         foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value) {
