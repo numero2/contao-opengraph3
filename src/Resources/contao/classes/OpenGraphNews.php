@@ -30,7 +30,7 @@ class OpenGraphNews {
      */
     public static function addModuleData( $objModule ) {
 
-        $newsArchives = array();
+        $newsArchives = [];
         $newsArchives = deserialize($objModule->news_archives);
 
         $objArticle = NULL;

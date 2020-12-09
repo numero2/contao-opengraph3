@@ -42,5 +42,5 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
     /**
      * Restrict available types
      */
-    $GLOBALS['TL_DCA']['tl_iso_product']['config']['allowedOpenGraphTypes'] = array('product');
+    $GLOBALS['TL_DCA']['tl_iso_product']['config']['allowedOpenGraphTypes'] = ['product'];
 }

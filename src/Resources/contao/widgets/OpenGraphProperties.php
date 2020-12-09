@@ -69,7 +69,7 @@ class OpenGraphProperties extends \Widget {
      */
     protected function validator( $varInput ) {
 
-        $dcas = array();
+        $dcas = [];
         $dcas = self::generateWidgetsDCA($varInput);
 
         if( $varInput && !empty($varInput) ) {
@@ -135,7 +135,7 @@ class OpenGraphProperties extends \Widget {
     public function generate() {
 
         if( !is_array($this->value) || count($this->value) == 0 ) {
-            $this->value = array(array());
+            $this->value = [[]];
         }
 
         if( is_string($this->value) ) {
@@ -148,7 +148,7 @@ class OpenGraphProperties extends \Widget {
         $iconExt = 'svg';
 
         // generate table
-        $dcas = array();
+        $dcas = [];
         $dcas = self::generateWidgetsDCA($this->value);
         $numFields = 2;
 
@@ -171,7 +171,7 @@ class OpenGraphProperties extends \Widget {
                 if( is_array($field['label']) && !empty($field['label'][1]) ) {
 
                     if( empty($field['eval']) ) {
-                        $field['eval'] = array();
+                        $field['eval'] = [];
                     }
 
                     if( empty($field['eval']['placeholder']) ) {
@@ -348,21 +348,21 @@ class OpenGraphProperties extends \Widget {
      */
     protected function generateWidgetsDCA( $value=null ) {
 
-        $widgetDCA = array();
+        $widgetDCA = [];
 
-        $template = array(
-            'property' => array(
+        $template = [
+            'property' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'         => 'select'
-                ,   'options_callback'  => array( '\numero2\OpenGraph3\OpenGraphProperties', 'getProperties' )
-                ,   'eval'              => array( 'mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
-            )
-        ,   'value' => array(
+                ,   'options_callback'  => ['\numero2\OpenGraph3\OpenGraphProperties', 'getProperties']
+                ,   'eval'              => ['mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true]
+            ]
+        ,   'value' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
                 ,   'inputType'         => 'text'
-                ,   'eval'              => array( 'mandatory'=>false )
-            )
-        );
+                ,   'eval'              => ['mandatory'=>false]
+            ]
+        ];
 
         $options = OpenGraphProperties::getProperties($this->objDca);
 
@@ -377,10 +377,10 @@ class OpenGraphProperties extends \Widget {
                     continue;
                 }
 
-                $add = array(
+                $add = [
                     $template['property']
                 ,   $row[0]===""?$template['value']:$GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
-                );
+                ];
 
                 $widgetDCA[] = $add;
             }
@@ -392,10 +392,10 @@ class OpenGraphProperties extends \Widget {
 
         if( count($widgetDCA) === 0 ) {
 
-            $widgetDCA[] = array(
+            $widgetDCA[] = [
                 $template['property']
             ,   $template['value']
-            );
+            ];
         }
 
         return $widgetDCA;
@@ -452,7 +452,7 @@ class OpenGraphProperties extends \Widget {
 
         $palette = explode(',', $palette);
 
-        $options = array();
+        $options = [];
 
         foreach( $palette as $value) {
 

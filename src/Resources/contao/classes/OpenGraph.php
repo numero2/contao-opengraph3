@@ -75,7 +75,7 @@ class OpenGraph3 extends \Frontend {
                                 case 'og_country_name':
                                 case 'og_business_contact_data_country_name':
 
-                                    $arrCountries = array();
+                                    $arrCountries = [];
                                     $arrCountries = System::getCountries();
 
                                     $value = $arrCountries[$value];
@@ -192,10 +192,10 @@ class OpenGraph3 extends \Frontend {
      */
     public static function addProperty( $prop, $value, $objRef ) {
 
-        $aProperties = array();
-        $aProperties = $objRef->og_properties ? deserialize($objRef->og_properties) : array();
+        $aProperties = [];
+        $aProperties = $objRef->og_properties ? deserialize($objRef->og_properties) : [];
 
-        $aProperties[] = array($prop,$value);
+        $aProperties[] = [$prop, $value];
 
         $objRef->og_properties = serialize($aProperties);
     }

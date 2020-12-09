@@ -52,5 +52,5 @@ if( !empty($GLOBALS['TL_DCA']['tl_news']) ) {
     /**
      * Restrict available types
      */
-    $GLOBALS['TL_DCA']['tl_news']['config']['allowedOpenGraphTypes'] = array('article');
+    $GLOBALS['TL_DCA']['tl_news']['config']['allowedOpenGraphTypes'] = ['article'];
 }

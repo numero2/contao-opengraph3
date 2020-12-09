@@ -52,5 +52,5 @@ if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
     /**
      * Restrict available types
      */
-    $GLOBALS['TL_DCA']['tl_storelocator_stores']['config']['allowedOpenGraphTypes'] = array('business.business','place');
+    $GLOBALS['TL_DCA']['tl_storelocator_stores']['config']['allowedOpenGraphTypes'] = ['business.business', 'place'];
 }

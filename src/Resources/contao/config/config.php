@@ -16,23 +16,23 @@
 /**
  * OpenGraph compatible modules
  */
-$GLOBALS['TL_OG_MODULES'] = array(
-    array(
+$GLOBALS['TL_OG_MODULES'] = [
+    [
         'iso_productreader'
     ,   'Isotope\Module\ProductReader'
     ,   'numero2\OpenGraph3\OpenGraphIsotope'
-    )
-,   array(
+    ]
+,   [
         'newsreader'
     ,   'Contao\ModuleNewsReader'
     ,   'numero2\OpenGraph3\OpenGraphNews'
-    )
-,   array(
+    ]
+,   [
         'storelocator_details'
     ,   'numero2\StoreLocator\ModuleStoreLocatorDetails'
     ,   'numero2\OpenGraph3\OpenGraphStoreLocator'
-    )
-);
+    ]
+];
 
 
 if( 'BE' === TL_MODE ) {
@@ -49,6 +49,6 @@ $GLOBALS['BE_FFL']['openGraphProperties'] = '\numero2\OpenGraph3\OpenGraphProper
 /**
  * Hooks
  */
-$GLOBALS['TL_HOOKS']['getContentElement'][] = array('numero2\OpenGraph3\OpenGraph3', 'findCompatibleModules');
-$GLOBALS['TL_HOOKS']['getFrontendModule'][] = array('numero2\OpenGraph3\OpenGraph3', 'appendTagsByModule');
-$GLOBALS['TL_HOOKS']['generatePage'][]      = array('numero2\OpenGraph3\OpenGraph3', 'addTagsToPage');
+$GLOBALS['TL_HOOKS']['getContentElement'][] = ['numero2\OpenGraph3\OpenGraph3', 'findCompatibleModules'];
+$GLOBALS['TL_HOOKS']['getFrontendModule'][] = ['numero2\OpenGraph3\OpenGraph3', 'appendTagsByModule'];
+$GLOBALS['TL_HOOKS']['generatePage'][]      = ['numero2\OpenGraph3\OpenGraph3', 'addTagsToPage'];
