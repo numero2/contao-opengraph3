@@ -18,9 +18,11 @@ namespace numero2\OpenGraph3;
 use Contao\Config;
 use Contao\Controller;
 use Contao\Environment;
+use Contao\File;
 use Contao\FilesModel;
 use Contao\ModuleModel;
 use Contao\PageModel;
+use Contao\StringUtil;
 use Contao\System;
 
 
@@ -105,6 +107,34 @@ class OpenGraph3 extends \Frontend {
 
                             if( $objFile ) {
                                 $value = Environment::get('base') . $objFile->path;
+
+                                $size = Config::get($fieldName.'_size');
+                                if( $size ) {
+
+                                    $oFile = new File($objFile->path);
+
+                                    $size = StringUtil::deserialize($size);
+                                    if( is_numeric($size) ){
+                                        $size = [0, 0, (int) $size];
+                                    } else if( !is_array($size) ) {
+                                        $size = [];
+                                    }
+
+                                    $size += [0, 0, 'crop'];
+
+                                    if( $oFile && $oFile->exists() && $oFile->isGdImage ) {
+                                        try {
+                                            $src = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size)->getUrl(TL_ROOT);
+
+                                            if( $src !== $objFile->path ) {
+                                                $value = Environment::get('base') . rawurldecode($src);
+                                            }
+
+                                        } catch( \Exception $e ) {
+                                        }
+                                    }
+                                }
+
                             } else {
                                 continue 2;
                             }
