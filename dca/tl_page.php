@@ -31,6 +31,14 @@ if (version_compare(VERSION, '4.9', '>='))
     ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback']
     );
 }
+if (version_compare(VERSION, '4.10', '>='))
+{
+    $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] = str_replace(
+        '{protected_legend'
+    ,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{protected_legend'
+    ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback']
+    );
+}
 $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
     '{protected_legend'
 ,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{protected_legend'
