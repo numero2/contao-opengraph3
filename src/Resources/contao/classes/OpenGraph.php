@@ -310,7 +310,7 @@ class OpenGraph3 extends \Frontend {
      *
      * @return bool
      */
-    private function checkTag( $tagName=NULL ) {
+    private static function checkTag( $tagName=NULL ) {
 
         if( empty($tagName) )
             return false;
