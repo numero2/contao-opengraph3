@@ -38,9 +38,6 @@ class OpenGraph3 extends \Frontend {
      */
     public static function addTagsToPage( $ref=NULL ) {
 
-        if( Environment::get('isMobile') )
-            return false;
-
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
 
@@ -193,7 +190,7 @@ class OpenGraph3 extends \Frontend {
     public static function addProperty( $prop, $value, $objRef ) {
 
         $aProperties = [];
-        $aProperties = $objRef->og_properties ? deserialize($objRef->og_properties) : [];
+        $aProperties = $objRef->og_properties ? StringUtil::deserialize($objRef->og_properties) : [];
 
         $aProperties[] = [$prop, $value];
 
@@ -265,7 +262,7 @@ class OpenGraph3 extends \Frontend {
         if( !empty($ref->og_properties) ) {
 
             $props = NULL;
-            $props = deserialize($ref->og_properties);
+            $props = StringUtil::deserialize($ref->og_properties);
 
             if( !empty($props) ) {
 

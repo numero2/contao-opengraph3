@@ -139,7 +139,7 @@ class OpenGraphProperties extends \Widget {
         }
 
         if( is_string($this->value) ) {
-            $this->value = deserialize($this->value);
+            $this->value = StringUtil::deserialize($this->value);
         }
 
         // set icons and classes based on Contao version

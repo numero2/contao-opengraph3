@@ -31,7 +31,7 @@ class OpenGraphNews {
     public static function addModuleData( $objModule ) {
 
         $newsArchives = [];
-        $newsArchives = deserialize($objModule->news_archives);
+        $newsArchives = StringUtil::deserialize($objModule->news_archives);
 
         $objArticle = NULL;
         $objArticle = NewsModel::findPublishedByParentAndIdOrAlias(Input::get('items'), $newsArchives);
