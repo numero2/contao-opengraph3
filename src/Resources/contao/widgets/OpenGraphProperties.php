@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -22,9 +22,10 @@ use Contao\Date;
 use Contao\Image;
 use Contao\Input;
 use Contao\System;
+use Contao\Widget;
 
 
-class OpenGraphProperties extends \Widget {
+class OpenGraphProperties extends Widget {
 
 
     /**
@@ -132,7 +133,7 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string
      */
-    public function generate() {
+    public function generate(): string {
 
         if( !is_array($this->value) || count($this->value) == 0 ) {
             $this->value = [[]];
@@ -346,7 +347,7 @@ class OpenGraphProperties extends \Widget {
      *
      * @return array
      */
-    protected function generateWidgetsDCA( $value=null ) {
+    protected function generateWidgetsDCA( $value=null ): array {
 
         $widgetDCA = [];
 
@@ -409,7 +410,7 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getErrorAsHTML( $intIndex=0 ) {
+    public function getErrorAsHTML( $intIndex=0 ): string {
 
         $errorMsg = '';
 
@@ -431,13 +432,13 @@ class OpenGraphProperties extends \Widget {
 
 
     /**
-     * Return a particular error as HTML string
+     * Return a list of properties for the widget
      *
-     * @param integer $intIndex The message index
+     * @param Contao\DC_Table $intIndex The message index
      *
-     * @return string The HTML markup of the corresponding error message
+     * @return array
      */
-    public function getProperties( $dcTable ) {
+    public function getProperties( $dcTable ): array {
 
         $type = $dcTable->activeRecord->og_type;
         $subpalettes = $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'];

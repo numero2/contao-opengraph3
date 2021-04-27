@@ -3,40 +3,40 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\OpenGraph3;
 
 use Contao\Config;
+use Contao\ContentElement;
 use Contao\Controller;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
+use Contao\Frontend;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
 
 
-class OpenGraph3 extends \Frontend {
+class OpenGraph3 extends Frontend {
 
 
     /**
      * Add OpenGraph tags to the current page
      *
      * @param Model $ref
-     *
-     * @return none
      */
-    public static function addTagsToPage( $ref=NULL ) {
+    public static function addTagsToPage( $ref=null ) {
 
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
@@ -44,7 +44,7 @@ class OpenGraph3 extends \Frontend {
         global $objPage;
 
         $objRef = !$ref ? $objPage : $ref;
-        $objRootPage = ($objRef instanceof \Contao\PageModel) ? PageModel::findById( $objPage->rootId ) : NULL;
+        $objRootPage = ($objRef instanceof PageModel) ? PageModel::findById($objPage->rootId) : null;
 
         self::parseAdditionalProperties( $objRef );
         self::parseAdditionalProperties( $objRootPage );
@@ -57,7 +57,7 @@ class OpenGraph3 extends \Frontend {
                 // add tag if missing
                 if( ($objRef->{$fieldName} || $objRootPage->{$fieldName}) && !self::checkTag($field['label'][0]) ) {
 
-                    $value = NULL;
+                    $value = null;
                     $value = $objRef->{$fieldName} ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
 
                     // get value based on inputType
@@ -86,7 +86,7 @@ class OpenGraph3 extends \Frontend {
 
                                     case 'datim':
 
-                                        $date = NULL;
+                                        $date = null;
                                         $date = \DateTime::createFromFormat( Config::get('datimFormat'), $value );
 
                                         $value = $date->format('Y-m-d\TH:i:s');
@@ -99,7 +99,7 @@ class OpenGraph3 extends \Frontend {
 
                         case 'fileTree':
 
-                            $objFile = NULL;
+                            $objFile = null;
                             $objFile = FilesModel::findByUuid( $value );
 
                             if( $objFile ) {
@@ -183,9 +183,9 @@ class OpenGraph3 extends \Frontend {
     /**
      * Appends a property to the given object
      *
-     * @param  string   $prop
-     * @param  string   $value
-     * @param  Model    $objRef
+     * @param string $prop
+     * @param string $value
+     * @param Model $objRef
      */
     public static function addProperty( $prop, $value, $objRef ) {
 
@@ -201,15 +201,15 @@ class OpenGraph3 extends \Frontend {
     /**
      * Appends OpenGraph data for the given module
      *
-     * @param  Model    $objRow
-     * @param  String   $strBuffer
-     * @param  Module   $objModule
+     * @param Model $objRow
+     * @param String $strBuffer
+     * @param Module $objModule
      *
      * @return String
      */
-    public function appendTagsByModule( $objRow, $strBuffer, $objModule ) {
+    public function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
 
-        $moduleClass = NULL;
+        $moduleClass = null;
         $moduleClass = get_class($objModule);
 
         // find and import a matching module to parse the OpenGraph data from
@@ -227,23 +227,23 @@ class OpenGraph3 extends \Frontend {
 
 
     /**
-     * Checks if Content Element is a module and tries to use it
+     * Checks if the given Content Element is a module and tries to use it
      * for OpenGraph data
      *
-     * @param Model             $objRow
-     * @param String            $strBuffer
-     * @param \ContentElement   $objElement
+     * @param Model $objRow
+     * @param String $strBuffer
+     * @param Contao\ContentElement $objElement
      *
      * @return String
      */
-    public function findCompatibleModules( $objRow, $strBuffer, $objElement ) {
+    public function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
 
         if( get_class($objElement) === "Contao\ContentModule" ) {
 
-            $objModule = NULL;
-            $objModule = ModuleModel::findById( $objElement->module );
+            $objModule = null;
+            $objModule = ModuleModel::findById($objElement->module);
 
-            self::appendTagsByModule( NULL, NULL, $objModule );
+            self::appendTagsByModule(null, null, $objModule);
         }
 
         return $strBuffer;
@@ -254,14 +254,12 @@ class OpenGraph3 extends \Frontend {
     * Adds the additional og_properties as individual attributes
     *
     * @param Model $ref
-    *
-    * @return none
     */
     private static function parseAdditionalProperties( $ref ) {
 
         if( !empty($ref->og_properties) ) {
 
-            $props = NULL;
+            $props = null;
             $props = StringUtil::deserialize($ref->og_properties);
 
             if( !empty($props) ) {
@@ -277,17 +275,18 @@ class OpenGraph3 extends \Frontend {
 
 
     /**
-    * Adds a specific opengraph tag to the head
+    * Adds a specific OpenGraph tag to the head
     *
     * @param String $tagName
     * @param String $tagValue
     *
     * @return bool
     */
-    private static function addTag( $tagName=NULL, $tagValue=NULL ) {
+    private static function addTag( $tagName=null, $tagValue=null ): bool {
 
-        if( empty($tagName) )
+        if( empty($tagName) ) {
             return false;
+        }
 
         $GLOBALS['TL_HEAD'][] = sprintf(
             '<meta property="%s" content="%s" />'
@@ -300,24 +299,26 @@ class OpenGraph3 extends \Frontend {
 
 
     /**
-     * Checks if a specific opengraph tag already exists
+     * Checks if a specific OpenGraph tag already exists
      *
      * @param String $tagName
      * @param String $tagValue
      *
      * @return bool
      */
-    private static function checkTag( $tagName=NULL ) {
+    private static function checkTag( $tagName=null ): bool {
 
-        if( empty($tagName) )
+        if( empty($tagName) ) {
             return false;
+        }
 
         if( $GLOBALS['TL_HEAD'] ) {
 
             foreach( $GLOBALS['TL_HEAD'] as $i => $v ) {
 
-                if( strpos($v, $tagName) !== FALSE )
+                if( strpos($v, $tagName) !== FALSE ) {
                     return true;
+                }
             }
         }
 

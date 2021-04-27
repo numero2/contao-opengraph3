@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -41,7 +41,7 @@ if( 'BE' === TL_MODE ) {
 
 
 /**
- * BACK END FORM FIELDS
+ * Backend Form Fields
  */
 $GLOBALS['BE_FFL']['openGraphProperties'] = '\numero2\OpenGraph3\OpenGraphProperties';
 
@@ -51,4 +51,4 @@ $GLOBALS['BE_FFL']['openGraphProperties'] = '\numero2\OpenGraph3\OpenGraphProper
  */
 $GLOBALS['TL_HOOKS']['getContentElement'][] = ['numero2\OpenGraph3\OpenGraph3', 'findCompatibleModules'];
 $GLOBALS['TL_HOOKS']['getFrontendModule'][] = ['numero2\OpenGraph3\OpenGraph3', 'appendTagsByModule'];
-$GLOBALS['TL_HOOKS']['generatePage'][]      = ['numero2\OpenGraph3\OpenGraph3', 'addTagsToPage'];
+$GLOBALS['TL_HOOKS']['generatePage'][] = ['numero2\OpenGraph3\OpenGraph3', 'addTagsToPage'];

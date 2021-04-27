@@ -3,19 +3,18 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
 \System::loadLanguageFile('opengraph_fields');
 \Controller::loadDataContainer('opengraph_fields');
-
 
 /**
  * Modify palettes
@@ -32,7 +31,6 @@ $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
 ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['regular']
 );
 
-
 /**
  * Modify fields
  */
@@ -40,7 +38,6 @@ $GLOBALS['TL_DCA']['tl_page']['fields'] = array_merge(
     $GLOBALS['TL_DCA']['tl_page']['fields']
 ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
 );
-
 
 /**
  * Add legends

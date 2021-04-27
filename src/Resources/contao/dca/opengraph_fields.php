@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -377,11 +377,11 @@ class opengraph_fields {
     /**
      * Generate options for og:type
      *
-     * @param  DC_Table $dcTable
+     * @param DC_Table $dcTable
      *
      * @return array
      */
-    public function getTypes( \DC_Table $dcTable) {
+    public function getTypes( \DC_Table $dcTable ): array {
 
         $options = [];
 
@@ -413,11 +413,11 @@ class opengraph_fields {
     /**
      * Generate options for given type
      *
-     * @param  String type
+     * @param String type
      *
      * @return array
      */
-    public static function getEnumsFromLanguage($types) {
+    public static function getEnumsFromLanguage($types): array {
 
         return $GLOBALS['TL_LANG']['opengraph_fields'][$types];
     }

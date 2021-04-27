@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2020 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2020 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['og_image_size'] = [
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback' => function (){
+,   'options_callback' => function(){
         return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['twitter_image_size'] = [
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback' => function (){
+,   'options_callback' => function(){
         return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
