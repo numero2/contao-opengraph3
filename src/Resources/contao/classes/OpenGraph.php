@@ -312,7 +312,7 @@ class OpenGraph3 extends Frontend {
             return false;
         }
 
-        if( $GLOBALS['TL_HEAD'] ) {
+        if( !empty($GLOBALS['TL_HEAD']) && is_array($GLOBALS['TL_HEAD']) ) {
 
             foreach( $GLOBALS['TL_HEAD'] as $i => $v ) {
 

@@ -124,7 +124,7 @@ class OpenGraphProperties extends Widget {
             }
         }
 
-        return ($this->blnHasError) ? false : empty($varInput)?'':serialize($varInput);
+        return ($this->blnHasError) ? false : (empty($varInput)?'':serialize($varInput));
     }
 
 
@@ -203,7 +203,7 @@ class OpenGraphProperties extends Widget {
                     ));
                 }
 
-                if( is_array($this->arrErrors[$i] ) && !empty($this->arrErrors[$i][$j]) ) {
+                if( !empty($this->arrErrors[$i]) && is_array($this->arrErrors[$i]) && !empty($this->arrErrors[$i][$j]) ) {
                     $cField->class = 'error';
                     $cField->blnHasError = true;
                     $cField->arrErrors = $this->arrErrors[$i][$j];
@@ -212,7 +212,7 @@ class OpenGraphProperties extends Widget {
                 $sField = $cField->generateWithError(true);
 
                 // add datepicker
-                if( $field['eval']['datepicker'] ) {
+                if( !empty($field['eval']['datepicker']) && !empty($field['eval']['rgxp']) ) {
 
                     $rgxp = $field['eval']['rgxp'];
                     $format = Date::formatToJs(Config::get($rgxp.'Format'));
@@ -227,7 +227,7 @@ class OpenGraphProperties extends Widget {
                     $strOnSelect = '';
 
                     // Trigger the auto-submit function (see #8603)
-                    if( $field['eval']['submitOnChange'] ) {
+                    if( !empty($field['eval']['submitOnChange']) ) {
                         $strOnSelect = ", onSelect: function() { Backend.autoSubmit(\"" . $this->strTable . "\"); }";
                     }
 
