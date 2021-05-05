@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
         ,   'inputType'         => 'select'
-        ,   'options_callback'  => ['opengraph_fields','getTypes']
+        ,   'options_callback'  => ['\numero2\OpenGraph3\DCAHelper\OpengraphFields','getTypes']
         ,   'eval'              => ['chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(32) NOT NULL default ''"
@@ -152,7 +152,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_music_release_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_type']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_music_release_types')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_music_release_types')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // music.song fields
@@ -201,13 +201,13 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_age_group' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_age_group']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_age_groups')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_age_groups')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_availability' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_availability']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_availabilities')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_availabilities')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_brand' => [
@@ -225,7 +225,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_condition' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_condition']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_conditions')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_conditions')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_ean' => [
@@ -270,7 +270,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_shipping_weight_unit' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_unit']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_size' => [
@@ -280,7 +280,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_target_gender' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_target_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_target_genders')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_target_genders')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_upc' => [
@@ -295,7 +295,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_weight_unit' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_unit']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_product_link' => [
@@ -319,7 +319,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_profile_gender' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_profile_genders')
+        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_profile_genders')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // twitter
@@ -369,56 +369,3 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ]
 ];
-
-
-class opengraph_fields {
-
-
-    /**
-     * Generate options for og:type
-     *
-     * @param DC_Table $dcTable
-     *
-     * @return array
-     */
-    public function getTypes( \DC_Table $dcTable ): array {
-
-        $options = [];
-
-        // add options based on og_subpalettes
-        foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value) {
-
-            if( $key === "__basic__" || $key === "__all__" ) {
-                continue;
-            }
-
-            $options[$key] = $key;
-        }
-
-        // check if we need to filter some types
-        if( !empty($GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) && !empty($options) ) {
-
-            foreach( $options as $option ) {
-
-                if( !in_array($option, $GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) ) {
-                    unset($options[$option]);
-                }
-            }
-        }
-
-        return $options;
-    }
-
-
-    /**
-     * Generate options for given type
-     *
-     * @param String type
-     *
-     * @return array
-     */
-    public static function getEnumsFromLanguage($types): array {
-
-        return $GLOBALS['TL_LANG']['opengraph_fields'][$types];
-    }
-}
