@@ -29,7 +29,7 @@ class OpenGraphNews {
      *
      * @param $objModule
      */
-    public static function addModuleData( $objModule ) {
+    public static function addModuleData( $objModule ): void {
 
         $newsArchives = [];
         $newsArchives = StringUtil::deserialize($objModule->news_archives);

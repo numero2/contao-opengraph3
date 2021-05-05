@@ -27,7 +27,7 @@ class OpenGraphStoreLocator {
      *
      * @param $objModule
      */
-    public static function addModuleData( $objModule ) {
+    public static function addModuleData( $objModule ): void {
 
         $alias = NULL;
         $alias = Input::get('auto_item') ? Input::get('auto_item') : Input::get('store');

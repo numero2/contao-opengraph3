@@ -32,7 +32,7 @@ class OpenGraphIsotope {
      *
      * @param $objModule
      */
-    public static function addModuleData( $objModule ) {
+    public static function addModuleData( $objModule ): void {
 
         $objProduct = NULL;
         $objProduct = Product::findAvailableByIdOrAlias( Input::get('auto_item') );

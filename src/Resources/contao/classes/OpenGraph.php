@@ -36,7 +36,7 @@ class OpenGraph3 extends Frontend {
      *
      * @param Model $ref
      */
-    public static function addTagsToPage( $ref=null ) {
+    public static function addTagsToPage( $ref=null ): void {
 
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
@@ -187,7 +187,7 @@ class OpenGraph3 extends Frontend {
      * @param string $value
      * @param Model $objRef
      */
-    public static function addProperty( $prop, $value, $objRef ) {
+    public static function addProperty( $prop, $value, $objRef ): void {
 
         $aProperties = [];
         $aProperties = $objRef->og_properties ? StringUtil::deserialize($objRef->og_properties) : [];
@@ -207,7 +207,7 @@ class OpenGraph3 extends Frontend {
      *
      * @return String
      */
-    public function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
+    public function appendTagsByModule( $objRow, string $strBuffer, $objModule ): string {
 
         $moduleClass = null;
         $moduleClass = get_class($objModule);
@@ -236,14 +236,14 @@ class OpenGraph3 extends Frontend {
      *
      * @return String
      */
-    public function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
+    public function findCompatibleModules( $objRow, string $strBuffer, $objElement ): string {
 
         if( get_class($objElement) === "Contao\ContentModule" ) {
 
             $objModule = null;
             $objModule = ModuleModel::findById($objElement->module);
 
-            self::appendTagsByModule(null, null, $objModule);
+            self::appendTagsByModule(null, $strBuffer, $objModule);
         }
 
         return $strBuffer;
@@ -255,7 +255,7 @@ class OpenGraph3 extends Frontend {
     *
     * @param Model $ref
     */
-    private static function parseAdditionalProperties( $ref ) {
+    private static function parseAdditionalProperties( $ref ): void {
 
         if( !empty($ref->og_properties) ) {
 
