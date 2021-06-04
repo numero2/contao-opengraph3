@@ -3,13 +3,21 @@
 /**
  * Contao Open Source CMS
  *
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraph.php
  * Copyright (c) 2005-2021 Leo Feyer
+=======
+ * Copyright (c) 2005-2019 Leo Feyer
+>>>>>>> master:classes/OpenGraph.php
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraph.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
+ * @copyright 2019 numero2 - Agentur für digitales Marketing
+>>>>>>> master:classes/OpenGraph.php
  */
 
 
@@ -36,7 +44,15 @@ class OpenGraph3 extends Frontend {
      *
      * @param Model $ref
      */
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraph.php
     public static function addTagsToPage( $ref=null ): void {
+=======
+    public static function addTagsToPage( $ref=NULL ) {
+
+        if( Environment::get('isMobile') ) {
+            return false;
+        }
+>>>>>>> master:classes/OpenGraph.php
 
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
@@ -103,6 +119,7 @@ class OpenGraph3 extends Frontend {
                             $objFile = FilesModel::findByUuid( $value );
 
                             if( $objFile ) {
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraph.php
                                 $value = Environment::get('base') . $objFile->path;
 
                                 $size = Config::get($fieldName.'_size');
@@ -132,6 +149,9 @@ class OpenGraph3 extends Frontend {
                                     }
                                 }
 
+=======
+                                $value = Environment::get('base') . System::urlEncode($objFile->path);
+>>>>>>> master:classes/OpenGraph.php
                             } else {
                                 continue 2;
                             }
@@ -145,6 +165,39 @@ class OpenGraph3 extends Frontend {
                         default:
                             throw new \Exception("Unhandled field type ".$field['inputType']);
                         break;
+                    }
+
+                    // skip twitter_card tag if no twitter properties present (see #9)
+                    if( $fieldName == 'twitter_card' ) {
+
+                        // get list of fields referring twitter
+                        $twitterFields = [];
+                        $twitterFields = preg_grep( '/^twitter_/i', array_keys($GLOBALS['TL_DCA']['opengraph_fields']['fields']) );
+
+                        if( !empty($twitterFields) ) {
+
+                            $hasTwitterValues = false;
+
+                            // check if any twitter field is set
+                            foreach( $twitterFields as $twFieldName ) {
+
+                                if( $twFieldName == 'twitter_card' ) {
+                                    continue;
+                                }
+
+                                $twValue = NULL;
+                                $twValue = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
+
+                                if( $twValue ) {
+                                    $hasTwitterValues = true;
+                                    break;
+                                }
+                            }
+
+                            if( !$hasTwitterValues ) {
+                                continue;
+                            }
+                        }
                     }
 
                     self::addTag( $field['label'][0], $value );
@@ -243,7 +296,13 @@ class OpenGraph3 extends Frontend {
             $objModule = null;
             $objModule = ModuleModel::findById($objElement->module);
 
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraph.php
             self::appendTagsByModule(null, $strBuffer, $objModule);
+=======
+            if( $objModule ) {
+                self::appendTagsByModule( NULL, NULL, $objModule );
+            }
+>>>>>>> master:classes/OpenGraph.php
         }
 
         return $strBuffer;

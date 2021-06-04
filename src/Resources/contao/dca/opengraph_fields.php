@@ -3,17 +3,31 @@
 /**
  * Contao Open Source CMS
  *
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
  * Copyright (c) 2005-2021 Leo Feyer
+=======
+ * Copyright (c) 2005-2020 Leo Feyer
+>>>>>>> master:dca/opengraph_fields.php
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
 
 $GLOBALS['TL_DCA']['opengraph_fields'] = [
+=======
+ * @copyright 2020 numero2 - Agentur für digitales Marketing
+ */
+
+
+\System::loadLanguageFile('opengraph_fields');
+
+$GLOBALS['TL_DCA']['opengraph_fields'] = array(
+>>>>>>> master:dca/opengraph_fields.php
 
     'palettes' => [
         'default' => '{opengraph_legend:hide},og_title,og_type,og_image,og_properties;{twitter_legend:hide},twitter_site,twitter_creator,twitter_card,twitter_title,twitter_description,twitter_image;'
@@ -34,43 +48,71 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
 
 ,   'fields' => [
     // __basic__ fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         'og_title' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_title']
+=======
+        'og_title' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_title']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['maxlength'=>255, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(255) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'og_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
+=======
+        )
+    ,   'og_type' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_type']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'select'
         ,   'options_callback'  => ['\numero2\OpenGraph3\DCAHelper\OpengraphFields','getTypes']
         ,   'eval'              => ['chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(32) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'og_image' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_image']
+=======
+        )
+    ,   'og_image' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_image']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'fileTree'
         ,   'eval'              => ['extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "binary(16) NULL"
         ]
     // all optional properties
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_properties' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_properties']
+=======
+    ,   'og_properties' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_properties']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'openGraphProperties'
         ,   'eval'              => ['tl_class'=>'clr']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "blob NULL"
         ]
     // __all__ fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_description' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_description']
+=======
+    ,   'og_description' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_description']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'textarea'
         ,   'eval'              => ['style'=>'height: 60px;', 'decodeEntities'=>true]
         ]
         // website field
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_locale' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_locale']
         ,   'inputType'         => 'text'
@@ -78,9 +120,19 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_site_name' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
+=======
+    ,   'og_locale' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_locale']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'maxlength'=>5, 'placeholder'=>'en_US' )
+        )
+    ,   'og_site_name' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_site_name']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ]
         // article fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_article_author' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_article_author']
         ,   'inputType'         => 'text'
@@ -97,10 +149,29 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_article_modified_time' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_article_modified_time']
+=======
+    ,   'og_article_author' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_article_author']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true )
+        )
+    ,   'og_article_section' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_article_section']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_article_published_time' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_article_published_time']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true )
+        )
+    ,   'og_article_modified_time' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_article_modified_time']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['rgxp'=>'datim', 'datepicker'=>true]
         ]
         // book fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_book_author' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_author']
         ,   'inputType'         => 'text'
@@ -117,10 +188,29 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_book_tag' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_book_tag']
+=======
+    ,   'og_book_author' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_book_author']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true )
+        )
+    ,   'og_book_isbn' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_book_isbn']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_book_release_date' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_book_release_date']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true )
+        )
+    ,   'og_book_tag' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_book_tag']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['og_multiple'=>true]
         ]
         // business.business fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_business_contact_data_street_address' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_street_address']
         ,   'inputType'         => 'text'
@@ -135,10 +225,27 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_business_contact_data_country_name' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_country_name']
+=======
+    ,   'og_business_contact_data_street_address' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_street_address']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_business_contact_data_locality' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_locality']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_business_contact_data_postal_code' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_postal_code']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_business_contact_data_country_name' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_country_name']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'select'
         ,   'options'           => System::getCountries()
         ]
         // music.album fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_music_musician' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_musician']
         ,   'inputType'         => 'text'
@@ -151,11 +258,26 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_music_release_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_type']
+=======
+    ,   'og_music_musician' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_musician']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true )
+        )
+    ,   'og_music_release_date' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_date']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'datim', 'datepicker'=>true )
+        )
+    ,   'og_music_release_type' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_type']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'select'
         ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_music_release_types')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // music.song fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_music_album_url' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_url']
         ,   'inputType'         => 'text'
@@ -178,10 +300,35 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_music_preview_url_url' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_preview_url_url']
+=======
+    ,   'og_music_album_url' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_url']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true, 'rgxp'=>'url' )
+        )
+    ,   'og_music_album_disc' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_disc']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'natural' )
+        )
+    ,   'og_music_album_track' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_album_track']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'natural' )
+        )
+    ,   'og_music_duration' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_duration']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'natural' )
+        )
+    ,   'og_music_preview_url_url' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_music_preview_url_url']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['rgxp'=>'url']
         ]
         // place fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_place_location_latitude' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_latitude']
         ,   'inputType'         => 'text'
@@ -194,10 +341,25 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_place_location_altitude' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_altitude']
+=======
+    ,   'og_place_location_latitude' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_latitude']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'digit' )
+        )
+    ,   'og_place_location_longitude' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_longitude']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'digit' )
+        )
+    ,   'og_place_location_altitude' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_place_location_altitude']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['rgxp'=>'digit']
         ]
         // product fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_product_age_group' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_age_group']
         ,   'inputType'         => 'select'
@@ -300,10 +462,115 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_product_product_link' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_product_link']
+=======
+    ,   'og_product_age_group' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_age_group']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_age_groups')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_availability' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_availability']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_availabilities')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_brand' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_brand']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_category' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_category']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_color' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_color']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_condition' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_condition']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_conditions')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_ean' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_ean']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_isbn' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_isbn']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_material' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_material']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_mfr_part_no' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_mfr_part_no']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_pattern' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_pattern']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_plural_title' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_plural_title']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_price_amount' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_price_amount']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true, 'rgxp'=>'digit' )
+        )
+    ,   'og_product_price_currency' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_price_currency']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'og_multiple'=>true )
+        )
+    ,   'og_product_shipping_weight_value' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_value']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'digit' )
+        )
+    ,   'og_product_shipping_weight_unit' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_unit']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_size' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_size']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_target_gender' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_target_gender']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_target_genders')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_upc' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_upc']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_product_weight_value' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_value']
+        ,   'inputType'         => 'text'
+        ,   'eval'              => array( 'rgxp'=>'digit' )
+        )
+    ,   'og_product_weight_unit' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_unit']
+        ,   'inputType'         => 'select'
+        ,   'options'           => opengraph_fields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'eval'              => array( 'includeBlankOption'=>true )
+        )
+    ,   'og_product_product_link' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_product_product_link']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['rgxp'=>'url']
         ]
         // profile fields
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'og_profile_first_name' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_first_name']
         ,   'inputType'         => 'text'
@@ -318,54 +585,164 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
         ]
     ,   'og_profile_gender' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_gender']
+=======
+    ,   'og_profile_first_name' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_profile_first_name']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_profile_last_name' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_profile_last_name']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_profile_username' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_profile_username']
+        ,   'inputType'         => 'text'
+        )
+    ,   'og_profile_gender' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['og_profile_gender']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'select'
         ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_profile_genders')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // twitter
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
     ,   'twitter_site' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_site']
+=======
+    ,   'twitter_site' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_site']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['maxlength'=>255, 'tl_class'=>'w50', 'placeholder'=>'@page']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "varchar(255) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'twitter_creator' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_creator']
+=======
+        )
+    ,   'twitter_creator' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_creator']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['maxlength'=>255, 'tl_class'=>'w50', 'placeholder'=>'@author']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "varchar(255) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'twitter_card' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_card']
+=======
+        )
+    ,   'twitter_card' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_card']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'select'
         ,   'options'           => ['summary_large_image', 'summary']
         ,   'eval'              => ['includeBlankOption'=>false, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "varchar(255) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'twitter_title' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_title']
+=======
+        )
+    ,   'twitter_title' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_title']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'text'
         ,   'eval'              => ['maxlength'=>255, 'tl_class'=>'clr long']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "varchar(255) NOT NULL default ''"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'twitter_description' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_description']
+=======
+        )
+    ,   'twitter_description' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_description']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'textarea'
         ,   'search'            => true
         ,   'eval'              => ['style'=>'height: 60px;', 'decodeEntities'=>true, 'tl_class'=>'clr']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "text NULL"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ,   'twitter_image' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['twitter_image']
+=======
+        )
+    ,   'twitter_image' => array(
+            'label'             => $GLOBALS['TL_LANG']['opengraph_fields']['twitter_image']
+>>>>>>> master:dca/opengraph_fields.php
         ,   'inputType'         => 'fileTree'
         ,   'eval'              => ['extensions'=>'png,gif,jpg,jpeg', 'files'=>true, 'fieldType'=>'radio', 'tl_class'=>'clr']
         ,   'attributes'        => ['legend'=>'twitter_legend']
         ,   'sql'               => "binary(16) NULL"
+<<<<<<< HEAD:src/Resources/contao/dca/opengraph_fields.php
         ]
     ]
 ];
+=======
+        ),
+    )
+);
+
+
+class opengraph_fields {
+
+
+    /**
+     * Generate options for og:type
+     *
+     * @param  DC_Table $dcTable
+     *
+     * @return array
+     */
+    public function getTypes( \DC_Table $dcTable ) {
+
+        $options = array();
+
+        // add options based on og_subpalettes
+        foreach( $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'] as $key => $value ) {
+
+            if( $key === "__basic__" || $key === "__all__" ) {
+                continue;
+            }
+
+            $options[$key] = $key;
+        }
+
+        // check if we need to filter some types
+        if( !empty($GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) && !empty($options) ) {
+
+            foreach( $options as $option ) {
+
+                if( !in_array($option, $GLOBALS['TL_DCA'][$dcTable->table]['config']['allowedOpenGraphTypes']) ) {
+                    unset($options[$option]);
+                }
+            }
+        }
+
+        return $options;
+    }
+
+
+    /**
+     * Generate options for given type
+     *
+     * @param  String type
+     *
+     * @return array
+     */
+    public static function getEnumsFromLanguage($types) {
+
+        return $GLOBALS['TL_LANG']['opengraph_fields'][$types];
+    }
+}
+>>>>>>> master:dca/opengraph_fields.php

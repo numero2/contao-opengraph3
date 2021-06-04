@@ -3,13 +3,21 @@
 /**
  * Contao Open Source CMS
  *
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraphIsotope.php
  * Copyright (c) 2005-2021 Leo Feyer
+=======
+ * Copyright (c) 2005-2020 Leo Feyer
+>>>>>>> master:classes/OpenGraphIsotope.php
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraphIsotope.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
+ * @copyright 2020 numero2 - Agentur für digitales Marketing
+>>>>>>> master:classes/OpenGraphIsotope.php
  */
 
 
@@ -51,29 +59,34 @@ class OpenGraphIsotope {
             // add shipping weight
             if( isset($objProduct->shipping_weight) ) {
 
+                $weightProduct = NULL;
                 $weightProduct = Weight::createFromTimePeriod($objProduct->shipping_weight);
-                $weightMin = new Weight(1000,'g');
 
-                $objScale = new Scale();
-                $objScale->add($weightProduct);
+                if( $weightProduct ) {
 
-                // convert small weights to gram (g)
-                if( $objScale->isLessThan($weightMin) ) {
+                    $weightMin = new Weight(1000,'g');
 
-                    $convertedUnit = 'g';
-                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'g');
+                    $objScale = new Scale();
+                    $objScale->add($weightProduct);
 
-                // convert larger weights to kilogram (kg)
-                } else {
+                    // convert small weights to gram (g)
+                    if( $objScale->isLessThan($weightMin) ) {
 
-                    $convertedUnit = 'kg';
-                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'kg');
+                        $convertedUnit = 'g';
+                        $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'g');
+
+                        // convert larger weights to kilogram (kg)
+                    } else {
+
+                        $convertedUnit = 'kg';
+                        $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'kg');
+                    }
+
+                    $convertedWeight = number_format($convertedWeight, 2, '.', '');
+
+                    OpenGraph3::addProperty('og_product_shipping_weight_value',$convertedWeight,$objProduct);
+                    OpenGraph3::addProperty('og_product_shipping_weight_unit',$convertedUnit,$objProduct);
                 }
-
-                $convertedWeight = number_format($convertedWeight, 2, '.', '');
-
-                OpenGraph3::addProperty('og_product_shipping_weight_value',$convertedWeight,$objProduct);
-                OpenGraph3::addProperty('og_product_shipping_weight_unit',$convertedUnit,$objProduct);
             }
 
             OpenGraph3::addProperty('og_product_product_link',Environment::get('url') . Environment::get('requestUri'),$objProduct);

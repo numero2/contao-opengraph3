@@ -9,7 +9,11 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/widgets/OpenGraphProperties.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
+ * @copyright 2017 numero2 - Agentur für digitales Marketing
+>>>>>>> master:widgets/OpenGraphProperties.php
  */
 
 

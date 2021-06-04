@@ -9,13 +9,16 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/dca/tl_news.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
+ * @copyright 2017 numero2 - Agentur für digitales Marketing
+>>>>>>> master:dca/tl_news.php
  */
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_news']) ) {
 
-    \System::loadLanguageFile('opengraph_fields');
     \Controller::loadDataContainer('opengraph_fields');
 
     /**
@@ -30,20 +33,26 @@ if( !empty($GLOBALS['TL_DCA']['tl_news']) ) {
     /**
      * Modify fields
      */
-    $GLOBALS['TL_DCA']['tl_news']['fields'] = array_merge(
-        $GLOBALS['TL_DCA']['tl_news']['fields']
-    ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
-    );
+    if( !empty($GLOBALS['TL_DCA']['opengraph_fields']['fields']) ) {
+
+        $GLOBALS['TL_DCA']['tl_news']['fields'] = array_merge(
+            $GLOBALS['TL_DCA']['tl_news']['fields']
+            ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
+        );
+    }
 
     /**
      * Add legends
      */
-    array_walk(
-        $GLOBALS['TL_LANG']['opengraph_fields']['legends']
-    ,   function( $translation, $key ) {
-            $GLOBALS['TL_LANG']['tl_news'][$key] = $translation;
-        }
-    );
+    if( !empty($GLOBALS['TL_LANG']['opengraph_fields']['legends']) ) {
+
+        array_walk(
+            $GLOBALS['TL_LANG']['opengraph_fields']['legends']
+            ,   function( $translation, $key ) {
+                $GLOBALS['TL_LANG']['tl_news'][$key] = $translation;
+            }
+        );
+    }
 
     /**
      * Restrict available types

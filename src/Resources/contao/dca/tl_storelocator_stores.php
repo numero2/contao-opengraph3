@@ -9,13 +9,16 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/dca/tl_storelocator_stores.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
+ * @copyright 2017 numero2 - Agentur für digitales Marketing
+>>>>>>> master:dca/tl_storelocator_stores.php
  */
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
 
-    \System::loadLanguageFile('opengraph_fields');
     \Controller::loadDataContainer('opengraph_fields');
 
     /**
@@ -38,12 +41,15 @@ if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
     /**
      * Add legends
      */
-    array_walk(
-        $GLOBALS['TL_LANG']['opengraph_fields']['legends']
-    ,   function( $translation, $key ) {
-            $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
-        }
-    );
+    if( !empty($GLOBALS['TL_LANG']['opengraph_fields']['legends']) ) {
+
+        array_walk(
+            $GLOBALS['TL_LANG']['opengraph_fields']['legends']
+            ,   function( $translation, $key ) {
+                $GLOBALS['TL_LANG']['tl_storelocator_stores'][$key] = $translation;
+            }
+        );
+    }
 
     /**
      * Restrict available types
