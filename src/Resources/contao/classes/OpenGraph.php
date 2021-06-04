@@ -103,7 +103,8 @@ class OpenGraph3 extends Frontend {
                             $objFile = FilesModel::findByUuid( $value );
 
                             if( $objFile ) {
-                                $value = Environment::get('base') . $objFile->path;
+
+                                $value = Environment::get('base') . System::urlEncode($objFile->path);
 
                                 $size = Config::get($fieldName.'_size');
                                 if( $size ) {
@@ -124,14 +125,13 @@ class OpenGraph3 extends Frontend {
                                             $src = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size)->getUrl(TL_ROOT);
 
                                             if( $src !== $objFile->path ) {
-                                                $value = Environment::get('base') . rawurldecode($src);
+                                                $value = Environment::get('base') . System::urlEncode($src);
                                             }
 
                                         } catch( \Exception $e ) {
                                         }
                                     }
                                 }
-
                             } else {
                                 continue 2;
                             }
@@ -243,7 +243,9 @@ class OpenGraph3 extends Frontend {
             $objModule = null;
             $objModule = ModuleModel::findById($objElement->module);
 
-            self::appendTagsByModule(null, $strBuffer, $objModule);
+            if( $objModule ) {
+                self::appendTagsByModule( NULL, $strBuffer, $objModule );
+            }
         }
 
         return $strBuffer;
