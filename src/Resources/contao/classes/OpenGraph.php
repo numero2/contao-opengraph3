@@ -147,39 +147,6 @@ class OpenGraph3 extends Frontend {
                         break;
                     }
 
-                    // skip twitter_card tag if no twitter properties present (see #9)
-                    if( $fieldName == 'twitter_card' ) {
-
-                        // get list of fields referring twitter
-                        $twitterFields = [];
-                        $twitterFields = preg_grep( '/^twitter_/i', array_keys($GLOBALS['TL_DCA']['opengraph_fields']['fields']) );
-
-                        if( !empty($twitterFields) ) {
-
-                            $hasTwitterValues = false;
-
-                            // check if any twitter field is set
-                            foreach( $twitterFields as $twFieldName ) {
-
-                                if( $twFieldName == 'twitter_card' ) {
-                                    continue;
-                                }
-
-                                $twValue = NULL;
-                                $twValue = $objRef->{$twFieldName} ? $objRef->{$twFieldName} : $objRootPage->{$twFieldName};
-
-                                if( $twValue ) {
-                                    $hasTwitterValues = true;
-                                    break;
-                                }
-                            }
-
-                            if( !$hasTwitterValues ) {
-                                continue;
-                            }
-                        }
-                    }
-
                     self::addTag( $field['label'][0], $value );
                 }
             }

@@ -51,34 +51,29 @@ class OpenGraphIsotope {
             // add shipping weight
             if( isset($objProduct->shipping_weight) ) {
 
-                $weightProduct = NULL;
                 $weightProduct = Weight::createFromTimePeriod($objProduct->shipping_weight);
+                $weightMin = new Weight(1000,'g');
 
-                if( $weightProduct ) {
+                $objScale = new Scale();
+                $objScale->add($weightProduct);
 
-                    $weightMin = new Weight(1000,'g');
+                // convert small weights to gram (g)
+                if( $objScale->isLessThan($weightMin) ) {
 
-                    $objScale = new Scale();
-                    $objScale->add($weightProduct);
+                    $convertedUnit = 'g';
+                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'g');
 
-                    // convert small weights to gram (g)
-                    if( $objScale->isLessThan($weightMin) ) {
+                // convert larger weights to kilogram (kg)
+                } else {
 
-                        $convertedUnit = 'g';
-                        $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'g');
-
-                        // convert larger weights to kilogram (kg)
-                    } else {
-
-                        $convertedUnit = 'kg';
-                        $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'kg');
-                    }
-
-                    $convertedWeight = number_format($convertedWeight, 2, '.', '');
-
-                    OpenGraph3::addProperty('og_product_shipping_weight_value',$convertedWeight,$objProduct);
-                    OpenGraph3::addProperty('og_product_shipping_weight_unit',$convertedUnit,$objProduct);
+                    $convertedUnit = 'kg';
+                    $convertedWeight = Unit::convert($weightProduct->getWeightValue(), $weightProduct->getWeightUnit(), 'kg');
                 }
+
+                $convertedWeight = number_format($convertedWeight, 2, '.', '');
+
+                OpenGraph3::addProperty('og_product_shipping_weight_value',$convertedWeight,$objProduct);
+                OpenGraph3::addProperty('og_product_shipping_weight_unit',$convertedUnit,$objProduct);
             }
 
             OpenGraph3::addProperty('og_product_product_link',Environment::get('url') . Environment::get('requestUri'),$objProduct);
