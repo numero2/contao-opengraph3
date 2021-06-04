@@ -244,7 +244,7 @@ class OpenGraph3 extends Frontend {
             $objModule = ModuleModel::findById($objElement->module);
 
             if( $objModule ) {
-                self::appendTagsByModule( NULL, NULL, $objModule );
+                self::appendTagsByModule( NULL, $strBuffer, $objModule );
             }
         }
 
