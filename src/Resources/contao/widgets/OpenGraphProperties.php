@@ -3,19 +3,20 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
- * @package   OpenGraph3
+ * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/widgets/OpenGraphProperties.php
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
  * @copyright 2017 numero2 - Agentur für digitales Marketing
+>>>>>>> master:widgets/OpenGraphProperties.php
  */
 
 
-/**
- * Namespace
- */
 namespace numero2\OpenGraph3;
 
 use Contao\Backend;
@@ -25,9 +26,10 @@ use Contao\Date;
 use Contao\Image;
 use Contao\Input;
 use Contao\System;
+use Contao\Widget;
 
 
-class OpenGraphProperties extends \Widget {
+class OpenGraphProperties extends Widget {
 
 
     /**
@@ -72,7 +74,7 @@ class OpenGraphProperties extends \Widget {
      */
     protected function validator( $varInput ) {
 
-        $dcas = array();
+        $dcas = [];
         $dcas = self::generateWidgetsDCA($varInput);
 
         if( $varInput && !empty($varInput) ) {
@@ -126,7 +128,7 @@ class OpenGraphProperties extends \Widget {
             }
         }
 
-        return ($this->blnHasError) ? false : empty($varInput)?'':serialize($varInput);
+        return ($this->blnHasError) ? false : (empty($varInput)?'':serialize($varInput));
     }
 
 
@@ -135,38 +137,28 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string
      */
-    public function generate() {
+    public function generate(): string {
 
         if( !is_array($this->value) || count($this->value) == 0 ) {
-            $this->value = array(array());
+            $this->value = [[]];
         }
 
         if( is_string($this->value) ) {
-            $this->value = deserialize($this->value);
+            $this->value = StringUtil::deserialize($this->value);
         }
 
         // set icons and classes based on Contao version
         $theme = Backend::getTheme();
         $path = 'icons';
         $iconExt = 'svg';
-        $classVersion = 'cto4';
-        $isCTO4 = true;
-
-        if( version_compare(VERSION,'4.0','<') ) {
-
-            $path = 'images';
-            $iconExt = 'gif';
-            $classVersion = 'cto3';
-            $isCTO4 = false;
-        }
 
         // generate table
-        $dcas = array();
+        $dcas = [];
         $dcas = self::generateWidgetsDCA($this->value);
         $numFields = 2;
 
         $html = '<div class="'.$this->strField.'">';
-        $html .= '<table class="'.$classVersion.'">';
+        $html .= '<table>';
         $html .= '<tr>';
 
         foreach( $dcas as $i => $row ) {
@@ -184,7 +176,7 @@ class OpenGraphProperties extends \Widget {
                 if( is_array($field['label']) && !empty($field['label'][1]) ) {
 
                     if( empty($field['eval']) ) {
-                        $field['eval'] = array();
+                        $field['eval'] = [];
                     }
 
                     if( empty($field['eval']['placeholder']) ) {
@@ -215,7 +207,7 @@ class OpenGraphProperties extends \Widget {
                     ));
                 }
 
-                if( is_array($this->arrErrors[$i] ) && !empty($this->arrErrors[$i][$j]) ) {
+                if( !empty($this->arrErrors[$i]) && is_array($this->arrErrors[$i]) && !empty($this->arrErrors[$i][$j]) ) {
                     $cField->class = 'error';
                     $cField->blnHasError = true;
                     $cField->arrErrors = $this->arrErrors[$i][$j];
@@ -224,7 +216,7 @@ class OpenGraphProperties extends \Widget {
                 $sField = $cField->generateWithError(true);
 
                 // add datepicker
-                if( $field['eval']['datepicker'] ) {
+                if( !empty($field['eval']['datepicker']) && !empty($field['eval']['rgxp']) ) {
 
                     $rgxp = $field['eval']['rgxp'];
                     $format = Date::formatToJs(Config::get($rgxp.'Format'));
@@ -239,15 +231,11 @@ class OpenGraphProperties extends \Widget {
                     $strOnSelect = '';
 
                     // Trigger the auto-submit function (see #8603)
-                    if( $field['eval']['submitOnChange'] ) {
+                    if( !empty($field['eval']['submitOnChange']) ) {
                         $strOnSelect = ", onSelect: function() { Backend.autoSubmit(\"" . $this->strTable . "\"); }";
                     }
 
                     $icon = 'assets/datepicker/images/icon.svg';
-
-                    if( !$isCTO4 ) {
-                        $icon =  'assets/mootools/datepicker/' . $GLOBALS['TL_ASSETS']['DATEPICKER'] . '/icon.gif';
-                    }
 
                     $wizard = ' ' . Image::getHtml($icon, '', 'title="'.specialchars($GLOBALS['TL_LANG']['MSC']['datepicker']).'" id="toggle_' . $cField->id . '" style="vertical-align:-6px;cursor:pointer"') . '
                         <script>
@@ -332,8 +320,8 @@ class OpenGraphProperties extends \Widget {
                 var inputs = table.querySelectorAll("td > input, td > select, td > textarea");
                 for( var i=0; i < inputs.length; i++ ) {
                     var iRow = Math.floor(i/'.$numFields.');
-                    inputs[i].id = inputs[i].id.replace(/\[\d\]/, "["+iRow+"]");
-                    inputs[i].name = inputs[i].name.replace(/\[\d\]/, "["+iRow+"]");
+                    inputs[i].id = inputs[i].id.replace(/\[\d+\]/, "["+iRow+"]");
+                    inputs[i].name = inputs[i].name.replace(/\[\d+\]/, "["+iRow+"]");
                 }
 
                 var chosen = table.querySelectorAll("select.tl_chosen:last-child");
@@ -363,23 +351,23 @@ class OpenGraphProperties extends \Widget {
      *
      * @return array
      */
-    protected function generateWidgetsDCA( $value=null ) {
+    protected function generateWidgetsDCA( $value=null ): array {
 
-        $widgetDCA = array();
+        $widgetDCA = [];
 
-        $template = array(
-            'property' => array(
+        $template = [
+            'property' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'         => 'select'
-                ,   'options_callback'  => array( 'OpenGraphProperties', 'getProperties' )
-                ,   'eval'              => array( 'mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true )
-            )
-        ,   'value' => array(
+                ,   'options_callback'  => ['\numero2\OpenGraph3\OpenGraphProperties', 'getProperties']
+                ,   'eval'              => ['mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true]
+            ]
+        ,   'value' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
                 ,   'inputType'         => 'text'
-                ,   'eval'              => array( 'mandatory'=>false )
-            )
-        );
+                ,   'eval'              => ['mandatory'=>false]
+            ]
+        ];
 
         $options = OpenGraphProperties::getProperties($this->objDca);
 
@@ -394,10 +382,10 @@ class OpenGraphProperties extends \Widget {
                     continue;
                 }
 
-                $add = array(
+                $add = [
                     $template['property']
                 ,   $row[0]===""?$template['value']:$GLOBALS['TL_DCA']['opengraph_fields']['fields'][$row[0]]
-                );
+                ];
 
                 $widgetDCA[] = $add;
             }
@@ -409,10 +397,10 @@ class OpenGraphProperties extends \Widget {
 
         if( count($widgetDCA) === 0 ) {
 
-            $widgetDCA[] = array(
+            $widgetDCA[] = [
                 $template['property']
             ,   $template['value']
-            );
+            ];
         }
 
         return $widgetDCA;
@@ -426,7 +414,7 @@ class OpenGraphProperties extends \Widget {
      *
      * @return string The HTML markup of the corresponding error message
      */
-    public function getErrorAsHTML( $intIndex=0 ) {
+    public function getErrorAsHTML( $intIndex=0 ): string {
 
         $errorMsg = '';
 
@@ -448,13 +436,13 @@ class OpenGraphProperties extends \Widget {
 
 
     /**
-     * Return a particular error as HTML string
+     * Return a list of properties for the widget
      *
-     * @param integer $intIndex The message index
+     * @param Contao\DC_Table $intIndex The message index
      *
-     * @return string The HTML markup of the corresponding error message
+     * @return array
      */
-    public function getProperties( $dcTable ) {
+    public function getProperties( $dcTable ): array {
 
         $type = $dcTable->activeRecord->og_type;
         $subpalettes = $GLOBALS['TL_DCA']['opengraph_fields']['og_subpalettes'];
@@ -469,7 +457,7 @@ class OpenGraphProperties extends \Widget {
 
         $palette = explode(',', $palette);
 
-        $options = array();
+        $options = [];
 
         foreach( $palette as $value) {
 

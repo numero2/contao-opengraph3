@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<xliff version="1.1">
+<file datatype="php" original="src/Resources/contao/languages/en/tl_settings.php" source-language="en" target-language="de">
+<body>
+    <!-- LEGENDS -->
+    <trans-unit id="tl_settings.opengraph_twitter_legend">
+        <source>Open Graph / Twitter settings</source>
+        <target>Open Graph / Twitter Einstellungen</target>
+    </trans-unit>
+    <!-- FIELDS -->
+    <trans-unit id="tl_settings.og_image_size.0">
+        <source>Open Graph image size</source>
+        <target>Open Graph Bildgröße</target>
+    </trans-unit>
+    <trans-unit id="tl_settings.og_image_size.1">
+        <source>Here you can set the image dimensions and the resize mode for the og:image.</source>
+        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus für og:image festlegen.</target>
+    </trans-unit>
+    <trans-unit id="tl_settings.twitter_image_size.0">
+        <source>Twitter image size</source>
+        <target>Twitter Bildgröße</target>
+    </trans-unit>
+    <trans-unit id="tl_settings.twitter_image_size.1">
+        <source>Here you can set the image dimensions and the resize mode for the twitter:image.</source>
+        <target>Hier können Sie die Abmessungen des Bildes und den Skalierungsmodus für twitter:image festlegen.</target>
+    </trans-unit>
+</body>
+</file>
+</xliff>

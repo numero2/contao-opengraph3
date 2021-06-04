@@ -1,21 +1,43 @@
 {
     "name": "numero2/contao-opengraph3",
-    "type": "contao-module",
+    "type": "contao-bundle",
+    "description": "Implementation of OpenGraph tags and Twitter Cards for Contao",
     "license": "LGPL-3.0+",
     "authors": [{
+<<<<<<< HEAD
+            "name": "numero2 - Agentur für digitales Marketing GbR",
+            "homepage": "https://www.numero2.de"
+=======
             "name": "numero2 - Agentur für digitales Marketing",
             "homepage": "http://www.numero2.de"
+>>>>>>> master
         }
     ],
     "require": {
-        "contao/core-bundle": "4.*",
-        "contao-community-alliance/composer-plugin": "3.*"
+        "contao/core-bundle": "4.*"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
     },
     "extra": {
-        "contao": {
-            "sources": {
-                "": "system/modules/opengraph3"
-            }
-        }
+        "contao-manager-plugin": "numero2\\Opengraph3Bundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "numero2\\Opengraph3Bundle\\": "src/"
+        },
+        "classmap": [
+            "src/Resources/contao/"
+        ],
+        "exclude-from-classmap": [
+            "src/Resources/contao/config/",
+            "src/Resources/contao/dca/",
+            "src/Resources/contao/languages/",
+            "src/Resources/contao/templates/"
+        ]
     }
 }

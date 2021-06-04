@@ -3,18 +3,24 @@
 /**
  * Contao Open Source CMS
  *
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraphIsotope.php
+ * Copyright (c) 2005-2021 Leo Feyer
+=======
  * Copyright (c) 2005-2020 Leo Feyer
+>>>>>>> master:classes/OpenGraphIsotope.php
  *
- * @package   OpenGraph3
+ * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
+ * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/classes/OpenGraphIsotope.php
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
  * @copyright 2020 numero2 - Agentur für digitales Marketing
+>>>>>>> master:classes/OpenGraphIsotope.php
  */
 
 
-/**
- * Namespace
- */
 namespace numero2\OpenGraph3;
 
 use Contao\Environment;
@@ -34,7 +40,7 @@ class OpenGraphIsotope {
      *
      * @param $objModule
      */
-    public static function addModuleData( $objModule ) {
+    public static function addModuleData( $objModule ): void {
 
         $objProduct = NULL;
         $objProduct = Product::findAvailableByIdOrAlias( Input::get('auto_item') );

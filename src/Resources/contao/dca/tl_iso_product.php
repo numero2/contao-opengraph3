@@ -3,19 +3,23 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2017 Leo Feyer
+ * Copyright (c) 2005-2021 Leo Feyer
  *
- * @package   OpenGraph3
+ * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
+ * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
+<<<<<<< HEAD:src/Resources/contao/dca/tl_iso_product.php
+ * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+=======
  * @copyright 2017 numero2 - Agentur für digitales Marketing
+>>>>>>> master:dca/tl_iso_product.php
  */
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
 
     \Controller::loadDataContainer('opengraph_fields');
-
 
     /**
      * Modify fields
@@ -27,7 +31,6 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
             ,   $GLOBALS['TL_DCA']['opengraph_fields']['fields']
         );
     }
-
 
     /**
      * Add legends
@@ -42,9 +45,8 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_product']) ) {
         );
     }
 
-
     /**
      * Restrict available types
      */
-    $GLOBALS['TL_DCA']['tl_iso_product']['config']['allowedOpenGraphTypes'] = array('product');
+    $GLOBALS['TL_DCA']['tl_iso_product']['config']['allowedOpenGraphTypes'] = ['product'];
 }
