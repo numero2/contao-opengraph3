@@ -9,11 +9,7 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
-<<<<<<< HEAD:src/Resources/contao/config/config.php
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
-=======
- * @copyright 2017 numero2 - Agentur für digitales Marketing
->>>>>>> master:config/config.php
  */
 
 
