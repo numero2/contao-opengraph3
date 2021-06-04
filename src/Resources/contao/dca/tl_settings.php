@@ -40,7 +40,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['og_image_size'] = [
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
 ,   'options_callback' => function(){
-        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+        return \System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];
@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['twitter_image_size'] = [
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
 ,   'options_callback' => function(){
-        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+        return \System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];
