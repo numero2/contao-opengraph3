@@ -231,12 +231,10 @@ class OpenGraph3 extends Frontend {
      * for OpenGraph data
      *
      * @param Model $objRow
-     * @param String $strBuffer
+     * @param $strBuffer
      * @param Contao\ContentElement $objElement
-     *
-     * @return String
      */
-    public function findCompatibleModules( $objRow, string $strBuffer, $objElement ): string {
+    public function findCompatibleModules( $objRow, $strBuffer, $objElement ) {
 
         if( get_class($objElement) === "Contao\ContentModule" ) {
 
@@ -244,7 +242,7 @@ class OpenGraph3 extends Frontend {
             $objModule = ModuleModel::findById($objElement->module);
 
             if( $objModule ) {
-                self::appendTagsByModule( NULL, $strBuffer, $objModule );
+                self::appendTagsByModule(null, $strBuffer, $objModule);
             }
         }
 
