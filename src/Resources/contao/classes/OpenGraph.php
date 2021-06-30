@@ -207,7 +207,7 @@ class OpenGraph3 extends Frontend {
      *
      * @return String
      */
-    public function appendTagsByModule( $objRow, string $strBuffer, $objModule ): string {
+    public function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
 
         $moduleClass = null;
         $moduleClass = get_class($objModule);
@@ -222,7 +222,7 @@ class OpenGraph3 extends Frontend {
             }
         }
 
-        return $strBuffer;
+        return $strBuffer?:'';
     }
 
 
@@ -231,10 +231,12 @@ class OpenGraph3 extends Frontend {
      * for OpenGraph data
      *
      * @param Model $objRow
-     * @param $strBuffer
+     * @param String $strBuffer
      * @param Contao\ContentElement $objElement
+     *
+     * @return String
      */
-    public function findCompatibleModules( $objRow, $strBuffer, $objElement ) {
+    public function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
 
         if( get_class($objElement) === "Contao\ContentModule" ) {
 
@@ -246,7 +248,7 @@ class OpenGraph3 extends Frontend {
             }
         }
 
-        return $strBuffer;
+        return $strBuffer?:'';
     }
 
 
