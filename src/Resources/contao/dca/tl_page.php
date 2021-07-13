@@ -27,11 +27,14 @@ if( !empty($GLOBALS['TL_DCA']['tl_page']) ) {
     ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['root']
     );
     
+if (version_compare(VERSION, '4.9', '>='))
+{
     $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] = str_replace(
         '{dns_legend'
     ,   $GLOBALS['TL_DCA']['opengraph_fields']['palettes']['default'].'{dns_legend'
-    ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['root']
+    ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback']
     );
+}
 
     $GLOBALS['TL_DCA']['tl_page']['palettes']['regular'] = str_replace(
         '{protected_legend'
