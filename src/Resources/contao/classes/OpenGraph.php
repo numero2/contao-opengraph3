@@ -286,7 +286,7 @@ class OpenGraph3 extends Frontend {
     */
     private static function addTag( $tagName=null, $tagValue=null ): bool {
 
-        if( empty($tagName) ) {
+        if( empty($tagName) || empty($tagValue) ) {
             return false;
         }
 
