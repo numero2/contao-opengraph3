@@ -57,6 +57,8 @@ class OpenGraph3 extends Frontend {
                 // add tag if missing
                 if( ($objRef->{$fieldName} || $objRootPage->{$fieldName}) && !self::checkTag($field['label'][0]) ) {
 
+                    $tag = $field['label'][0];
+
                     $value = null;
                     $value = $objRef->{$fieldName} ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
 
@@ -147,7 +149,12 @@ class OpenGraph3 extends Frontend {
                         break;
                     }
 
-                    self::addTag( $field['label'][0], $value );
+                    // add og:image:secure_url if applicable
+                    if( $tag === 'og:image' && strpos($value,'https:') !== false ) {
+                        self::addTag('og:image:secure_url', $value);
+                    }
+
+                    self::addTag($tag, $value);
                 }
             }
 
