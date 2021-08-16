@@ -297,8 +297,15 @@ class OpenGraph3 extends Frontend {
             return false;
         }
 
+        $attribute = 'property';
+
+        if( strpos($tagName, 'twitter') === 0 ) {
+            $attribute = 'name';
+        }
+
         $GLOBALS['TL_HEAD'][] = sprintf(
-            '<meta property="%s" content="%s" />'
+            '<meta %s="%s" content="%s" />'
+        ,   $attribute
         ,   $tagName
         ,   htmlspecialchars( self::replaceInsertTags($tagValue) )
         );
