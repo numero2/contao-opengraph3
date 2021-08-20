@@ -5,7 +5,7 @@ Contao OpenGraph3
 
 About
 --
-Implementation of OpenGraph tags and Twitter Cards for Contao 4.
+Implementation of OpenGraph tags and Twitter Cards for Contao. [Read more](https://www.numero2.de/contao/erweiterungen/opengraph3.html)
 
 System requirements
 --
