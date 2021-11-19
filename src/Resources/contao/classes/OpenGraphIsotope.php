@@ -42,8 +42,14 @@ class OpenGraphIsotope {
             OpenGraph3::addProperty('og_type','product',$objProduct);
 
             // add price
-            $config = Isotope::getConfig();
-            $price = number_format($objProduct->getPrice()->getAmount(1), 2, '.', '');
+            if ( $objPrice = $objProduct->getPrice() ) {
+
+                $config = Isotope::getConfig();
+                $price = number_format($objPrice->getAmount(1), 2, '.', '');
+
+                OpenGraph3::addProperty('og_product_price_amount',$price,$objProduct);
+                OpenGraph3::addProperty('og_product_price_currency',$config->currency,$objProduct);
+            }
 
             OpenGraph3::addProperty('og_product_price_amount',$price,$objProduct);
             OpenGraph3::addProperty('og_product_price_currency',$config->currency,$objProduct);
