@@ -51,9 +51,6 @@ class OpenGraphIsotope {
                 OpenGraph3::addProperty('og_product_price_currency',$config->currency,$objProduct);
             }
 
-            OpenGraph3::addProperty('og_product_price_amount',$price,$objProduct);
-            OpenGraph3::addProperty('og_product_price_currency',$config->currency,$objProduct);
-
             // add shipping weight
             if( isset($objProduct->shipping_weight) ) {
 
