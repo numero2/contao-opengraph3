@@ -19,6 +19,7 @@ By default the OpenGraph fields are attached to the site structure. Furthermore 
 
 
 * [news](https://github.com/contao/news-bundle)
+* [calendar](https://github.com/contao/calendar-bundle)
 * [isotope](https://github.com/isotope/core)
 * [storelocator](https://github.com/numero2/contao-storelocator)
 

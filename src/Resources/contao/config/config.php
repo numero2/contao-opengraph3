@@ -28,6 +28,11 @@ $GLOBALS['TL_OG_MODULES'] = [
     ,   'numero2\OpenGraph3\OpenGraphNews'
     ]
 ,   [
+        'eventreader'
+    ,   'Contao\ModuleEventReader'
+    ,   'numero2\OpenGraph3\OpenGraphCalendarEvents'
+    ]
+,   [
         'storelocator_details'
     ,   'numero2\StoreLocator\ModuleStoreLocatorDetails'
     ,   'numero2\OpenGraph3\OpenGraphStoreLocator'
