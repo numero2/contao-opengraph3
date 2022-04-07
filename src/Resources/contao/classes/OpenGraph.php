@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -55,12 +55,12 @@ class OpenGraph3 extends Frontend {
             foreach( $GLOBALS['TL_DCA']['opengraph_fields']['fields'] as $fieldName => $field ) {
 
                 // add tag if missing
-                if( ($objRef->{$fieldName} || $objRootPage->{$fieldName}) && !self::checkTag($field['label'][0]) ) {
+                if( (($objRef && isset($objRef->{$fieldName})) || ($objRootPage && isset($objRootPage->{$fieldName}))) && !self::checkTag($field['label'][0]) ) {
 
                     $tag = $field['label'][0];
 
                     $value = null;
-                    $value = $objRef->{$fieldName} ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
+                    $value = isset($objRef->{$fieldName}) ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
 
                     // get value based on inputType
                     switch( $field['inputType'] ) {
@@ -161,7 +161,7 @@ class OpenGraph3 extends Frontend {
             // og:locale
             if( !self::checkTag('og:locale') ) {
 
-                $value = $objRef->og_locale ? $objRef->og_locale : $objRootPage->og_locale;
+                $value = ($objRef && isset($objRef->og_locale) && $objRef->og_locale) ? $objRef->og_locale : (($objRootPage && isset($objRootPage->og_locale) && $objRootPage->og_locale) ? $objRootPage->og_locale : null);
 
                 // set default locale based on the page´s language
                 if( !$value ) {
