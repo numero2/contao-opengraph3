@@ -55,12 +55,14 @@ class OpenGraph3 extends Frontend {
             foreach( $GLOBALS['TL_DCA']['opengraph_fields']['fields'] as $fieldName => $field ) {
 
                 // add tag if missing
-                if( (($objRef && isset($objRef->{$fieldName})) || ($objRootPage && isset($objRootPage->{$fieldName}))) && !self::checkTag($field['label'][0]) ) {
+                if( (($objRef && !empty($objRef->{$fieldName})) || ($objRootPage && !empty($objRootPage->{$fieldName}))) && !self::checkTag($field['label'][0]) ) {
 
                     $tag = $field['label'][0];
 
                     $value = null;
-                    $value = isset($objRef->{$fieldName}) ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
+                    $value = !empty($objRef->{$fieldName}) ? $objRef->{$fieldName} : $objRootPage->{$fieldName};
+
+                    $resized = null;
 
                     // get value based on inputType
                     switch( $field['inputType'] ) {
@@ -151,7 +153,7 @@ class OpenGraph3 extends Frontend {
                     }
 
                     // add og:image:secure_url and image size tags if applicable
-                    if( $tag === 'og:image' ) {
+                    if( $tag === 'og:image' && $resized ) {
                         $resizedSize = $resized->getDimensions()->getSize();
 
                         self::addTag('og:image:width', $resizedSize->getWidth());
