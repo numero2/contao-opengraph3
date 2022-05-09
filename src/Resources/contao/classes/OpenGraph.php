@@ -124,7 +124,8 @@ class OpenGraph3 extends Frontend {
 
                                     if( $oFile && $oFile->exists() && $oFile->isGdImage ) {
                                         try {
-                                            $src = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size)->getUrl(TL_ROOT);
+                                            $resized = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size);
+                                            $src = $resized->getUrl(TL_ROOT);
 
                                             if( $src !== $objFile->path ) {
                                                 $value = Environment::get('base') . System::urlEncode($src);
@@ -149,9 +150,16 @@ class OpenGraph3 extends Frontend {
                         break;
                     }
 
-                    // add og:image:secure_url if applicable
-                    if( $tag === 'og:image' && strpos($value,'https:') !== false ) {
-                        self::addTag('og:image:secure_url', $value);
+                    // add og:image:secure_url and image size tags if applicable
+                    if( $tag === 'og:image' ) {
+                        $resizedSize = $resized->getDimensions()->getSize();
+
+                        self::addTag('og:image:width', $resizedSize->getWidth());
+                        self::addTag('og:image:height', $resizedSize->getHeight());
+
+                        if ( strpos($value,'https:') !== false ) {
+                            self::addTag('og:image:secure_url', $value);
+                        }
                     }
 
                     self::addTag($tag, $value);
