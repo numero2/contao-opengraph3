@@ -108,7 +108,7 @@ class OpenGraph3 extends Frontend {
 
                             if( $objFile ) {
 
-                                $value = Environment::get('base') . System::urlEncode($objFile->path);
+                                $value = Environment::get('base') . $objFile->path;
 
                                 $size = Config::get($fieldName.'_size');
                                 if( $size ) {
@@ -130,7 +130,7 @@ class OpenGraph3 extends Frontend {
                                             $src = $resized->getUrl(TL_ROOT);
 
                                             if( $src !== $objFile->path ) {
-                                                $value = Environment::get('base') . System::urlEncode($src);
+                                                $value = Environment::get('base') . $src;
                                             }
 
                                         } catch( \Exception $e ) {
