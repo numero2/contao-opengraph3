@@ -317,7 +317,7 @@ class OpenGraph3 extends Frontend {
             '<meta %s="%s" content="%s" />'
         ,   $attribute
         ,   $tagName
-        ,   htmlspecialchars( self::replaceInsertTags($tagValue) )
+        ,   self::replaceInsertTags($tagValue)
         );
 
         return true;
