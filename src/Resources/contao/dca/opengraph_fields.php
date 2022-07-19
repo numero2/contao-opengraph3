@@ -3,14 +3,17 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
+
+use Contao\System;
+use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
 
 $GLOBALS['TL_DCA']['opengraph_fields'] = [
@@ -44,7 +47,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
         ,   'inputType'         => 'select'
-        ,   'options_callback'  => ['\numero2\OpenGraph3\DCAHelper\OpengraphFields','getTypes']
+        ,   'options_callback'  => ['OpengraphFields','getTypes']
         ,   'eval'              => ['chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(32) NOT NULL default ''"
@@ -136,7 +139,9 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_business_contact_data_country_name' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_country_name']
         ,   'inputType'         => 'select'
-        ,   'options'           => System::getCountries()
+        ,   'options_callbak'   => function() {
+                return System::getCountries();
+            }
         ]
         // music.album fields
     ,   'og_music_musician' => [
@@ -152,7 +157,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_music_release_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_music_release_type']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_music_release_types')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_music_release_types')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // music.song fields
@@ -201,13 +206,13 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_age_group' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_age_group']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_age_groups')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_age_groups')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_availability' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_availability']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_availabilities')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_availabilities')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_brand' => [
@@ -225,7 +230,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_condition' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_condition']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_conditions')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_conditions')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_ean' => [
@@ -270,7 +275,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_shipping_weight_unit' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_shipping_weight_unit']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_size' => [
@@ -280,7 +285,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_target_gender' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_target_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_target_genders')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_target_genders')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_upc' => [
@@ -295,7 +300,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_product_weight_unit' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_product_weight_unit']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_product_weight_units')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
     ,   'og_product_product_link' => [
@@ -319,7 +324,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_profile_gender' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_profile_gender']
         ,   'inputType'         => 'select'
-        ,   'options'           => \numero2\OpenGraph3\DCAHelper\OpengraphFields::getEnumsFromLanguage('og_profile_genders')
+        ,   'options'           => OpengraphFields::getEnumsFromLanguage('og_profile_genders')
         ,   'eval'              => ['includeBlankOption'=>true]
         ]
         // twitter

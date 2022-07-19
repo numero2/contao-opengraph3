@@ -3,20 +3,23 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
+
+use Contao\Controller;
+use Contao\System;
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_storelocator_stores']) ) {
 
-    \System::loadLanguageFile('opengraph_fields');
-    \Controller::loadDataContainer('opengraph_fields');
+    System::loadLanguageFile('opengraph_fields');
+    Controller::loadDataContainer('opengraph_fields');
 
     /**
      * Modify palettes

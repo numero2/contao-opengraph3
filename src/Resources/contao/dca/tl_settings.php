@@ -3,20 +3,24 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
+
+use Contao\BackendUser;
+use Contao\CoreBundle\ContaoCoreBundle;
+use Contao\System;
 
 
 /**
  * Add palettes to tl_settings
  */
-if( version_compare(VERSION.'.'.BUILD, '4.7', '<') ) {
+if( version_compare(ContaoCoreBundle::getVersion(), '4.7', '<') ) {
 
     $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] = str_replace(
         ';{timeout_legend'
@@ -40,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['og_image_size'] = [
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
 ,   'options_callback' => function(){
-        return \System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\BackendUser::getInstance());
+        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];
@@ -52,7 +56,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['twitter_image_size'] = [
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
 ,   'options_callback' => function(){
-        return \System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\BackendUser::getInstance());
+        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
     }
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];

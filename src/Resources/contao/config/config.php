@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -38,11 +38,6 @@ $GLOBALS['TL_OG_MODULES'] = [
     ,   'numero2\OpenGraph3\OpenGraphStoreLocator'
     ]
 ];
-
-
-if( 'BE' === TL_MODE ) {
-    $GLOBALS['TL_CSS'][] = 'bundles/opengraph3/backend.css';
-}
 
 
 /**
