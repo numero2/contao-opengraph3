@@ -12,11 +12,14 @@
  * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
  */
 
+use Contao\System;
+use Contao\Controller;
+
 
 if(!empty($GLOBALS['TL_DCA']['tl_calendar_events'])) {
 
-    \Contao\System::loadLanguageFile('opengraph_fields');
-    \Contao\Controller::loadDataContainer('opengraph_fields');
+    System::loadLanguageFile('opengraph_fields');
+    Controller::loadDataContainer('opengraph_fields');
 
     /**
      * Modify palettes

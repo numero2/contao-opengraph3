@@ -1,7 +1,10 @@
 services:
 
-    marketing_suite.listener.kernel_response.backend_assets:
-        class: numero2\MarketingSuiteBundle\EventListener\KernelResponse\BackendAssetsListener
+    numero2.opengraph.listener.hooks.opengraph:
+        class: numero2\Opengraph3Bundle\EventListener\Hooks\OpenGraph3Listener
+
+    numero2.opengraph.listener.kernel_response.backend_assets:
+        class: numero2\Opengraph3Bundle\EventListener\KernelResponse\BackendAssetsListener
         arguments:
             - '@contao.routing.scope_matcher'
         tags:

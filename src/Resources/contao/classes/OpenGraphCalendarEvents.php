@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -28,11 +28,10 @@ class OpenGraphCalendarEvents {
      *
      * @param $objModule
      */
-    public static function addModuleData( $objModule ): void
-    {
+    public static function addModuleData( $objModule ): void {
 
         $calendars = StringUtil::deserialize($objModule->cal_calendar, true);
-        $event = CalendarEventsModel::findPublishedByParentAndIdOrAlias(Input::get('events'), $calendars);
+        $event = CalendarEventsModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item'), $calendars);
 
         // Check if the calendar event could get loaded from the database
         if (null === $event) {

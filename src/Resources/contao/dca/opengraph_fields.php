@@ -47,7 +47,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
         ,   'inputType'         => 'select'
-        ,   'options_callback'  => ['OpengraphFields','getTypes']
+        ,   'options_callback'  => [OpengraphFields::class,'getTypes']
         ,   'eval'              => ['chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(32) NOT NULL default ''"
@@ -139,9 +139,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_business_contact_data_country_name' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_business_contact_data_country_name']
         ,   'inputType'         => 'select'
-        ,   'options_callbak'   => function() {
-                return System::getCountries();
-            }
+        ,   'options_callback'  => [OpengraphFields::class, 'getCountries']
         ]
         // music.album fields
     ,   'og_music_musician' => [

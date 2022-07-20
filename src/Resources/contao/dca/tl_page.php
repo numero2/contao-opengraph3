@@ -13,6 +13,7 @@
  */
 
 use Contao\Controller;
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\System;
 
 
@@ -30,7 +31,7 @@ if( !empty($GLOBALS['TL_DCA']['tl_page']) ) {
     ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['root']
     );
 
-    if( version_compare(VERSION, '4.9', '==') ) {
+    if( defined('VERSION') && version_compare(VERSION, '4.9', '==') ) {
 
         $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback'] = str_replace(
             '{dns_legend'
@@ -38,7 +39,7 @@ if( !empty($GLOBALS['TL_DCA']['tl_page']) ) {
         ,   $GLOBALS['TL_DCA']['tl_page']['palettes']['rootfallback']
         );
 
-    } else if( version_compare(VERSION, '4.9', '>') ) {
+    } else if( (defined('VERSION') && version_compare(VERSION, '4.9', '>')) || version_compare(ContaoCoreBundle::getVersion(), '4.9', '>') ) {
 
         $GLOBALS['TL_DCA']['tl_page']['palettes']['root'] = str_replace(
             '{url_legend'

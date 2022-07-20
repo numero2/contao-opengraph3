@@ -13,6 +13,9 @@
  */
 
 
+use numero2\OpenGraph3\OpenGraphProperties;
+
+
 /**
  * OpenGraph compatible modules
  */
@@ -43,12 +46,4 @@ $GLOBALS['TL_OG_MODULES'] = [
 /**
  * Backend Form Fields
  */
-$GLOBALS['BE_FFL']['openGraphProperties'] = '\numero2\OpenGraph3\OpenGraphProperties';
-
-
-/**
- * Hooks
- */
-$GLOBALS['TL_HOOKS']['getContentElement'][] = ['numero2\OpenGraph3\OpenGraph3', 'findCompatibleModules'];
-$GLOBALS['TL_HOOKS']['getFrontendModule'][] = ['numero2\OpenGraph3\OpenGraph3', 'appendTagsByModule'];
-$GLOBALS['TL_HOOKS']['generatePage'][] = ['numero2\OpenGraph3\OpenGraph3', 'addTagsToPage'];
+$GLOBALS['BE_FFL']['openGraphProperties'] = OpenGraphProperties::class;

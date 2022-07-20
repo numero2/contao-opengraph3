@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -35,7 +35,7 @@ class OpenGraphNews {
         $newsArchives = StringUtil::deserialize($objModule->news_archives);
 
         $objArticle = NULL;
-        $objArticle = NewsModel::findPublishedByParentAndIdOrAlias(Input::get('items'), $newsArchives);
+        $objArticle = NewsModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item'), $newsArchives);
 
         if( null !== $objArticle ) {
 

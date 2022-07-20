@@ -12,51 +12,32 @@
  * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
-use Contao\BackendUser;
-use Contao\CoreBundle\ContaoCoreBundle;
-use Contao\System;
+use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
 
 /**
  * Add palettes to tl_settings
  */
-if( version_compare(ContaoCoreBundle::getVersion(), '4.7', '<') ) {
-
-    $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] = str_replace(
-        ';{timeout_legend'
-    ,   ';{opengraph_twitter_legend:hide},og_image_size,twitter_image_size;{timeout_legend'
-    ,   $GLOBALS['TL_DCA']['tl_settings']['palettes']['default']
-    );
-
-} else {
-
-    $GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{opengraph_twitter_legend:hide},og_image_size,twitter_image_size';
-}
+$GLOBALS['TL_DCA']['tl_settings']['palettes']['default'] .= ';{opengraph_twitter_legend:hide},og_image_size,twitter_image_size';
 
 
 /**
  * Add fields to tl_settings
  */
 $GLOBALS['TL_DCA']['tl_settings']['fields']['og_image_size'] = [
-    'label'                 => &$GLOBALS['TL_LANG']['tl_settings']['og_image_size']
-,   'exclude'               => true
+    'exclude'               => true
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback' => function(){
-        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-    }
+,   'options_callback'      => [OpengraphFields::class,'getImageSizes']
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['twitter_image_size'] = [
-    'label'                 => &$GLOBALS['TL_LANG']['tl_settings']['twitter_image_size']
-,   'exclude'               => true
+    'exclude'               => true
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback' => function(){
-        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
-    }
+,   'options_callback'      => [OpengraphFields::class,'getImageSizes']
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];

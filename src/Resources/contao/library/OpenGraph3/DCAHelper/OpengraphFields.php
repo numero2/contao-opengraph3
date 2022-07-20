@@ -3,23 +3,24 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\OpenGraph3\DCAHelper;
 
-use Contao\Backend;
+use Contao\BackendUser;
 use Contao\DC_Table;
+use Contao\System;
 
 
-class OpengraphFields extends Backend {
+class OpengraphFields {
 
 
     /**
@@ -72,5 +73,35 @@ class OpengraphFields extends Backend {
         }
 
         return [];
+    }
+
+
+    /**
+     * Generate options for countries
+     *
+     * @return array
+     */
+    public static function getCountries(): array {
+
+        if( System::getContainer()->has('contao.intl.countries') ) {
+            return System::getContainer()->get('contao.intl.countries')->getCountries();
+        } else {
+            return System::getCountries();
+        }
+    }
+
+
+    /**
+     * Generate options for image sizes
+     *
+     * @return array
+     */
+    public static function getImageSizes(): array {
+
+        if( System::getContainer()->has('contao.image.sizes') ) {
+            return System::getContainer()->get('contao.image.sizes')->getOptionsForUser(BackendUser::getInstance());
+        } else {
+            return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+        }
     }
 }

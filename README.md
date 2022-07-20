@@ -10,7 +10,7 @@ Implementation of OpenGraph tags and Twitter Cards for Contao. [Read more](https
 System requirements
 --
 
-* [Contao 4](https://github.com/contao/contao)
+* [Contao 4.9 or newer](https://github.com/contao/contao)
 
 Compatible modules
 --

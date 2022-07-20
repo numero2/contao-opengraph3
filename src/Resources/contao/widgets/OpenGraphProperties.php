@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2022 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -355,7 +355,7 @@ class OpenGraphProperties extends Widget {
             'property' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
                 ,   'inputType'         => 'select'
-                ,   'options_callback'  => ['\numero2\OpenGraph3\OpenGraphProperties', 'getProperties']
+                ,   'options_callback'  => [self::class, 'getProperties']
                 ,   'eval'              => ['mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true]
             ]
         ,   'value' => [
@@ -365,7 +365,7 @@ class OpenGraphProperties extends Widget {
             ]
         ];
 
-        $options = OpenGraphProperties::getProperties($this->objDca);
+        $options = self::getProperties($this->objDca);
 
         $removedValues = false;
         if( $value && !empty($value) && !empty($value[0]) ) {

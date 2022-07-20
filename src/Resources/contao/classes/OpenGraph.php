@@ -21,14 +21,15 @@ use Contao\Controller;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
-use Contao\Frontend;
+use Contao\InsertTags;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
+use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
 
-class OpenGraph3 extends Frontend {
+class OpenGraph3 {
 
 
     /**
@@ -41,7 +42,7 @@ class OpenGraph3 extends Frontend {
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
 
-        global $objPage;
+        $objPage = System::getContainer()->get('request_stack')->getCurrentRequest()->get('pageModel');
 
         $objRef = !$ref ? $objPage : $ref;
         $objRootPage = ($objRef instanceof PageModel) ? PageModel::findById($objPage->rootId) : null;
@@ -77,7 +78,7 @@ class OpenGraph3 extends Frontend {
                                 case 'og_business_contact_data_country_name':
 
                                     $arrCountries = [];
-                                    $arrCountries = System::getCountries();
+                                    $arrCountries = OpengraphFields::getCountries();
 
                                     $value = $arrCountries[$value];
 
@@ -191,7 +192,7 @@ class OpenGraph3 extends Frontend {
 
             // og:url added automatically
             if( !self::checkTag('og:url') ) {
-                self::addTag( 'og:url', Environment::get('url') . Environment::get('requestUri') );
+                self::addTag('og:url', Environment::get('url') . Environment::get('requestUri'));
             }
         }
     }
@@ -224,7 +225,7 @@ class OpenGraph3 extends Frontend {
      *
      * @return String
      */
-    public function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
+    public static function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
 
         $moduleClass = null;
         $moduleClass = get_class($objModule);
@@ -233,9 +234,7 @@ class OpenGraph3 extends Frontend {
         foreach( $GLOBALS['TL_OG_MODULES'] as $module ) {
 
             if( $moduleClass === "Contao\ModuleModel" && $objModule->type === $module[0] || $moduleClass === $module[1] ) {
-
-                $this->import($module[2]);
-                $this->{$module[2]}->addModuleData($objModule);
+                $module[2]::addModuleData($objModule);
             }
         }
 
@@ -253,7 +252,7 @@ class OpenGraph3 extends Frontend {
      *
      * @return String
      */
-    public function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
+    public static function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
 
         if( get_class($objElement) === "Contao\ContentModule" ) {
 
@@ -313,11 +312,23 @@ class OpenGraph3 extends Frontend {
             $attribute = 'name';
         }
 
+        if( System::getContainer()->has('contao.insert_tag.parser') ) {
+
+            $tagValue = System::getContainer()->get('contao.insert_tag.parser')->replace($tagValue);
+
+        } else {
+
+            $oInsertTags = null;
+            $oInsertTags = new InsertTags();
+
+            $tagValue = $oInsertTags->replace($tagValue);
+        }
+
         $GLOBALS['TL_HEAD'][] = sprintf(
             '<meta %s="%s" content="%s" />'
         ,   $attribute
         ,   $tagName
-        ,   self::replaceInsertTags($tagValue)
+        ,   $tagValue
         );
 
         return true;
