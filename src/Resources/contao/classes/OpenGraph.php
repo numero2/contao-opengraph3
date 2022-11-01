@@ -325,7 +325,7 @@ class OpenGraph3 {
         }
 
         $GLOBALS['TL_HEAD'][] = sprintf(
-            '<meta %s="%s" content="%s" />'
+            '<meta %s="%s" content="%s">'
         ,   $attribute
         ,   $tagName
         ,   $tagValue
