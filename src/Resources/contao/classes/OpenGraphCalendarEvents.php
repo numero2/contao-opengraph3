@@ -24,14 +24,14 @@ class OpenGraphCalendarEvents {
 
 
     /**
-     * Appends OpenGraph data from news articles
+     * Appends OpenGraph data from event articles
      *
      * @param $objModule
      */
     public static function addModuleData( $objModule ): void {
 
         $calendars = StringUtil::deserialize($objModule->cal_calendar, true);
-        $event = CalendarEventsModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item'), $calendars);
+        $event = CalendarEventsModel::findPublishedByParentAndIdOrAlias((Input::get('auto_item') ?? ''), $calendars);
 
         // Check if the calendar event could get loaded from the database
         if (null === $event) {
