@@ -24,7 +24,7 @@ class OpenGraphCalendarEvents {
 
 
     /**
-     * Appends OpenGraph data from event articles
+     * Appends OpenGraph data from events
      *
      * @param $objModule
      */
