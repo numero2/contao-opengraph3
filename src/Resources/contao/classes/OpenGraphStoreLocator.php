@@ -33,7 +33,7 @@ class OpenGraphStoreLocator {
         $alias = Input::get('auto_item') ? Input::get('auto_item') : Input::get('store');
 
         $objStore = NULL;
-        $objStore = StoresModel::findByIdOrAlias( $alias );
+        $objStore = StoresModel::findByIdOrAlias( ($alias ?? '') );
 
         if( null !== $objStore ) {
 
