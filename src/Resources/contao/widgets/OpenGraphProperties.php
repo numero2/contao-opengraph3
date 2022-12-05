@@ -372,9 +372,13 @@ class OpenGraphProperties extends Widget {
 
             foreach( $value as $keyRow => $row ) {
 
-                if( !array_key_exists($row[0], $options) ){
-                    unset($this->varValue[$keyRow]);
-                    $removedValues = true;
+                if( !array_key_exists($row[0], $options) ) {
+
+                    if( is_array($this->varValue) && array_key_exists($keyRow, $this->varValue) ) {
+                        unset($this->varValue[$keyRow]);
+                        $removedValues = true;
+                    }
+
                     continue;
                 }
 
