@@ -35,7 +35,7 @@ class OpenGraphNews {
         $newsArchives = StringUtil::deserialize($objModule->news_archives);
 
         $objArticle = NULL;
-        $objArticle = NewsModel::findPublishedByParentAndIdOrAlias(Input::get('auto_item'), $newsArchives);
+        $objArticle = NewsModel::findPublishedByParentAndIdOrAlias((Input::get('auto_item') ?? ''), $newsArchives);
 
         if( null !== $objArticle ) {
 
