@@ -44,6 +44,10 @@ class OpenGraph3 {
 
         $objPage = System::getContainer()->get('request_stack')->getCurrentRequest()->get('pageModel');
 
+        if( !($objPage instanceof PageModel) ){
+            $objPage = PageModel::findById($objPage);
+        }
+
         $objRef = !$ref ? $objPage : $ref;
         $objRootPage = ($objRef instanceof PageModel) ? PageModel::findById($objPage->rootId) : null;
 
