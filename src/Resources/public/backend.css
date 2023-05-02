@@ -1,60 +1,64 @@
 .og_properties > table {
-    width: 100%;
+  width: 100%;
 }
 
 .og_properties > table tr {
-    height: 1.5rem;
+  height: 1.5rem;
 }
 
 .og_properties > table tr td {
-    vertical-align: top;
-    height: auto;
+  vertical-align: top;
+  height: auto;
 }
 
 .og_properties > table tr td.w50 {
-    width: 50%;
-    float: none;
-    position: relative;
+  width: 50%;
+  float: none;
+  position: relative;
 }
 
 .og_properties > table tr td.w50 > *:nth-child(1) {
-    width: calc(100% - 15px);
+  width: calc(100% - 15px);
 }
 
-.og_properties > table tr td.w50 > *:nth-child(1)textarea {
-    resize: vertical;
+.og_properties > table tr td.w50 > *:nth-childtextarea(1) {
+  resize: vertical;
 }
 
 .og_properties > table tr td.w50.wizard > *:nth-child(1) {
-    width: calc(100% - 42px);
+  width: calc(100% - 42px);
 }
 
 .og_properties > table tr td.w50 h3 {
-    display: none;
+  display: none;
 }
 
 .og_properties > table tr td.w50 + .w50 {
-    padding-left: 15px;
-    width: calc(50% - 70px);
+  padding-left: 15px;
+  width: calc(50% - 70px);
 }
 
 .og_properties > table tr td.operations {
-    width: 70px;
-    text-align: right;
+  width: 80px;
+  text-align: right;
+  vertical-align: middle;
 }
 
-.og_properties > table tr td.operations a img[src$=".svg"] {
-    padding-top: 9px;
+.og_properties > table tr td.operations a[rel="up"] img {
+  transform: rotate(90deg);
 }
 
-.og_properties > table tr:nth-child(1) td.operations a[rel="up"],
-.og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {
-    cursor: default;
-    pointer-events: none;
+.og_properties > table tr td.operations a[rel="down"] img {
+  transform: rotate(-90deg);
+}
+
+.og_properties > table tr:nth-child(1) td.operations a[rel="up"], .og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {
+  cursor: default;
+  pointer-events: none;
 }
 
 .og_properties > table tr:nth-child(1):nth-last-child(1) td.operations a[rel="delete"] {
-    cursor: default;
-    pointer-events: none;
-    opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
 }

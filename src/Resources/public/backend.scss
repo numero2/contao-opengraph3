@@ -33,10 +33,13 @@
             }
 
             &.operations {
-                width: 70px;
-                text-align: right;
 
-                a img[src$=".svg"]{ padding-top: 9px; }
+                width: 80px;
+                text-align: right;
+                vertical-align: middle;
+
+                a[rel="up"] img { transform: rotate(90deg); }
+                a[rel="down"] img { transform: rotate(-90deg); }
             }
         }
 

@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
+ * Copyright (c) 2005-2023 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2023 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -259,16 +259,16 @@ class OpenGraphProperties extends Widget {
 
             $html .= '<td class="operations">';
             $html .=    '<a rel="copy" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'">
-                            <img src="system/themes/'.$theme.'/'.$path.'/copy.'.$iconExt.'" width="14" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'" class="tl_listwizard_img">
+                            <img src="system/themes/'.$theme.'/'.$path.'/copy.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'" class="tl_listwizard_img">
                         </a>';
             $html .=    '<a rel="up" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['up'].'">
-                            <img src="system/themes/'.$theme.'/'.$path.'/up.'.$iconExt.'" width="13" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['up'].'" class="tl_listwizard_img">
+                            <img src="system/themes/'.$theme.'/'.$path.'/back.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['up'].'" class="tl_listwizard_img">
                         </a>';
             $html .=    '<a rel="down" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['down'].'">
-                            <img src="system/themes/'.$theme.'/'.$path.'/down.'.$iconExt.'" width="13" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['down'].'" class="tl_listwizard_img">
+                            <img src="system/themes/'.$theme.'/'.$path.'/back.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['down'].'" class="tl_listwizard_img">
                         </a>';
             $html .=    '<a rel="delete" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['delete'].'">
-                            <img src="system/themes/'.$theme.'/'.$path.'/delete.'.$iconExt.'" width="14" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['delete'].'" class="tl_listwizard_img">
+                            <img src="system/themes/'.$theme.'/'.$path.'/delete.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['delete'].'" class="tl_listwizard_img">
                         </a>';
             $html .= '</td>';
             $html .= '</tr>';
