@@ -22,6 +22,7 @@ use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\InsertTags;
+use Contao\Model;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
