@@ -208,7 +208,7 @@ class OpenGraph3 {
      *
      * @param string $prop
      * @param string $value
-     * @param Model $objRef
+     * @param mixed $objRef
      */
     public static function addProperty( $prop, $value, $objRef ): void {
 
@@ -224,7 +224,7 @@ class OpenGraph3 {
     /**
      * Appends OpenGraph data for the given module
      *
-     * @param Model $objRow
+     * @param mixed $objRow
      * @param String $strBuffer
      * @param Module $objModule
      *
@@ -251,7 +251,7 @@ class OpenGraph3 {
      * Checks if the given Content Element is a module and tries to use it
      * for OpenGraph data
      *
-     * @param Model $objRow
+     * @param mixed $objRow
      * @param String $strBuffer
      * @param Contao\ContentElement $objElement
      *
