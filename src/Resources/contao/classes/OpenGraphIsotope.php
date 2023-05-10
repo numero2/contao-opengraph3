@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
+ * Copyright (c) 2005-2023 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2023 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -34,7 +34,7 @@ class OpenGraphIsotope {
      */
     public static function addModuleData( $objModule ): void {
 
-        $objProduct = NULL;
+        $objProduct = null;
         $objProduct = Product::findAvailableByIdOrAlias( (Input::get('auto_item') ?? '') );
 
         if( null !== $objProduct ) {

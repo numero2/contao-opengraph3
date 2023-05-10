@@ -3,13 +3,13 @@
 /**
  * Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
+ * Copyright (c) 2005-2023 Leo Feyer
  *
  * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @copyright 2023 numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -34,12 +34,10 @@ class OpenGraphCalendarEvents {
         $event = CalendarEventsModel::findPublishedByParentAndIdOrAlias((Input::get('auto_item') ?? ''), $calendars);
 
         // Check if the calendar event could get loaded from the database
-        if (null === $event) {
-            return;
+        if( null !== $event ) {
+
+            OpenGraph3::addProperty('og_type', 'website', $event);
+            OpenGraph3::addTagsToPage($event);
         }
-
-        OpenGraph3::addProperty('og_type', 'website', $event);
-
-        OpenGraph3::addTagsToPage($event);
     }
 }

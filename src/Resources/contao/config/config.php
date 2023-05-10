@@ -40,6 +40,11 @@ $GLOBALS['TL_OG_MODULES'] = [
     ,   'numero2\StoreLocator\ModuleStoreLocatorDetails'
     ,   'numero2\OpenGraph3\OpenGraphStoreLocator'
     ]
+,   [
+        'faqreader'
+    ,   'Contao\ModuleFaqReader'
+    ,   'numero2\OpenGraph3\OpenGraphFaq'
+    ]
 ];
 
 

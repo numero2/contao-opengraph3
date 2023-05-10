@@ -16,41 +16,31 @@
 namespace numero2\OpenGraph3;
 
 use Contao\Config;
+use Contao\FaqModel;
 use Contao\Input;
-use Contao\NewsModel;
 use Contao\StringUtil;
 use DateTime;
 
 
-class OpenGraphNews {
+class OpenGraphFaq {
 
 
     /**
-     * Appends OpenGraph data from news articles
+     * Appends OpenGraph data from FAQ articles
      *
      * @param $objModule
      */
     public static function addModuleData( $objModule ): void {
 
-        $newsArchives = [];
-        $newsArchives = StringUtil::deserialize($objModule->news_archives);
+        $faqCategories = [];
+        $faqCategories = StringUtil::deserialize($objModule->faq_categories);
 
         $objArticle = null;
-        $objArticle = NewsModel::findPublishedByParentAndIdOrAlias((Input::get('auto_item') ?? ''), $newsArchives);
+        $objArticle = FaqModel::findPublishedByParentAndIdOrAlias((Input::get('auto_item') ?? ''), $faqCategories);
 
         if( null !== $objArticle ) {
 
             OpenGraph3::addProperty('og_type','article',$objArticle);
-
-            // add published time
-            if( $objArticle->time ) {
-
-                $date = new DateTime();
-                $date->setTimestamp($objArticle->time);
-                $date = $date->format(Config::get('datimFormat'));
-
-                OpenGraph3::addProperty('og_article_published_time',$date,$objArticle);
-            }
 
             // add modified time
             if( $objArticle->tstamp ) {

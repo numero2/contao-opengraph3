@@ -10,15 +10,16 @@ Implementation of OpenGraph tags and Twitter Cards for Contao. [Read more](https
 System requirements
 --
 
-* [Contao 4.9 or newer](https://github.com/contao/contao)
+* [Contao 4.13 or newer](https://github.com/contao/contao)
 
-Compatible modules
+Compatible bundles
 --
 
-By default the OpenGraph fields are attached to the site structure. Furthermore OpenGraph3 is compatible with the following Contao modules:
+By default the OpenGraph fields are attached to the site structure. Furthermore OpenGraph3 is compatible with the following Contao bundles:
 
 
 * [news](https://github.com/contao/news-bundle)
+* [faq](https://github.com/contao/faq-bundle)
 * [calendar](https://github.com/contao/calendar-bundle)
 * [isotope](https://github.com/isotope/core)
 * [storelocator](https://github.com/numero2/contao-storelocator)
