@@ -43,6 +43,12 @@ class OpenGraph3 {
         Controller::loadDataContainer('opengraph_fields');
         System::loadLanguageFile('opengraph_fields');
 
+        $request = System::getContainer()->get('request_stack')->getCurrentRequest();
+
+        if( $request && System::getContainer()->get('contao.routing.scope_matcher')->isBackendRequest($request) ) {
+            return;
+        }
+
         $objPage = System::getContainer()->get('request_stack')->getCurrentRequest()->get('pageModel');
 
         if( !($objPage instanceof PageModel) ){
