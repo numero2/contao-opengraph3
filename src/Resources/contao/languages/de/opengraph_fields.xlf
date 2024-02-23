@@ -3,7 +3,7 @@
 <file>
 <body>
     <trans-unit id="opengraph_fields.legends.opengraph_legend">
-        <target><![CDATA[<img src="bundles/opengraph3/icon-ogp.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Open Graph</span>]]></target>
+        <target>Open Graph</target>
     </trans-unit>
     <!-- __basic__ fields -->
     <trans-unit id="opengraph_fields.og_title.0">
@@ -486,7 +486,7 @@
         <target>männlich</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.legends.twitter_legend">
-        <target><![CDATA[<img src="bundles/opengraph3/icon-twitter.svg" alt="" style="display: block; float:left; margin-right: 4px;" /><span style="display: block; width: 100px;">Twitter</span>]]></target>
+        <target>X / Twitter</target>
     </trans-unit>
     <trans-unit id="opengraph_fields.twitter_site.0">
         <target>twitter:site</target>

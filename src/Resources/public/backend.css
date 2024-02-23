@@ -62,3 +62,35 @@
   pointer-events: none;
   opacity: 0.5;
 }
+
+fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend,
+#pal_opengraph_legend legend {
+  display: flex;
+}
+
+fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend:before,
+#pal_opengraph_legend legend:before {
+  content: "";
+  display: block;
+  margin-right: 1ch;
+  width: 1em;
+  height: 1em;
+  background: url("/bundles/opengraph3/icon-ogp.svg") no-repeat scroll 50% 50%;
+  background-size: contain;
+}
+
+fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend,
+#pal_twitter_legend legend {
+  display: flex;
+}
+
+fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend:before,
+#pal_twitter_legend legend:before {
+  content: "";
+  display: block;
+  margin-right: 1ch;
+  width: 1em;
+  height: 1em;
+  background: url("/bundles/opengraph3/icon-twitter.svg") no-repeat scroll 50% 50%;
+  background-size: contain;
+}

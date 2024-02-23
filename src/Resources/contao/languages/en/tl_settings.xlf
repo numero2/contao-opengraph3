@@ -4,7 +4,7 @@
 <body>
     <!-- LEGENDS -->
     <trans-unit id="tl_settings.opengraph_twitter_legend">
-        <target>Open Graph / Twitter settings</target>
+        <target>Open Graph / X / Twitter settings</target>
     </trans-unit>
     <!-- FIELDS -->
     <trans-unit id="tl_settings.og_image_size.0">
@@ -14,7 +14,7 @@
         <target>Here you can set the image dimensions and the resize mode for the og:image.</target>
     </trans-unit>
     <trans-unit id="tl_settings.twitter_image_size.0">
-        <target>Twitter image size</target>
+        <target>X / Twitter image size</target>
     </trans-unit>
     <trans-unit id="tl_settings.twitter_image_size.1">
         <target>Here you can set the image dimensions and the resize mode for the twitter:image.</target>
