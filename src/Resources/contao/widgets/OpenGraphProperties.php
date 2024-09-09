@@ -1,15 +1,12 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2023 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2023 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -23,6 +20,7 @@ use Contao\Image;
 use Contao\Input;
 use Contao\System;
 use Contao\Widget;
+use Exception;
 
 
 class OpenGraphProperties extends Widget {
@@ -96,7 +94,7 @@ class OpenGraphProperties extends Widget {
                             $this->objDca
                         ));
 
-                    } catch( \Exception $e ) {
+                    } catch( Exception $e ) {
 
                         $cField = new $strClass($strClass::getAttributesFromDca(
                             $field,
@@ -191,7 +189,7 @@ class OpenGraphProperties extends Widget {
                         $this->objDca
                     ));
 
-                } catch( \Exception $e ) {
+                } catch( Exception $e ) {
 
                     $cField = new $strClass($strClass::getAttributesFromDca(
                         $field,

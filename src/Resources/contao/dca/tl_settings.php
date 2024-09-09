@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
+
 
 use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
@@ -29,7 +27,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['og_image_size'] = [
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback'      => [OpengraphFields::class,'getImageSizes']
+,   'options_callback'      => [OpengraphFields::class, 'getImageSizes']
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];
 
@@ -38,6 +36,6 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['twitter_image_size'] = [
 ,   'inputType'             => 'imageSize'
 ,   'reference'             => &$GLOBALS['TL_LANG']['MSC']
 ,   'eval'                  => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true, 'helpwizard'=>true, 'tl_class'=>'w50']
-,   'options_callback'      => [OpengraphFields::class,'getImageSizes']
+,   'options_callback'      => [OpengraphFields::class, 'getImageSizes']
 ,   'sql'                   => "varchar(64) NOT NULL default ''"
 ];

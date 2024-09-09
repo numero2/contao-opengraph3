@@ -1,7 +1,12 @@
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
 
     numero2.opengraph.listener.hooks.opengraph:
         class: numero2\Opengraph3Bundle\EventListener\Hooks\OpenGraph3Listener
+
 
     numero2.opengraph.listener.kernel_response.backend_assets:
         class: numero2\Opengraph3Bundle\EventListener\KernelResponse\BackendAssetsListener

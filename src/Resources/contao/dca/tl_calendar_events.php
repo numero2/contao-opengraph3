@@ -1,22 +1,20 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
-use Contao\System;
+
 use Contao\Controller;
+use Contao\System;
 
 
-if(!empty($GLOBALS['TL_DCA']['tl_calendar_events'])) {
+if( !empty($GLOBALS['TL_DCA']['tl_calendar_events']) ) {
 
     System::loadLanguageFile('opengraph_fields');
     Controller::loadDataContainer('opengraph_fields');

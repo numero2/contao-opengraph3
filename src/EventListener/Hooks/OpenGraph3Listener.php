@@ -1,15 +1,12 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -26,11 +23,11 @@ class OpenGraph3Listener {
      * Checks if the given Content Element is a module and tries to use it
      * for OpenGraph data
      *
-     * @param Model $objRow
-     * @param String $strBuffer
+     * @param Contao\Model $objRow
+     * @param string $strBuffer
      * @param Contao\ContentElement $objElement
      *
-     * @return String
+     * @return string
      *
      * @Hook("getContentElement")
      */
@@ -43,11 +40,11 @@ class OpenGraph3Listener {
     /**
      * Appends OpenGraph data for the given module
      *
-     * @param Model $objRow
-     * @param String $strBuffer
-     * @param Module $objModule
+     * @param Contao\Model $objRow
+     * @param string $strBuffer
+     * @param Contao\Module $objModule
      *
-     * @return String
+     * @return string
      *
      * @Hook("getFrontendModule")
      */
@@ -60,7 +57,7 @@ class OpenGraph3Listener {
     /**
      * Add OpenGraph tags to the current page
      *
-     * @param Model $ref
+     * @param Contao\Model $ref
      *
      * @Hook("generatePage")
      */

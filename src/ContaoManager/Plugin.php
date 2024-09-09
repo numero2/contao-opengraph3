@@ -1,21 +1,20 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2021 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2021 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\Opengraph3Bundle\ContaoManager;
 
+use Contao\CalendarBundle\ContaoCalendarBundle;
 use Contao\CoreBundle\ContaoCoreBundle;
+use Contao\FaqBundle\ContaoFaqBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
@@ -36,9 +35,11 @@ class Plugin implements BundlePluginInterface {
             BundleConfig::create(Opengraph3Bundle::class)
                 ->setLoadAfter([
                     ContaoCoreBundle::class,
+                    ContaoCalendarBundle::class,
+                    ContaoFaqBundle::class,
                     ContaoNewsBundle::class,
-                    'isotope',
                     StoreLocatorBundle::class,
+                    'isotope',
                 ])
         ];
     }

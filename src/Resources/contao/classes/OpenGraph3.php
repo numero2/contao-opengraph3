@@ -1,32 +1,29 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\OpenGraph3;
 
 use Contao\Config;
-use Contao\ContentElement;
 use Contao\Controller;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\InsertTags;
-use Contao\Model;
 use Contao\ModuleModel;
 use Contao\PageModel;
 use Contao\StringUtil;
 use Contao\System;
+use DateTime;
+use Exception;
 use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
 
@@ -36,7 +33,7 @@ class OpenGraph3 {
     /**
      * Add OpenGraph tags to the current page
      *
-     * @param Model $ref
+     * @param Contao\Model|null $ref
      */
     public static function addTagsToPage( $ref=null ): void {
 
@@ -103,7 +100,7 @@ class OpenGraph3 {
                                     case 'datim':
 
                                         $date = null;
-                                        $date = \DateTime::createFromFormat( Config::get('datimFormat'), $value );
+                                        $date = DateTime::createFromFormat( Config::get('datimFormat'), $value );
 
                                         $value = $date->format('Y-m-d\TH:i:s');
 
@@ -145,7 +142,7 @@ class OpenGraph3 {
                                                 $value = Environment::get('base') . $src;
                                             }
 
-                                        } catch( \Exception $e ) {
+                                        } catch( Exception $e ) {
                                         }
                                     }
                                 }
@@ -160,7 +157,7 @@ class OpenGraph3 {
                         break;
 
                         default:
-                            throw new \Exception("Unhandled field type ".$field['inputType']);
+                            throw new Exception("Unhandled field type ".$field['inputType']);
                         break;
                     }
 
@@ -231,10 +228,10 @@ class OpenGraph3 {
      * Appends OpenGraph data for the given module
      *
      * @param mixed $objRow
-     * @param String $strBuffer
-     * @param Module $objModule
+     * @param string $strBuffer
+     * @param Contao\Module|Contao\ModuleModel $objModule
      *
-     * @return String
+     * @return string
      */
     public static function appendTagsByModule( $objRow, $strBuffer, $objModule ): string {
 
@@ -258,10 +255,10 @@ class OpenGraph3 {
      * for OpenGraph data
      *
      * @param mixed $objRow
-     * @param String $strBuffer
+     * @param string $strBuffer
      * @param Contao\ContentElement $objElement
      *
-     * @return String
+     * @return string
      */
     public static function findCompatibleModules( $objRow, $strBuffer, $objElement ): string {
 
@@ -282,7 +279,7 @@ class OpenGraph3 {
     /**
     * Adds the additional og_properties as individual attributes
     *
-    * @param Model $ref
+    * @param Contao\Model $ref
     */
     private static function parseAdditionalProperties( $ref ): void {
 
@@ -306,8 +303,8 @@ class OpenGraph3 {
     /**
     * Adds a specific OpenGraph tag to the head
     *
-    * @param String $tagName
-    * @param String $tagValue
+    * @param string $tagName
+    * @param string $tagValue
     *
     * @return bool
     */
@@ -349,8 +346,8 @@ class OpenGraph3 {
     /**
      * Checks if a specific OpenGraph tag already exists
      *
-     * @param String $tagName
-     * @param String $tagValue
+     * @param string $tagName
+     * @param string $tagValue
      *
      * @return bool
      */

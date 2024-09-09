@@ -1,18 +1,15 @@
 <?php
 
 /**
- * Contao Open Source CMS
+ * OpenGraph3 Bundle for Contao Open Source CMS
  *
- * Copyright (c) 2005-2022 Leo Feyer
- *
- * @package   Opengraph3
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
- * @license   LGPL
- * @copyright 2022 numero2 - Agentur für digitales Marketing GbR
+ * @license   LGPL-3.0-or-later
+ * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
  */
 
-use Contao\System;
+
 use numero2\OpenGraph3\DCAHelper\OpengraphFields;
 
 
@@ -47,7 +44,7 @@ $GLOBALS['TL_DCA']['opengraph_fields'] = [
     ,   'og_type' => [
             'label'             => &$GLOBALS['TL_LANG']['opengraph_fields']['og_type']
         ,   'inputType'         => 'select'
-        ,   'options_callback'  => [OpengraphFields::class,'getTypes']
+        ,   'options_callback'  => [OpengraphFields::class, 'getTypes']
         ,   'eval'              => ['chosen'=>true, 'includeBlankOption'=>true, 'submitOnChange'=>true, 'tl_class'=>'w50']
         ,   'attributes'        => ['legend'=>'opengraph_legend']
         ,   'sql'               => "varchar(32) NOT NULL default ''"
