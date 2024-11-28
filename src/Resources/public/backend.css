@@ -63,12 +63,12 @@
   opacity: 0.5;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend,
+fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button,
 #pal_opengraph_legend legend {
   display: flex;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend:before,
+fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before,
 #pal_opengraph_legend legend:before {
   content: "";
   display: block;
@@ -79,12 +79,12 @@ fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend:before
   background-size: contain;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend,
+fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button,
 #pal_twitter_legend legend {
   display: flex;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend:before,
+fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:before,
 #pal_twitter_legend legend:before {
   content: "";
   display: block;
