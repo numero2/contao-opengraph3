@@ -94,3 +94,12 @@ fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:b
   background: url("/bundles/opengraph3/icon-twitter.svg") no-repeat scroll 50% 50%;
   background-size: contain;
 }
+
+html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before {
+  background-image: url("/bundles/opengraph3/icon-ogp_1c.svg");
+}
+
+html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before,
+html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:before {
+  filter: brightness(0) invert(50%) sepia(24%) saturate(224%) hue-rotate(184deg) brightness(91%) contrast(90%);
+}
