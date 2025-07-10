@@ -80,11 +80,17 @@ class OpengraphFields {
      */
     public static function getCountries(): array {
 
+        $countries = [];
+
         if( System::getContainer()->has('contao.intl.countries') ) {
-            return System::getContainer()->get('contao.intl.countries')->getCountries();
+            $countries = System::getContainer()->get('contao.intl.countries')->getCountries();
         } else {
-            return System::getCountries();
+            $countries = System::getCountries();
         }
+
+        $countries = array_change_key_case($countries, CASE_UPPER);
+
+        return $countries;
     }
 
 

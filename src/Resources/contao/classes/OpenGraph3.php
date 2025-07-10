@@ -88,7 +88,7 @@ class OpenGraph3 {
                                     $arrCountries = [];
                                     $arrCountries = OpengraphFields::getCountries();
 
-                                    $value = $arrCountries[$value];
+                                    $value = $arrCountries[strtoupper($value)];
 
                                 break;
                             }
