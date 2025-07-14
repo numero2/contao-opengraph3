@@ -1,75 +1,61 @@
 .og_properties > table {
   width: 100%;
 }
-
 .og_properties > table tr {
   height: 1.5rem;
 }
-
 .og_properties > table tr td {
   vertical-align: top;
   height: auto;
 }
-
 .og_properties > table tr td.w50 {
   width: 50%;
   float: none;
   position: relative;
 }
-
+.og_properties > table tr td.w50 > textarea {
+  resize: vertical;
+}
 .og_properties > table tr td.w50 > *:nth-child(1) {
   width: calc(100% - 15px);
 }
-
-.og_properties > table tr td.w50 > *:nth-childtextarea(1) {
-  resize: vertical;
-}
-
 .og_properties > table tr td.w50.wizard > *:nth-child(1) {
   width: calc(100% - 42px);
 }
-
 .og_properties > table tr td.w50 h3 {
   display: none;
 }
-
 .og_properties > table tr td.w50 + .w50 {
   padding-left: 15px;
   width: calc(50% - 70px);
 }
-
 .og_properties > table tr td.operations {
   width: 80px;
   text-align: right;
   vertical-align: middle;
 }
-
-.og_properties > table tr td.operations a[rel="up"] img {
+.og_properties > table tr td.operations a[rel=up] img {
   transform: rotate(90deg);
 }
-
-.og_properties > table tr td.operations a[rel="down"] img {
+.og_properties > table tr td.operations a[rel=down] img {
   transform: rotate(-90deg);
 }
-
-.og_properties > table tr:nth-child(1) td.operations a[rel="up"], .og_properties > table tr:nth-last-child(1) td.operations a[rel="down"] {
+.og_properties > table tr:nth-child(1) td.operations a[rel=up], .og_properties > table tr:nth-last-child(1) td.operations a[rel=down] {
   cursor: default;
   pointer-events: none;
 }
-
-.og_properties > table tr:nth-child(1):nth-last-child(1) td.operations a[rel="delete"] {
+.og_properties > table tr:nth-child(1):nth-last-child(1) td.operations a[rel=delete] {
   cursor: default;
   pointer-events: none;
   opacity: 0.5;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button,
-#pal_opengraph_legend legend {
+fieldset[data-contao--toggle-fieldset-id-value=opengraph_legend] legend button,
+#pal_opengraph_legend legend:not(:has(button)) {
   display: flex;
 }
-
-fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before,
-#pal_opengraph_legend legend:before {
+fieldset[data-contao--toggle-fieldset-id-value=opengraph_legend] legend button:before,
+#pal_opengraph_legend legend:not(:has(button)):before {
   content: "";
   display: block;
   margin-right: 1ch;
@@ -79,13 +65,12 @@ fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button
   background-size: contain;
 }
 
-fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button,
-#pal_twitter_legend legend {
+fieldset[data-contao--toggle-fieldset-id-value=twitter_legend] legend button,
+#pal_twitter_legend legend:not(:has(button)) {
   display: flex;
 }
-
-fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:before,
-#pal_twitter_legend legend:before {
+fieldset[data-contao--toggle-fieldset-id-value=twitter_legend] legend button:before,
+#pal_twitter_legend legend:not(:has(button)):before {
   content: "";
   display: block;
   margin-right: 1ch;
@@ -95,11 +80,12 @@ fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:b
   background-size: contain;
 }
 
-html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before {
+html[data-color-scheme=dark] fieldset[data-contao--toggle-fieldset-id-value=opengraph_legend] legend button:before {
   background-image: url("/bundles/opengraph3/icon-ogp_1c.svg");
 }
-
-html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before,
-html[data-color-scheme="dark"] fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:before {
+html[data-color-scheme=dark] fieldset[data-contao--toggle-fieldset-id-value=opengraph_legend] legend button:before,
+html[data-color-scheme=dark] fieldset[data-contao--toggle-fieldset-id-value=twitter_legend] legend button:before {
   filter: brightness(0) invert(50%) sepia(24%) saturate(224%) hue-rotate(184deg) brightness(91%) contrast(90%);
 }
+
+/*# sourceMappingURL=backend.css.map */

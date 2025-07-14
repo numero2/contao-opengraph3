@@ -16,9 +16,10 @@
                 float: none;
                 position: relative;
 
+                > textarea { resize: vertical; }
+
                 > *:nth-child(1) {
                     width: calc(100% - 15px);
-                    &textarea { resize: vertical; }
                 }
 
                 &.wizard > *:nth-child(1) { width: calc(100% - 42px); }
@@ -58,7 +59,7 @@
 }
 
 fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button,
-#pal_opengraph_legend legend {
+#pal_opengraph_legend legend:not(:has(button)) {
 
     display: flex;
 
@@ -74,7 +75,7 @@ fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button
 }
 
 fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button,
-#pal_twitter_legend legend {
+#pal_twitter_legend legend:not(:has(button)) {
 
     display: flex;
 
