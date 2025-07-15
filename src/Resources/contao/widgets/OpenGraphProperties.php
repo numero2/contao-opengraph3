@@ -6,12 +6,13 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL-3.0-or-later
- * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
+ * @copyright Copyright (c) 2025, numero2 - Agentur für digitales Marketing GbR
  */
 
 
 namespace numero2\OpenGraph3;
 
+use \Exception;
 use Contao\Backend;
 use Contao\Config;
 use Contao\Controller;
@@ -20,7 +21,6 @@ use Contao\Image;
 use Contao\Input;
 use Contao\System;
 use Contao\Widget;
-use Exception;
 
 
 class OpenGraphProperties extends Widget {
@@ -255,7 +255,8 @@ class OpenGraphProperties extends Widget {
                 $j += 1;
             }
 
-            $html .= '<td class="operations">';
+            $html .= '<td>';
+            $html .= '<div class="operations">';
             $html .=    '<a rel="copy" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'">
                             <img src="system/themes/'.$theme.'/'.$path.'/copy.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['copy'].'" class="tl_listwizard_img">
                         </a>';
@@ -268,6 +269,7 @@ class OpenGraphProperties extends Widget {
             $html .=    '<a rel="delete" href="#" class="widgetImage" title="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['delete'].'">
                             <img src="system/themes/'.$theme.'/'.$path.'/delete.'.$iconExt.'" width="16" height="16" alt="'.$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['operations']['delete'].'" class="tl_listwizard_img">
                         </a>';
+            $html .= '</div>';
             $html .= '</td>';
             $html .= '</tr>';
         }
@@ -279,7 +281,7 @@ class OpenGraphProperties extends Widget {
 
                 e.preventDefault();
 
-                var row = this.parentElement.parentElement;
+                var row = this.parentElement.parentElement.parentElement;
                 var table = row.parentElement;
 
                 if( this.rel == "copy" ) {
@@ -324,7 +326,7 @@ class OpenGraphProperties extends Widget {
                 }
             }
 
-            var anchors=document.querySelectorAll(".'.$this->strField.' td.operations > a");
+            var anchors=document.querySelectorAll(".'.$this->strField.' td .operations > a");
             for( var i=0; i < anchors.length; i++ ) {
                 anchors[i].addEventListener("click", clickHandler );
             }

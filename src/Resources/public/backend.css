@@ -29,15 +29,20 @@
   padding-left: 15px;
   width: calc(50% - 70px);
 }
-.og_properties > table tr td.operations {
-  width: 80px;
-  text-align: right;
+.og_properties > table tr td:last-child {
   vertical-align: middle;
+  width: 80px;
 }
-.og_properties > table tr td.operations a[rel=up] img {
+.og_properties > table tr td .operations {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+.og_properties > table tr td .operations a[rel=up] img {
   transform: rotate(90deg);
 }
-.og_properties > table tr td.operations a[rel=down] img {
+.og_properties > table tr td .operations a[rel=down] img {
   transform: rotate(-90deg);
 }
 .og_properties > table tr:nth-child(1) td.operations a[rel=up], .og_properties > table tr:nth-last-child(1) td.operations a[rel=down] {

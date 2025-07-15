@@ -33,11 +33,17 @@
 
             }
 
-            &.operations {
-
-                width: 80px;
-                text-align: right;
+            &:last-child {
                 vertical-align: middle;
+                width: 80px;
+            }
+
+            .operations {
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 6px;
 
                 a[rel="up"] img { transform: rotate(90deg); }
                 a[rel="down"] img { transform: rotate(-90deg); }
