@@ -185,13 +185,20 @@ class OpenGraph3 {
                 // set default locale based on the page´s language
                 if( !$value ) {
 
-                    switch( $objPage->language ) {
-                        case 'en' :
-                            $value = 'en_US';
-                            break;
-                        default :
-                            $value = sprintf("%s_%s",$objPage->language,strtoupper($objPage->language));
-                            break;
+                    if( strlen($objPage->language) === 2 ) {
+
+                        switch( $objPage->language ) {
+                            case 'en' :
+                                $value = 'en_US';
+                                break;
+                            default :
+                                $value = sprintf("%s_%s",$objPage->language,strtoupper($objPage->language));
+                                break;
+                        }
+
+                    } else {
+
+                        $value = $objPage->language;
                     }
                 }
 
