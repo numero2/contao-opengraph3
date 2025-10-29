@@ -120,11 +120,13 @@ class OpenGraph3 {
                                 $value = Environment::get('base') . $objFile->path;
 
                                 $size = Config::get($fieldName.'_size');
+
                                 if( $size ) {
 
                                     $oFile = new File($objFile->path);
 
                                     $size = StringUtil::deserialize($size);
+
                                     if( is_numeric($size) ){
                                         $size = [0, 0, (int) $size];
                                     } else if( !is_array($size) ) {
@@ -134,18 +136,35 @@ class OpenGraph3 {
                                     $size += [0, 0, 'crop'];
 
                                     if( $oFile && $oFile->exists() && $oFile->isGdImage ) {
-                                        try {
-                                            $resized = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size);
-                                            $src = $resized->getUrl(TL_ROOT);
 
-                                            if( $src !== $objFile->path ) {
-                                                $value = Environment::get('base') . $src;
+                                        try {
+
+                                            if( System::getContainer()->has('contao.image.image_factory') ) {
+
+                                                $resized = System::getContainer()->get('contao.image.image_factory')->create(TL_ROOT . '/' . $objFile->path, $size);
+                                                $src = $resized->getUrl(TL_ROOT);
+
+                                                if( $src !== $objFile->path ) {
+                                                    $value = Environment::get('base') . $src;
+                                                }
+
+                                            } else {
+
+                                                $rootDir = System::getContainer()->getParameter('kernel.project_dir');
+
+                                                $resized = System::getContainer()->get('contao.image.factory')->create($rootDir . '/' . $objFile->path, $size);
+                                                $src = $resized->getUrl($rootDir);
+
+                                                if( $src !== $objFile->path ) {
+                                                    $value = Environment::get('base') . $src;
+                                                }
                                             }
 
                                         } catch( Exception $e ) {
                                         }
                                     }
                                 }
+
                             } else {
                                 continue 2;
                             }
