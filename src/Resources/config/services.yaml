@@ -1,0 +1,8 @@
+services:
+    _defaults:
+        autoconfigure: true
+
+
+    numero2.opengraph.twig.extension:
+        class: numero2\Opengraph3Bundle\Twig\Extension\OpenGraph3Extension
+        public: true

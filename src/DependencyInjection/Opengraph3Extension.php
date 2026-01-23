@@ -31,6 +31,7 @@ class Opengraph3Extension extends Extension {
             new FileLocator(__DIR__.'/../Resources/config')
         );
 
-        $loader->load('listener.yml');
+        $loader->load('listener.yaml');
+        $loader->load('services.yaml');
     }
 }

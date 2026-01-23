@@ -61,7 +61,7 @@ class OpenGraph3Listener {
      *
      * @Hook("generatePage")
      */
-    public static function addTagsToPage( $ref=null ): void {
+    public function addTagsToPage( $ref=null ): void {
 
         OpenGraph3::addTagsToPage($ref);
     }
