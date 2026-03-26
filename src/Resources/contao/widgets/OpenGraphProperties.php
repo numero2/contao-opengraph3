@@ -277,26 +277,22 @@ class OpenGraphProperties extends Widget {
         $html .= '</table>';
         $html .= '
         <script>
-            var clickHandler = function(e) {
+        {
+            let clickHandler = function(e) {
 
                 e.preventDefault();
 
-                var row = this.parentElement.parentElement.parentElement;
-                var table = row.parentElement;
+                let row = this.parentElement.parentElement.parentElement;
+                let table = row.parentElement;
 
                 if( this.rel == "copy" ) {
 
-                    var clone = row.cloneNode(true);
+                    let clone = row.cloneNode(true);
                     table.insertBefore(clone, row.nextSibling);
 
-                    var as = clone.querySelectorAll("a");
-                    for( var i=0; i < as.length; i++ ) {
+                    let as = clone.querySelectorAll("a");
+                    for( let i=0; i < as.length; i++ ) {
                         as[i].addEventListener("click", clickHandler);
-                    }
-
-                    var chosen = clone.querySelectorAll("div.tl_chosen");
-                    for( var i=0; i < chosen.length; i++ ) {
-                        chosen[i].parentNode.removeChild(chosen[i]);
                     }
 
                 } else if( this.rel == "up" ) {
@@ -313,24 +309,20 @@ class OpenGraphProperties extends Widget {
                     table.removeChild(row);
                 }
 
-                var inputs = table.querySelectorAll("td > input, td > select, td > textarea");
-                for( var i=0; i < inputs.length; i++ ) {
-                    var iRow = Math.floor(i/'.$numFields.');
+                let inputs = table.querySelectorAll("td input, td select, td textarea");
+
+                for( let i=0; i < inputs.length; i++ ) {
+                    let iRow = Math.floor(i/'.$numFields.');
                     inputs[i].id = inputs[i].id.replace(/\[\d+\]/, "["+iRow+"]");
                     inputs[i].name = inputs[i].name.replace(/\[\d+\]/, "["+iRow+"]");
                 }
-
-                var chosen = table.querySelectorAll("select.tl_chosen:last-child");
-                for( var i=0; i < chosen.length; i++ ) {
-                    new Chosen($(chosen[i]));
-                }
             }
 
-            var anchors=document.querySelectorAll(".'.$this->strField.' td .operations > a");
-            for( var i=0; i < anchors.length; i++ ) {
+            let anchors = document.querySelectorAll(".'.$this->strField.' td .operations > a");
+            for( let i=0; i < anchors.length; i++ ) {
                 anchors[i].addEventListener("click", clickHandler );
             }
-
+        }
         </script>';
 
         $html .= '</div>';
@@ -354,14 +346,14 @@ class OpenGraphProperties extends Widget {
         $template = [
             'property' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['property']
-                ,   'inputType'         => 'select'
-                ,   'options_callback'  => [self::class, 'getProperties']
-                ,   'eval'              => ['mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'chosen'=>true, 'submitOnChange'=>true]
+            ,   'inputType'             => 'select'
+            ,   'options_callback'      => [self::class, 'getProperties']
+            ,   'eval'                  => ['mandatory'=>false, 'maxlength'=>255, 'includeBlankOption'=>true, 'submitOnChange'=>true]
             ]
         ,   'value' => [
                 'label'                 => &$GLOBALS['TL_LANG']['opengraph_fields']['og_property']['value']
-                ,   'inputType'         => 'text'
-                ,   'eval'              => ['mandatory'=>false]
+            ,   'inputType'             => 'text'
+            ,   'eval'                  => ['mandatory'=>false]
             ]
         ];
 
