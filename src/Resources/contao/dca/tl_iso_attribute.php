@@ -12,6 +12,7 @@
 
 use Contao\Controller;
 use Contao\System;
+use Contao\ArrayUtil;
 
 
 if( !empty($GLOBALS['TL_DCA']['tl_iso_attribute']) ) {
@@ -27,7 +28,7 @@ if( !empty($GLOBALS['TL_DCA']['tl_iso_attribute']) ) {
         array_walk(
             array_reverse($GLOBALS['TL_LANG']['opengraph_fields']['legends'])
             ,   function( $translation, $key ) {
-                array_insert(
+                ArrayUtil::arrayInsert(
                     $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options']
                     ,   array_search('meta_legend', $GLOBALS['TL_DCA']['tl_iso_attribute']['fields']['legend']['options'])+1
                     ,   $key
