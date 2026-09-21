@@ -10,19 +10,10 @@
  */
 
 
-namespace numero2\Opengraph3Bundle;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use numero2\Opengraph3Bundle\Widget\OpenGraphPropertiesWidget;
 
 
-class Opengraph3Bundle extends Bundle {
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPath(): string {
-
-        return \dirname(__DIR__);
-    }
-}
+/**
+ * BACK END FORM FIELDS
+ */
+$GLOBALS['BE_FFL']['openGraphProperties'] = OpenGraphPropertiesWidget::class;

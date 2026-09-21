@@ -10,19 +10,9 @@
  */
 
 
-namespace numero2\Opengraph3Bundle;
-
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use numero2\Opengraph3Bundle\DataContainer\OpenGraphFields;
 
 
-class Opengraph3Bundle extends Bundle {
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPath(): string {
-
-        return \dirname(__DIR__);
-    }
+if( !empty($GLOBALS['TL_DCA']['tl_page']) ) {
+    OpenGraphFields::addToTable('tl_page', ['regular'=>'protected_legend', 'root'=>'url_legend', 'rootfallback'=>'url_legend']);
 }

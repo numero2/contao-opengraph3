@@ -1,0 +1,35 @@
+services:
+    _defaults:
+        autoconfigure: true
+
+
+    numero2_opengraph3.open_graph.manager:
+        class: numero2\Opengraph3Bundle\OpenGraph\OpenGraphManager
+        public: true
+        arguments:
+            - '@request_stack'
+            - '@contao.routing.response_context_accessor'
+            - '@contao.insert_tag.parser'
+            - '@contao.image.factory'
+            - '@contao.intl.countries'
+            - '%kernel.project_dir%'
+
+    numero2\Opengraph3Bundle\OpenGraph\OpenGraphManager: '@numero2_opengraph3.open_graph.manager'
+
+
+    numero2_opengraph3.open_graph.provider.calendar_events:
+        class: numero2\Opengraph3Bundle\OpenGraph\Provider\CalendarEventsProvider
+
+    numero2_opengraph3.open_graph.provider.faq:
+        class: numero2\Opengraph3Bundle\OpenGraph\Provider\FaqProvider
+
+    numero2_opengraph3.open_graph.provider.isotope:
+        class: numero2\Opengraph3Bundle\OpenGraph\Provider\IsotopeProvider
+        arguments:
+            - '@request_stack'
+
+    numero2_opengraph3.open_graph.provider.news:
+        class: numero2\Opengraph3Bundle\OpenGraph\Provider\NewsProvider
+
+    numero2_opengraph3.open_graph.provider.store_locator:
+        class: numero2\Opengraph3Bundle\OpenGraph\Provider\StoreLocatorProvider

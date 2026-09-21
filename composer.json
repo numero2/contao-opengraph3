@@ -2,20 +2,22 @@
     "name": "numero2/contao-opengraph3",
     "type": "contao-bundle",
     "description": "Implementation of OpenGraph tags and X / Twitter Cards for Contao",
+    "keywords": ["contao", "opengraph", "open graph", "twitter", "x", "social media", "meta tags"],
     "license": "LGPL-3.0+",
-    "authors": [
-        {
+    "authors": [{
             "name": "numero2 - Agentur für digitales Marketing GbR",
             "homepage": "https://www.numero2.de"
         }
     ],
     "require": {
-        "contao/core-bundle": "^4.13 || ^5.0",
-        "symfony/config": "^5.4 || ^6.4 || ^7.0",
-        "symfony/dependency-injection": "^5.4 || ^6.4 || ^7.0",
-        "symfony/event-dispatcher": "^5.4 || ^6.4 || ^7.0",
-        "symfony/http-kernel": "^5.4 || ^6.4 || ^7.0",
-        "twig/twig": "^3.8"
+        "contao/core-bundle": "^5.7 || ^6.0",
+        "symfony/config": "^7.4 || ^8.0",
+        "symfony/dependency-injection": "^7.4 || ^8.0",
+        "symfony/event-dispatcher": "^7.4 || ^8.0",
+        "symfony/http-foundation": "^7.4 || ^8.0",
+        "symfony/http-kernel": "^7.4 || ^8.0",
+        "symfony/security-bundle": "^7.4 || ^8.0",
+        "symfony/service-contracts": "^3.0"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.0",
@@ -31,16 +33,7 @@
     "autoload": {
         "psr-4": {
             "numero2\\Opengraph3Bundle\\": "src/"
-        },
-        "classmap": [
-            "src/Resources/contao/"
-        ],
-        "exclude-from-classmap": [
-            "src/Resources/contao/config/",
-            "src/Resources/contao/dca/",
-            "src/Resources/contao/languages/",
-            "src/Resources/contao/templates/"
-        ]
+        }
     },
     "scripts": {
         "depcheck": "@php vendor/bin/composer-dependency-analyser --config=depcheck.php"

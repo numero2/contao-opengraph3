@@ -1,0 +1,57 @@
+.row_wizard:has(td.og_value) {
+
+    width: 100%;
+
+    td.og_property,
+    td.og_value {
+        width: 50%;
+        vertical-align: top;
+    }
+
+    td.og_value {
+
+        textarea { resize: vertical; }
+
+        // make room for the date picker
+        &:has(> img[id^="toggle_"]) > .tl_text {
+            width: calc(100% - 24px);
+        }
+
+        > img[id^="toggle_"] {
+            vertical-align: middle;
+        }
+    }
+}
+
+@mixin legend-icon( $legend, $icon ) {
+
+    fieldset[data-contao--toggle-fieldset-id-value="#{$legend}"] legend button {
+
+        display: flex;
+
+        &:before {
+            content: "";
+            display: block;
+            margin-right: 1ch;
+            width: 1em;
+            height: 1em;
+            background: url('../img/#{$icon}') no-repeat scroll 50% 50%;
+            background-size: contain;
+        }
+    }
+}
+
+@include legend-icon('opengraph_legend', 'icon-ogp.svg');
+@include legend-icon('twitter_legend', 'icon-twitter.svg');
+
+html[data-color-scheme="dark"] {
+
+    fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before {
+        background-image: url('../img/icon-ogp_1c.svg');
+    }
+
+    fieldset[data-contao--toggle-fieldset-id-value="opengraph_legend"] legend button:before,
+    fieldset[data-contao--toggle-fieldset-id-value="twitter_legend"] legend button:before {
+        filter: brightness(0) invert(50%) sepia(24%) saturate(224%) hue-rotate(184deg) brightness(91%) contrast(90%);
+    }
+}

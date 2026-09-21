@@ -45,7 +45,7 @@ class BackendAssetsListener implements EventSubscriberInterface {
 
         if( $this->scopeMatcher->isBackendRequest($request) ) {
 
-            $GLOBALS['TL_CSS'][] = 'bundles/opengraph3/backend.css';
+            $GLOBALS['TL_CSS'][] = 'bundles/opengraph3/backend/css/backend.css';
         }
     }
 }

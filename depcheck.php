@@ -6,7 +6,7 @@
  * @author    Benny Born <benny.born@numero2.de>
  * @author    Michael Bösherz <michael.boesherz@numero2.de>
  * @license   LGPL-3.0-or-later
- * @copyright Copyright (c) 2024, numero2 - Agentur für digitales Marketing GbR
+ * @copyright Copyright (c) 2026, numero2 - Agentur für digitales Marketing GbR
  */
 
 
@@ -17,8 +17,8 @@ use ShipMonk\ComposerDependencyAnalyser\Config\ErrorType;
 return (new Configuration())
     ->ignoreErrorsOnPackage('contao/manager-plugin', [ErrorType::DEV_DEPENDENCY_IN_PROD])
 
-    // ignore classes these will be checked during runtime
-    // numero2/calendar-bundle
+    // optional bundles, their classes will be checked during runtime
+    // contao/calendar-bundle
     ->ignoreUnknownClasses([
         'Contao\CalendarBundle\ContaoCalendarBundle',
         'Contao\CalendarEventsModel',
@@ -37,9 +37,8 @@ return (new Configuration())
     ->ignoreUnknownClasses([
         'Isotope\Isotope',
         'Isotope\Model\Product',
-        'Haste\Units\Mass\Scale',
-        'Haste\Units\Mass\Unit',
-        'Haste\Units\Mass\Weight',
+        'Isotope\Units\Mass\Unit',
+        'Isotope\Units\Mass\Weight',
     ])
     // numero2/contao-storelocator
     ->ignoreUnknownClasses([
@@ -47,8 +46,3 @@ return (new Configuration())
         'numero2\StoreLocator\StoresModel',
     ])
 ;
-
-
-
-
-
